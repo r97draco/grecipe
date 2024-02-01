@@ -47,10 +47,10 @@ cd server
 npm install
 ```
 
-To start the server:
+To start the server for development:
 
 ```bash
-npm start
+npm dev
 ```
 
 The server will be running on [http://localhost:9191](http://localhost:9191).
