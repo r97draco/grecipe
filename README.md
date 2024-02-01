@@ -85,11 +85,10 @@ In the `server` directory, you can run:
 
 - `npm start`: Starts the Node.js server with `nodemon` for auto-reloading.
 - `npm run dev`: Runs the server in development mode.
-- `npm run format`: Formats code with `prettier`.
 
 ## License
 
-This project is licensed under the ISC License - see the `LICENSE` file for details.
+This project is licensed under the MIT License - see the `LICENSE` file for details.
 
 ## Acknowledgements
 
