@@ -1,6 +1,6 @@
 # Recipe Project Report
 
-## Cover Page
+## Cover Page : DONE
 
 - **Project Title:** Recipe
 - **Team Members:**
