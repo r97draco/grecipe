@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const app = express();
+const connectDB = require('./config/connectDB');
 
 /* Configuring Cross-Origin Resource Sharing (CORS)*/
 app.use(
@@ -29,5 +30,12 @@ app.get('/', (req, res) => {
 });
 
 /* Starting the server and listening on a specific port. */
-const PORT = process.env.PORT || 9191;
-app.listen(PORT, () => console.log(`[Server] - Running on port ${PORT}`));
+connectDB()
+  .then(() => {
+    const PORT = process.env.PORT || 9191;
+    app.listen(PORT, () => console.log(`[Server] - Running on port ${PORT}`));
+  })
+  .catch((e) => {
+    console.log('Error while starting the server');
+    console.error(e);
+  });
