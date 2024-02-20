@@ -1,4 +1,4 @@
-require('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const familySchema = new Schema({
@@ -7,3 +7,5 @@ const familySchema = new Schema({
 });
 
 const FamilyModel = mongoose.model('Family', familySchema);
+
+module.exports = FamilyModel;
