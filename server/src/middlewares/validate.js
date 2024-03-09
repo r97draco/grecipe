@@ -1,6 +1,7 @@
 const Joi = require('joi');
 const ApiError = require('../utils/ApiError');
 
+/* Function to pick the keys from the object */
 const pick = (object, keys) =>
   keys.reduce((obj, key) => {
     if (object && Object.prototype.hasOwnProperty.call(object, key)) {
@@ -9,6 +10,7 @@ const pick = (object, keys) =>
     return obj;
   }, {});
 
+/* Function to validate the request */
 const validate = (schema) => (req, res, next) => {
   const validSchema = pick(schema, ['params', 'query', 'body']);
   const object = pick(req, Object.keys(validSchema));
