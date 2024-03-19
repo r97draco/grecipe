@@ -28,6 +28,8 @@ const getUser = async (req, res, next) => {
 
 const updateUser = async (req, res, next) => {
   const updateData = {
+    email: req.body.email,
+    userName: req.body.userName,
     isFamilyHead: req.body.isFamilyHead,
     family: req.body.familyId,
   };
