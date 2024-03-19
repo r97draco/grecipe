@@ -19,6 +19,6 @@ inventoryRouter.get('/', authMiddleware, getItemsByUser);
 inventoryRouter.post('/add', authMiddleware, createItems);
 inventoryRouter.put('/update/:id', updateItem);
 inventoryRouter.delete('/delete/:id', deleteItem);
-inventoryRouter.post('/upload', upload.single('receipt'), parseReceipt);
+// inventoryRouter.post('/upload', upload.single('receipt'), parseReceipt);
 
 module.exports = inventoryRouter;

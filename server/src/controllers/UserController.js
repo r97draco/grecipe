@@ -1,4 +1,4 @@
-const userService = require('../services/UserService'); // Ensure correct path to userService
+const userService = require('../services/UserService');
 
 const createUser = async (req, res, next) => {
   try {
@@ -15,7 +15,7 @@ const createUser = async (req, res, next) => {
 
 const getUser = async (req, res, next) => {
   try {
-    const user = await userService.getUserByEmail(req.headers.email);
+    const user = await userService.getUserByEmail(req.params.userId);
     if (user) {
       res.status(200).json(user);
     } else {
