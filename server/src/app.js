@@ -5,7 +5,9 @@ const bodyParser = require('body-parser');
 const { errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
 
+
 //Import Routes
+const routes = require('./routes');
 
 const app = express();
 
@@ -33,6 +35,7 @@ app.get('/', (req, res) => {
 });
 
 //Add routes to the app
+app.use('/api', routes);
 
 // Error handling middleware
 app.use((req, res) => {
