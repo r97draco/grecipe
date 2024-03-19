@@ -10,3 +10,70 @@
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.modal-content {
+  max-width: 600px; /* testing the layout */
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 20px;
+  background-color: #f44336;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.close-button {
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.image-container {
+  margin-bottom: 20px;
+}
+
+.modal-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.used-ingredients,
+.missed-ingredients,
+.unused-ingredients {
+  margin-bottom: 20px;
+}
+
+.used-ingredients h2,
+.missed-ingredients h2,
+.unused-ingredients h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.used-ingredients ul,
+.missed-ingredients ul,
+.unused-ingredients ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.used-ingredients ul li,
+.missed-ingredients ul li,
+.unused-ingredients ul li {
+  margin-bottom: 5px;
+}
+
+/* testing centering the image */
+.centered-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
