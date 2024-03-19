@@ -12,3 +12,16 @@
 [36m[1m2024-03-09 12:50:37 INFO:     [Server] - Running on port 9191[22m[39m
 [36m[1m2024-03-09 13:08:54 INFO:     [Server] - Running on port 9191[22m[39m
 [36m[1m2024-03-09 13:19:07 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-18 21:37:04 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-18 21:44:11 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-18 21:44:37 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-18 21:44:44 ERROR:    Not Found[22m[39m
+[36m[1m2024-03-18 21:47:29 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-18 21:47:32 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-18 21:47:39 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-18 21:48:23 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-18 21:54:47 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-18 21:55:10 ERROR:    "userName" is required, "name" is not allowed[22m[39m
+[36m[1m2024-03-18 21:56:16 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-18 21:56:21 ERROR:    E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "test1@gmail.com" }[22m[39m
+[31m[1m2024-03-18 21:57:01 ERROR:    E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "test2@gmail.com" }[22m[39m
