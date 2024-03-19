@@ -10,7 +10,13 @@ const validate = require('../middlewares/validate');
 const userSchema = require('../validation/ValUser');
 const router = express.Router();
 
-router.get('/getuser', validate(userSchema.getUser), authMiddleware, getUser);
+router.get(
+  '/getuser',
+  validate(userSchema.getUser),
+  // authMiddleware,
+  getUser
+);
+
 router.delete(
   '/:userId',
   validate(userSchema.deleteUser),
@@ -32,7 +38,9 @@ router.put(
   updateUser
 );
 
-router.get('/testinguser', authMiddleware, (req, res) => {
+router.get('/testinguser', 
+// authMiddleware, 
+(req, res) => {
   res.send('Hello World!');
 });
 
