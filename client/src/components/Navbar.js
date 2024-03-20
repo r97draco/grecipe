@@ -14,6 +14,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import { BsGoogle } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -41,8 +42,8 @@ const Navbar = () => {
         <img src={Logo} alt="" />
       </div>
       <div className="navbar-links-container">
-        <a href="">Inventory</a>
-        <a href="">Recipee</a>
+        <Link to="/inventory">Inventory</Link>
+        <Link to="/recipe">Recipee</Link>
         <button className="primary-button">
           <p className="flex flex-row items-center justify-center">
             Join&nbsp;
