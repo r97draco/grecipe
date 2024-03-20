@@ -1,21 +1,16 @@
-import "./App.css";
-import Home from "./components/Home";
-import About from "./components/About";
-import Work from "./components/Work";
-import Testimonial from "./components/Testimonial";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import React, { createContext, useState } from "react";
+import Routers from "./Routers";
+
+export const UserContext = createContext();
+export const backendUrl = "http://localhost:9191";
 
 function App() {
+  const [user, setUser] = useState({});
+
   return (
-    <div className="App">
-      <Home />
-      <About />
-      <Work />
-      <Testimonial />
-      <Contact />
-      <Footer />
-    </div>
+    <UserContext.Provider value={{ user, setUser }}>
+      <Routers />
+    </UserContext.Provider>
   );
 }
 
