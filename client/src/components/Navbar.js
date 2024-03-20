@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Logo from "../Assets/Grecipe.svg";
-import { BsCart2 } from "react-icons/bs";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -14,7 +13,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
-import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
+import { BsGoogle } from "react-icons/bs";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -42,11 +41,14 @@ const Navbar = () => {
         <img src={Logo} alt="" />
       </div>
       <div className="navbar-links-container">
-        <a href="">Home</a>
-        <a href="">About</a>
-        <a href="">Testimonials</a>
-        <a href="">Contact</a>
-        <button className="primary-button">Join/Login</button>
+        <a href="">Inventory</a>
+        <a href="">Recipee</a>
+        <button className="primary-button">
+          <p className="flex flex-row items-center justify-center">
+            Join&nbsp;
+            <BsGoogle />
+          </p>
+        </button>
       </div>
       <div className="navbar-menu-container">
         <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
