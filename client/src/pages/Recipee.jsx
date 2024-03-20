@@ -2,7 +2,7 @@ import React from 'react'
 
 const Recipee = () => {
   return (
-    <div>Recipee</div>
+    <div>Recipee Header</div>
   )
 }
 
