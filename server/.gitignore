@@ -14,3 +14,6 @@ yarn-error.log*
 
 # env file
 .env
+
+#log file
+src/server.log

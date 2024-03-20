@@ -1,10 +1,10 @@
-const userService = require('../services/UserService'); // Ensure correct path to userService
+const userService = require('../services/UserService');
 
 const createUser = async (req, res, next) => {
   try {
     const user = await userService.createUser({
       email: req.body.email,
-      userName: req.body.name,
+      userName: req.body.userName,
       photoURL: req.body.photoURL,
     });
     res.status(201).json(user);
@@ -15,7 +15,7 @@ const createUser = async (req, res, next) => {
 
 const getUser = async (req, res, next) => {
   try {
-    const user = await userService.getUserByEmail(req.headers.email);
+    const user = await userService.getUserByEmail(req.params.userId);
     if (user) {
       res.status(200).json(user);
     } else {
@@ -28,6 +28,8 @@ const getUser = async (req, res, next) => {
 
 const updateUser = async (req, res, next) => {
   const updateData = {
+    email: req.body.email,
+    userName: req.body.userName,
     isFamilyHead: req.body.isFamilyHead,
     family: req.body.familyId,
   };

@@ -1,0 +1,99 @@
+[31m[1m2024-03-09 12:36:04 ERROR:    app.listen is not a function[22m[39m
+[36m[1m2024-03-09 12:39:01 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-09 12:39:55 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-09 12:44:51 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-09 12:44:55 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-09 12:44:57 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-09 12:45:14 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-09 12:45:24 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-09 12:46:51 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-09 12:46:52 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-09 12:50:30 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-09 12:50:37 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-09 13:08:54 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-09 13:19:07 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-18 21:37:04 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-18 21:44:11 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-18 21:44:37 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-18 21:44:44 ERROR:    Not Found[22m[39m
+[36m[1m2024-03-18 21:47:29 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-18 21:47:32 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-18 21:47:39 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-18 21:48:23 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-18 21:54:47 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-18 21:55:10 ERROR:    "userName" is required, "name" is not allowed[22m[39m
+[36m[1m2024-03-18 21:56:16 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-18 21:56:21 ERROR:    E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "test1@gmail.com" }[22m[39m
+[31m[1m2024-03-18 21:57:01 ERROR:    E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "test2@gmail.com" }[22m[39m
+[36m[1m2024-03-18 22:07:36 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-18 22:07:36 ERROR:    E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "test3@gmail.com" }[22m[39m
+[31m[1m2024-03-18 22:07:44 ERROR:    Unexpected token 'T', ..."ilyHead": True[22m[39m
+[31m[1m}" is not valid JSON[22m[39m
+[31m[1m2024-03-18 22:08:04 ERROR:    E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "test4@gmail.com" }[22m[39m
+[31m[1m2024-03-18 22:16:32 ERROR:    E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "test4@gmail.com" }[22m[39m
+[31m[1m2024-03-18 23:09:35 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-18 23:09:48 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-18 23:10:46 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-18 23:11:49 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-18 23:12:01 ERROR:    "userId" is required[22m[39m
+[36m[1m2024-03-18 23:12:35 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-18 23:12:37 ERROR:    "userId" is required[22m[39m
+[36m[1m2024-03-18 23:17:15 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-18 23:18:20 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-18 23:18:25 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-18 23:18:34 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-18 23:18:40 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-18 23:18:55 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-18 23:19:42 ERROR:    "userId" is required[22m[39m
+[36m[1m2024-03-18 23:21:21 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-18 23:21:24 ERROR:    "userId" is required[22m[39m
+[36m[1m2024-03-18 23:23:14 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-18 23:23:15 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-18 23:24:03 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-18 23:24:19 ERROR:    Not Found[22m[39m
+[36m[1m2024-03-18 23:32:58 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-18 23:32:59 ERROR:    Not Found[22m[39m
+[36m[1m2024-03-18 23:33:12 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-18 23:33:14 ERROR:    "userId" is required[22m[39m
+[36m[1m2024-03-18 23:33:19 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-18 23:34:24 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-18 23:36:11 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-18 23:36:11 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-18 23:36:18 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-18 23:37:02 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-18 23:37:09 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-18 23:37:15 ERROR:    "userId" is required[22m[39m
+[36m[1m2024-03-18 23:38:03 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-18 23:38:04 ERROR:    "userId" is required[22m[39m
+[36m[1m2024-03-18 23:51:51 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-18 23:51:54 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-18 23:52:27 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-18 23:52:28 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-18 23:52:52 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-18 23:54:00 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-18 23:54:14 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-18 23:55:59 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-19 00:14:23 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-19 00:30:08 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-19 00:30:32 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-19 00:30:55 ERROR:    Cast to ObjectId failed for value "test1@gmail.com" (type string) at path "_id" for model "User"[22m[39m
+[36m[1m2024-03-19 00:32:44 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-19 00:33:07 ERROR:    Expected double-quoted property name in JSON at position 84[22m[39m
+[36m[1m2024-03-19 00:33:40 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-19 00:34:42 ERROR:    user.remove is not a function[22m[39m
+[36m[1m2024-03-19 00:36:52 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-19 00:36:53 ERROR:    User is not defined[22m[39m
+[31m[1m2024-03-19 00:37:16 ERROR:    User is not defined[22m[39m
+[36m[1m2024-03-19 00:38:01 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-19 00:39:22 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-19 00:39:28 ERROR:    User not found[22m[39m
+[36m[1m2024-03-19 00:39:50 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-19 13:26:58 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-19 13:27:21 ERROR:    E11000 duplicate key error collection: 65d3fe2db0360f591d1fdcf2_test.users index: email_1 dup key: { email: "newemail@example.com" }[22m[39m
+[31m[1m2024-03-19 19:24:18 ERROR:    E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "user@example.com" }[22m[39m
+[36m[1m2024-03-19 19:24:38 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-19 19:24:55 ERROR:    E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "user@example.com" }[22m[39m
+[36m[1m2024-03-19 19:57:33 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-19 20:00:02 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-19 20:00:08 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-19 20:07:12 INFO:     [Server] - Running on port 9191[22m[39m
