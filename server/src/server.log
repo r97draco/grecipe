@@ -88,3 +88,8 @@
 [36m[1m2024-03-19 00:39:22 INFO:     [Server] - Running on port 9191[22m[39m
 [31m[1m2024-03-19 00:39:28 ERROR:    User not found[22m[39m
 [36m[1m2024-03-19 00:39:50 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-19 13:26:58 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-19 13:27:21 ERROR:    E11000 duplicate key error collection: 65d3fe2db0360f591d1fdcf2_test.users index: email_1 dup key: { email: "newemail@example.com" }[22m[39m
+[31m[1m2024-03-19 19:24:18 ERROR:    E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "user@example.com" }[22m[39m
+[36m[1m2024-03-19 19:24:38 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-19 19:24:55 ERROR:    E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "user@example.com" }[22m[39m
