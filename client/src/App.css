@@ -17,10 +17,14 @@ img {
 body {
   max-width: 100%;
   overflow-x: hidden;
+  margin: 0 !important;
+  padding-top: 0 !important;
+  padding-left: 0 !important;
+  box-sizing: border-box !important;
 }
 
 body {
-  background-color: #f6f6f6;
+  background-color: #f5f5dc;
 }
 
 nav {
