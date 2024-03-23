@@ -7,11 +7,15 @@ import axios from "axios";
 import Spinner from "../components/Spinner";
 import { useContext } from "react";
 import { UserContext } from "../App";
+import "./Inventory.css";
 
 const Inventory = () => {
   const [inventoryData, setInventoryData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isTableLoading, setIsTableLoading] = useState(false);
+  const [filterValue, setFilterValue] = useState("");
+  const [sortBy, setSortBy] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc");
   const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
@@ -86,13 +90,44 @@ const Inventory = () => {
     }
   };
 
+  const filteredInventoryData = inventoryData.filter((item) =>
+    item.name.toLowerCase().includes(filterValue.toLowerCase())
+  );
+
+  const sortedInventoryData = filteredInventoryData.sort((a, b) => {
+    if (sortBy === "name") {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+      if (nameA < nameB) return sortOrder === "asc" ? -1 : 1;
+      if (nameA > nameB) return sortOrder === "asc" ? 1 : -1;
+      return 0;
+    } else if (sortBy === "expiresAt") {
+      const dateA = new Date(a.expiresAt);
+      const dateB = new Date(b.expiresAt);
+      return sortOrder === "asc" ? dateA - dateB : dateB - dateA;
+    } else {
+      return 0;
+    }
+  });
+
+  const handleSort = (criteria) => {
+    if (sortBy === criteria) {
+      // Toggle order if sorting by the same criteria
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      // Set new sorting criteria and default to ascending order
+      setSortBy(criteria);
+      setSortOrder("asc");
+    }
+  };
+
   return (
     <section className="relative">
       <div className="max-w-6xl px-4 mx-auto sm:px-6">
         <div className="pt-10 pb-12 md:pt-10 md:pb-20">
           <div className="pb-12 text-center md:pb-16">
             <h1 className="mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
                 Inventory
               </span>
             </h1>
@@ -104,7 +139,7 @@ const Inventory = () => {
               >
                 <UploadReceipt updateInventory={updateLocalInventory} />
                 <button
-                  className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-blue-500"
+                  className="secondary-button"
                   style={{ height: "fit-content" }}
                   onClick={saveItemsToServer}
                   disabled={inventoryData.length === 0 || isLoading}
@@ -112,8 +147,29 @@ const Inventory = () => {
                   Save
                 </button>
               </div>
+              <input
+                type="text"
+                placeholder="Filter by item name"
+                value={filterValue}
+                onChange={(e) => setFilterValue(e.target.value)}
+                className="border border-gray-300 rounded-md px-3 py-1 mb-4 focus:outline-none focus:ring focus:ring-indigo-200"
+              />
+              <div className="flex justify-center space-x-4 mb-4">
+                <button
+                  onClick={() => handleSort("name")}
+                  className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-400"
+                >
+                  Sort by Name
+                </button>
+                <button
+                  onClick={() => handleSort("expiresAt")}
+                  className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-400"
+                >
+                  Sort by Expiry Date
+                </button>
+              </div>
               <InventoryTable
-                inventoryData={inventoryData}
+                inventoryData={sortedInventoryData}
                 setInventoryData={setInventoryData}
               />
               {isTableLoading ? (
@@ -177,11 +233,13 @@ const InventoryTable = ({ inventoryData, setInventoryData }) => {
               key={item.name}
             >
               <div className="flex items-center justify-start text-sm">
-                <span className="mx-4">{index + 1}</span>
-                <span>{item.name}</span>
+                <span className="mx-4 font-medium text-sm">{index + 1}</span>
+                <span className="font-medium text-sm">{item.name}</span>
               </div>
               <div className="flex items-center">
-                {/* <span className="mx-4">{item.qty}</span> */}
+                <span className="mx-4 font-medium text-sm">
+                  Expiry Date: {item.expiresAt}
+                </span>
                 <button
                   className="flex items-center justify-center w-5 h-5 mx-4 text-gray-500 rounded-full hover:text-red-500 hover:bg-gray-100 dark:hover:bg-gray-800"
                   onClick={() => deleteItem(index)}

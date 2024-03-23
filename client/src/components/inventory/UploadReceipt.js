@@ -29,10 +29,15 @@ const UploadReceipt = ({ updateInventory }) => {
 
   return (
     <div className="flex flex-col space-y-1 font-mono text-left">
-      <label htmlFor="receipt-upload">Upload receipt</label>
+      <label
+        htmlFor="receipt-upload"
+        className="block text-sm font-medium text-gray-700"
+      >
+        Upload receipt
+      </label>
       <input
         id="receipt-upload"
-        className="block w-full text-sm cursor-pointer text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-sesmibold file:bg-pink-50 file:text-pink-700 hover:file:bg-pink-100 disabled:cursor-not-allowed"
+        className="cursor-pointer file:mr-4 file:py-2 file:px-10 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-500 file:text-black file:transition-colors file:duration-200 hover:file:bg-orange-400 focus:file:outline-none focus:file:ring-2 focus:file:ring-offset-2 focus:file:ring-orange-500 disabled:bg-gray-300"
         type="file"
         accept=".jpg, .jpeg, .png"
         onChange={uploadFile}
