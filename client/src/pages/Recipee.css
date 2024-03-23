@@ -1,0 +1,13 @@
+.input-box {
+  padding: 0.75rem 1rem;
+  width: 100%;
+  border: 2px solid #fe9e0e; /* Adjusted border color */
+  border-radius: 0.5rem;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.input-box:focus {
+  border-color: #fe9e0e; /* Adjusted focus border color */
+  box-shadow: 0 0 0 2px rgba(254, 158, 14, 0.5); /* Adjusted focus ring color */
+}
