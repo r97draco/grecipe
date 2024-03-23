@@ -17,10 +17,6 @@ img {
 body {
   max-width: 100%;
   overflow-x: hidden;
-  margin: 0 !important;
-  padding-top: 0 !important;
-  padding-left: 0 !important;
-  box-sizing: border-box !important;
 }
 
 body {
