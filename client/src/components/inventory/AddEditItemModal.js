@@ -3,13 +3,44 @@ import Modal from "react-modal";
 import CreatableSelect from "react-select/creatable";
 import { getFoodOptions } from "../../utils/inventory";
 
+// Custom styles for react-select component
+const selectStyles = {
+  control: (styles) => ({
+    ...styles,
+    backgroundColor: "white",
+    borderColor: "#fe9e0d",
+    boxShadow: "none",
+    "&:hover": {
+      borderColor: "#fe9e0d",
+    },
+  }),
+  option: (styles, { isFocused, isSelected }) => {
+    return {
+      ...styles,
+      backgroundColor: isFocused
+        ? "#ffedd5"
+        : isSelected
+        ? "#fe9e0d"
+        : undefined,
+      color: isFocused ? "#1a202c" : isSelected ? "white" : "#1a202c",
+      cursor: "pointer",
+    };
+  },
+};
+
 const customStyles = {
   content: {
     position: "fixed",
     width: "350px",
-    height: "500px",
-    top: "calc(50% - 250px)",
+    height: "600px",
+    top: "calc(50% - 300px)",
     left: "calc(50% - 175px)",
+    overflow: "auto",
+    borderRadius: "1rem",
+    backgroundColor: "white",
+    padding: "2rem",
+    borderColor: "#fe9e0d",
+    borderWidth: "2px",
   },
 };
 
@@ -57,14 +88,16 @@ const AddEditItemModal = ({
   //   };
 
   const submitForm = (e) => {
-    let twoWeeksFromNow = new Date();
-    twoWeeksFromNow.setDate(twoWeeksFromNow.getDate() + 14);
-    twoWeeksFromNow = twoWeeksFromNow.toISOString();
-
     e.preventDefault();
-    addItemToStore({ name, quantity, expiresAt: twoWeeksFromNow });
+    addItemToStore({
+      name,
+      quantity,
+      expiresAt,
+    });
     setName("");
     setQuantity(1);
+    setExpiresAt(""); // Reset expiry date
+    closeModal();
 
     // if (isEdit) {
     //   updateItem();
@@ -77,47 +110,54 @@ const AddEditItemModal = ({
 
   return (
     <Modal isOpen={isOpen} onRequestClose={closeModal} style={customStyles}>
-      <h1 className="mb-4 text-2xl font-bold">
+      <h1 className="mb-4 text-2xl font-bold text-gray-800">
         {isEdit ? "Edit" : "Add"} item
       </h1>
 
-      <form
-        className="flex flex-col justify-between align-start"
-        onSubmit={submitForm}
-        contentLabel="Add item modal"
-        style={{ height: "400px" }}
-      >
-        <div className="space-y-4">
-          <div className="flex flex-col">
-            <label htmlFor="name" className="mb-1">
-              Name
-            </label>
-            <CreatableSelect
-              isClearable
-              options={foodOptions}
-              value={foodOptions.find((option) => option.value === name)}
-              onChange={(option) => setName(option.value)}
-            />
-          </div>
+      <form className="flex flex-col space-y-4" onSubmit={submitForm}>
+        <div className="flex flex-col">
+          <label htmlFor="name" className="mb-1 text-gray-700">
+            Name
+          </label>
+          <CreatableSelect
+            isClearable
+            options={foodOptions}
+            value={foodOptions.find((option) => option.value === name)}
+            onChange={(option) => setName(option?.value || "")}
+            styles={selectStyles}
+          />
+        </div>
 
-          <div className="flex flex-col">
-            <label htmlFor="quantity" className="mb-1">
-              Quantity
-            </label>
-            <input
-              id="quantity"
-              type="number"
-              required
-              className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
-            />
-          </div>
+        <div className="flex flex-col">
+          <label htmlFor="quantity" className="mb-1 text-gray-700">
+            Quantity
+          </label>
+          <input
+            id="quantity"
+            type="number"
+            required
+            className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label htmlFor="expiresAt" className="mb-1 text-gray-700">
+            Expiry Date
+          </label>
+          <input
+            id="expiresAt"
+            type="date"
+            className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+            value={expiresAt}
+            onChange={(e) => setExpiresAt(e.target.value)}
+          />
         </div>
 
         <button
           type="submit"
-          className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+          className="px-4 py-2 font-bold text-white transition-colors duration-200 transform bg-orange-500 rounded hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
         >
           {isEdit ? "Update item" : "Add item"}
         </button>
