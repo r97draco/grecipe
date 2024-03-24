@@ -126,7 +126,7 @@ const Inventory = () => {
       <div className="max-w-6xl px-4 mx-auto sm:px-6">
         <div className="pt-10 pb-12 md:pt-10 md:pb-20">
           <div className="pb-12 text-center md:pb-16">
-            <h1 className="mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
+            <h1 className="mb-10 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
                 Inventory
               </span>
@@ -134,7 +134,7 @@ const Inventory = () => {
 
             <div style={{ width: "500px", margin: "0 auto" }}>
               <div
-                className="flex items-center justify-between mb-2"
+                className="flex items-center justify-between mb-10"
                 style={{ width: "100%" }}
               >
                 <UploadReceipt updateInventory={updateLocalInventory} />
@@ -152,9 +152,9 @@ const Inventory = () => {
                 placeholder="Filter by item name"
                 value={filterValue}
                 onChange={(e) => setFilterValue(e.target.value)}
-                className="border border-gray-300 rounded-md px-3 py-1 mb-4 focus:outline-none focus:ring focus:ring-indigo-200"
+                className="border border-gray-300 rounded-md px-3 py-1 mb-10 focus:outline-none focus:ring focus:ring-indigo-200"
               />
-              <div className="flex justify-center space-x-4 mb-4">
+              <div className="flex justify-center space-x-4 mb-10">
                 <button
                   onClick={() => handleSort("name")}
                   className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-400"
