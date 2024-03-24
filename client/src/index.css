@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
+
+/* Additional styles */
+@import "css/additional-styles/utility-patterns.css";
+@import "css/additional-styles/range-slider.css";
+@import "css/additional-styles/toggle-switch.css";
+/* @import "css/additional-styles/theme.css"; */
+
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=fallback");

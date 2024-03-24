@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import CreatableSelect from "react-select/creatable";
 import { getFoodOptions } from "../../utils/inventory";
+import AddItem from "./AddItem";
 
 // Custom styles for react-select component
 const selectStyles = {

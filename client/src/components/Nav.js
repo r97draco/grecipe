@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext, backendUrl } from "../App";
 import { FaGoogle } from "react-icons/fa";
 import axios from "axios";
+import Logo from "../Assets/Grecipe.svg";
 
 function Nav() {
   const [top, setTop] = useState(true);
@@ -58,7 +59,7 @@ function Nav() {
       // const response = await axios.post(`${backendUrl}/api/user/createuser`, { userName, email }, {headers: token});
       console.log("response", response);
       console.log(token);
-      // navigate("/dashboard");
+      navigate("/inventory");
     } catch (err) {
       console.log(err);
     }
@@ -123,7 +124,7 @@ function Nav() {
   }, [setUser]);
 
   const links = [
-    { to: "/", title: "Home" },
+    // { to: "/", title: "Home" },
     { to: "/inventory", title: "Inventory" },
     { to: "/recipe", title: "Recipe" },
   ];
@@ -133,14 +134,17 @@ function Nav() {
         !top && "bg-white backdrop-blur-sm shadow-lg"
       }`}
     >
-      <div className="max-w-6xl px-5 mx-auto sm:px-6">
+      <div className="px-5 mx-auto max-w-8xl sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Site branding */}
           <div className="flex-shrink-0 mr-4">
             {/* Logo */}
-            <Link to="/" className="block" aria-label="Cruip">
+            <div className=" nav-logo-container">
+              <img src={Logo} className="h-3/4" alt="" />
+            </div>
+            {/* <Link to="/" className="block" aria-label="Cruip">
               Grecipe
-            </Link>
+            </Link> */}
           </div>
 
           {/* Site navigation */}
