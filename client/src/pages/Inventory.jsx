@@ -8,6 +8,8 @@ import Spinner from "../components/Spinner";
 import { useContext } from "react";
 import { UserContext } from "../App";
 import "./Inventory.css";
+import JoinAFamily from "../components/inventory/JoinAFamily";
+import CreateAFamily from "../components/inventory/CreateAFamily";
 
 const Inventory = () => {
   const [inventoryData, setInventoryData] = useState([]);
@@ -17,6 +19,10 @@ const Inventory = () => {
   const [sortBy, setSortBy] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
   const { user, setUser } = useContext(UserContext);
+
+  // TODO: need to implement these checks whether the user is part of the family and head of the family
+  const isPartOfFamily = true;
+  const isHeadOfFamily = true;
 
   useEffect(() => {
     fetchInventory();
@@ -121,9 +127,27 @@ const Inventory = () => {
     }
   };
 
+  if (!isPartOfFamily) {
+    return (
+      <section className="relative grid grid-cols-2 ">
+        <div className="col-span-2 max-w-6xl px-4 mx-auto bg-white bg-opacity-50 rounded-lg sm:px-6 backdrop-blur-md">
+          <div className="pt-10 pb-12 md:pt-10 md:pb-20">
+            <div className="pb-12 text-center md:pb-16">
+              <h1 className="mb-10 text-2xl font-bold tracking-tighter md:text-2xl leading-tighter">
+                <span>Please join a Family first or create one!</span>
+              </h1>
+              <JoinAFamily />
+              <CreateAFamily />
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section className="relative ">
-      <div className="max-w-6xl px-4 mx-auto bg-white bg-opacity-50 rounded-lg sm:px-6 backdrop-blur-md ">
+    <section className="relative grid grid-cols-2 ">
+      <div className="col-span-1 max-w-7xl px-4 mx-auto bg-white bg-opacity-50 rounded-lg sm:px-6 backdrop-blur-md">
         <div className="pt-10 pb-12 md:pt-10 md:pb-20">
           <div className="pb-12 text-center md:pb-16">
             <h1 className="mb-10 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
@@ -163,7 +187,8 @@ const Inventory = () => {
                 </button>
                 <button
                   onClick={() => handleSort("expiresAt")}
-                  className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-400"
+                  className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:
+                  ring-orange-400"
                 >
                   Sort by Expiry Date
                 </button>
@@ -179,6 +204,39 @@ const Inventory = () => {
               ) : null}
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="col-span-1 max-w-sm px-4 mx-auto bg-white bg-opacity-50 rounded-lg sm:px-6 backdrop-blur-md">
+        <h2 className="text-2xl font-semibold text-center">
+          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400 text-lg">
+            Family List
+          </span>
+        </h2>
+        <ul className="mt-4">
+          {/* Example family members */}
+          <li className="flex items-center justify-between py-2 border-b border-gray-300">
+            <span className="text-gray-700">John Smith</span>
+            <span className="text-gray-500">Head of Family</span>
+          </li>
+          <li className="flex items-center justify-between py-2 border-b border-gray-300">
+            <span className="text-gray-700">Nancy Smith</span>
+            <span className="text-gray-500">Family Member</span>
+          </li>
+        </ul>
+        {/* Add or remove family member button */}
+        <div className="mt-4 flex justify-center space-x-4">
+          {/* Conditionally render based on user role */}
+          {isHeadOfFamily && (
+            <>
+              <button className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+                Add Family Member
+              </button>
+              <button className="px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600">
+                Remove Family Member
+              </button>
+            </>
+          )}
         </div>
       </div>
     </section>
