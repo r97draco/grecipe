@@ -18,7 +18,7 @@ const inventoryRouter = express.Router();
 
 inventoryRouter.get('/', authMiddleware, getItemsByUser);
 inventoryRouter.get('/family', authMiddleware, getItemsByFamily)
-inventoryRouter.post("/add", createItem);
+// inventoryRouter.post("/add", createItem);
 inventoryRouter.post('/add', authMiddleware, createItems);
 inventoryRouter.put('/update/:id', updateItem);
 inventoryRouter.delete('/delete/:id', deleteItem);

@@ -28,7 +28,7 @@ const Inventory = () => {
 
   useEffect(() => {
     fetchInventory();
-  }, []);
+  }, [user]);
 
   const fetchInventory = async () => {
     setIsTableLoading(true);
@@ -148,7 +148,6 @@ const Inventory = () => {
         })
         .then((res) => {
           if (res.status === 200) {
-            console.log("User data fetched successfully", res.data);
             setUser(res.data);
           }
         });
@@ -236,7 +235,6 @@ const Inventory = () => {
 const FamilyInfo = ({ setRefresh, familyId, head }) => {
   const [familyData, setFamilyData] = useState(null);
   const userContext = useContext(UserContext);
-  console.log("user in Family", userContext.user);
   useEffect(() => {
     const getFamilyData = async () => {
       try {
@@ -482,23 +480,23 @@ const InventoryTable = ({ inventoryData, setInventoryData }) => {
     if (!itemExists) {
       const newData = [...inventoryData, { ...newItem, isLocal: true }];
       setInventoryData(newData);
-      try {
-        const token = localStorage.getItem("self_care_token");
-        await axios.post(
-          `${backendUrl}/api/item/add`,
-          {
-            items: newData,
-          },
-          {
-            params: { email: user.email },
-            headers: {
-              Authorization: token,
-            },
-          }
-        );
-      } catch (error) {
-        console.error("Error adding item:", error.response.data);
-      }
+      // try {
+      //   const token = localStorage.getItem("self_care_token");
+      //   await axios.post(
+      //     `${backendUrl}/api/item/add`,
+      //     {
+      //       items: newData,
+      //     },
+      //     {
+      //       params: { email: user.email },
+      //       headers: {
+      //         Authorization: token,
+      //       },
+      //     }
+      //   );
+      // } catch (error) {
+      //   console.error("Error adding item:", error.response.data);
+      // }
     }
   };
 
