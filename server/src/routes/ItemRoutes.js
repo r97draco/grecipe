@@ -5,8 +5,9 @@ const {
   deleteItem,
   getItemsByUser,
   createItems,
+  createItem,
 } = require('../controllers/ItemsController');
-// const { parseReceipt } = require('../controllers/inventory/receipt');
+const { parseReceipt } = require('../controllers/ReceiptController');
 
 const authMiddleware = require('../middlewares/auth');
 
@@ -19,6 +20,6 @@ inventoryRouter.get('/', authMiddleware, getItemsByUser);
 inventoryRouter.post('/add', authMiddleware, createItems);
 inventoryRouter.put('/update/:id', updateItem);
 inventoryRouter.delete('/delete/:id', deleteItem);
-// inventoryRouter.post('/upload', upload.single('receipt'), parseReceipt);
+inventoryRouter.post('/upload', upload.single('receipt'), parseReceipt);
 
 module.exports = inventoryRouter;
