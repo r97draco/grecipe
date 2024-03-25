@@ -533,7 +533,7 @@ const InventoryTable = ({ inventoryData, setInventoryData }) => {
           inventoryData?.map((item, index) => (
             <li
               className="flex items-center justify-between py-3 text-gray-600 border-b-2 border-gray-100 dark:text-gray-200 dark:border-gray-800"
-              key={item.name}
+              key={item._id || index}
             >
               <div className="flex items-center justify-start text-sm">
                 <span className="mx-4 text-sm font-medium">{index + 1}</span>
