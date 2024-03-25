@@ -4,6 +4,7 @@ const {
   getFamily,
   updateFamilyMembers,
   deleteFamily,
+  getAllFamilies,
 } = require('../controllers/FamilyController');
 const authMiddleware = require('../middlewares/auth');
 const validate = require('../middlewares/validate');
@@ -16,6 +17,8 @@ router.post(
   authMiddleware,
   createFamily
 );
+
+router.get('/getallfamilies', authMiddleware, getAllFamilies);
 
 router.get(
   '/:familyId',
