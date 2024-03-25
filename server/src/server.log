@@ -97,3 +97,292 @@
 [36m[1m2024-03-19 20:00:02 INFO:     [Server] - Running on port 9191[22m[39m
 [36m[1m2024-03-19 20:00:08 INFO:     [Server] - Running on port 9191[22m[39m
 [36m[1m2024-03-19 20:07:12 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-24 14:28:24 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-24 14:53:10 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-24 14:53:23 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-24 14:54:57 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-24 14:55:01 ERROR:    "userId" is required[22m[39m
+[36m[1m2024-03-24 14:56:00 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-24 14:56:02 ERROR:    "userId" is required[22m[39m
+[36m[1m2024-03-24 14:56:29 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-24 14:57:49 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-24 14:57:50 ERROR:    "userId" is required[22m[39m
+[36m[1m2024-03-24 14:58:46 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-24 14:58:49 ERROR:    "userId" is required[22m[39m
+[36m[1m2024-03-24 14:59:09 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-24 14:59:11 ERROR:    "userId" is required[22m[39m
+[31m[1m2024-03-24 14:59:12 ERROR:    "userId" is required[22m[39m
+[36m[1m2024-03-24 14:59:21 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-24 15:00:13 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-24 15:00:21 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-24 15:00:22 ERROR:    Cast to string failed for value "{}" (type Object) at path "email" for model "User"[22m[39m
+[36m[1m2024-03-24 15:00:32 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-24 15:00:34 ERROR:    Cast to string failed for value "{}" (type Object) at path "email" for model "User"[22m[39m
+[36m[1m2024-03-24 15:02:22 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-24 15:02:29 ERROR:    Cast to string failed for value "{}" (type Object) at path "email" for model "User"[22m[39m
+[36m[1m2024-03-24 15:02:48 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-24 15:14:12 ERROR:    "email" is required, "userName" is required[22m[39m
+[31m[1m2024-03-24 15:14:35 ERROR:    "email" is required, "userName" is required[22m[39m
+[31m[1m2024-03-24 15:15:08 ERROR:    "email" is required, "userName" is required[22m[39m
+[36m[1m2024-03-24 15:16:04 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-24 15:16:10 ERROR:    "email" is required, "userName" is required[22m[39m
+[31m[1m2024-03-24 15:45:17 ERROR:    "email" is required, "userName" is required[22m[39m
+[36m[1m2024-03-24 15:46:28 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-24 15:46:33 ERROR:    "email" is required, "userName" is required[22m[39m
+[36m[1m2024-03-24 15:47:01 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-24 15:47:07 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-24 15:47:16 ERROR:    "email" is required, "userName" is required[22m[39m
+[31m[1m2024-03-24 15:47:48 ERROR:    E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "sjagroop212@gmail.com" }[22m[39m
+[36m[1m2024-03-24 16:30:49 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-24 16:41:19 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 16:41:23 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 16:41:23 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 16:58:12 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 16:58:22 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 16:59:16 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 16:59:30 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 16:59:44 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 16:59:44 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 16:59:55 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:00:11 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:00:44 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:00:53 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:01:02 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:01:05 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:01:09 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:01:39 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:01:52 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:02:11 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:02:36 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:03:31 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:03:43 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:03:52 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:03:59 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:04:03 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:04:13 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:04:16 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:04:19 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:04:37 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:04:51 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 17:05:48 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:12:26 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:13:02 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:13:07 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:13:17 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:13:25 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:16:01 ERROR:    Expected property name or '}' in JSON at position 38[22m[39m
+[31m[1m2024-03-24 18:16:24 ERROR:    "members" must be an array[22m[39m
+[31m[1m2024-03-24 18:17:20 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:17:20 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:17:42 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:17:42 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:17:45 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:17:45 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:18:14 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:18:14 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:20:22 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:20:40 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:20:52 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:20:53 ERROR:    "[0]" is not allowed to be empty, "members" does not contain 1 required value(s)[22m[39m
+[31m[1m2024-03-24 18:22:49 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:23:25 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:24:23 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:24:43 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:24:49 ERROR:    "name" is not allowed to be empty[22m[39m
+[31m[1m2024-03-24 18:25:31 ERROR:    Not Found[22m[39m
+[36m[1m2024-03-24 18:26:27 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-24 18:28:41 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-24 18:29:18 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-24 18:29:25 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-24 18:29:31 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:30:43 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:30:46 ERROR:    "name" is not allowed to be empty[22m[39m
+[31m[1m2024-03-24 18:31:02 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 18:31:02 ERROR:    familyService.getAllFamilies is not a function[22m[39m
+[31m[1m2024-03-24 18:31:02 ERROR:    familyService.getAllFamilies is not a function[22m[39m
+[31m[1m2024-03-24 18:31:02 ERROR:    familyService.getAllFamilies is not a function[22m[39m
+[31m[1m2024-03-24 18:31:02 ERROR:    familyService.getAllFamilies is not a function[22m[39m
+[31m[1m2024-03-24 18:31:02 ERROR:    familyService.getAllFamilies is not a function[22m[39m
+[31m[1m2024-03-24 18:31:02 ERROR:    familyService.getAllFamilies is not a function[22m[39m
+[36m[1m2024-03-24 18:32:18 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-24 18:32:23 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 18:32:23 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:14 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:14 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:20 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:20 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:20 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 19:12:20 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 19:12:20 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:20 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:20 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:20 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:47 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:47 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 19:12:47 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:48 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:48 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:49 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:49 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 19:12:49 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:49 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:49 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:58 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:58 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-24 19:12:58 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:12:58 ERROR:    familyService.findAll is not a function[22m[39m
+[31m[1m2024-03-24 19:16:19 ERROR:    Cast to ObjectId failed for value ":familyId" (type string) at path "_id" for model "Family"[22m[39m
+[36m[1m2024-03-25 01:21:55 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-25 01:22:07 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 01:22:16 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 01:22:24 ERROR:    Not Found[22m[39m
+[36m[1m2024-03-25 01:49:51 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 01:52:28 ERROR:    Expected ',' or '}' after property value in JSON at position 112[22m[39m
+[31m[1m2024-03-25 01:53:13 ERROR:    Error: ReferenceError: mongoose is not defined[22m[39m
+[36m[1m2024-03-25 01:53:51 INFO:     Server closed[22m[39m
+[36m[1m2024-03-25 01:54:22 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-25 01:57:46 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 01:57:47 ERROR:    "familyId" is not allowed[22m[39m
+[36m[1m2024-03-25 01:58:47 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 01:58:49 ERROR:    "familyId" is not allowed[22m[39m
+[31m[1m2024-03-25 02:03:00 ERROR:    "familyId" is not allowed[22m[39m
+[31m[1m2024-03-25 02:03:02 ERROR:    "familyId" is not allowed[22m[39m
+[31m[1m2024-03-25 02:03:10 ERROR:    Expected double-quoted property name in JSON at position 95[22m[39m
+[31m[1m2024-03-25 02:03:23 ERROR:    Error: ReferenceError: userId is not defined[22m[39m
+[36m[1m2024-03-25 02:03:33 INFO:     Server closed[22m[39m
+[36m[1m2024-03-25 02:03:43 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-25 02:03:57 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 02:04:07 ERROR:    "familyId" is not allowed[22m[39m
+[31m[1m2024-03-25 02:11:42 ERROR:    "isFamilyHead" is not allowed, "userId" is not allowed[22m[39m
+[36m[1m2024-03-25 02:12:33 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-25 02:13:04 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-25 02:13:22 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 02:13:27 ERROR:    "userId" is not allowed to be empty[22m[39m
+[36m[1m2024-03-25 02:14:10 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 02:14:15 ERROR:    userService is not defined[22m[39m
+[36m[1m2024-03-25 02:19:13 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-25 02:19:15 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-25 02:19:20 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 02:19:34 ERROR:    User not found[22m[39m
+[31m[1m2024-03-25 02:19:52 ERROR:    User not found[22m[39m
+[36m[1m2024-03-25 02:20:15 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 02:20:16 ERROR:    Cannot read properties of undefined (reading '_id')[22m[39m
+[36m[1m2024-03-25 02:20:52 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 02:20:53 ERROR:    User validation failed: family: Cast to ObjectId failed for value "{ family: new ObjectId('660133e5782fd0ab29385ae9') }" (type Object) at path "family" because of "BSONError"[22m[39m
+[31m[1m2024-03-25 02:24:02 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 02:25:12 ERROR:    User validation failed: family: Cast to ObjectId failed for value "{ family: new ObjectId('660134e8782fd0ab29385af5') }" (type Object) at path "family" because of "BSONError"[22m[39m
+[36m[1m2024-03-25 02:25:56 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 02:26:56 ERROR:    Family validation failed: members.0: Cast to [ObjectId] failed for value "[ '6600a7dfba51de1b56e9be7a, 65ebb7bc17d0359b54fd1698' ]" (type string) at path "members.0" because of "CastError"[22m[39m
+[36m[1m2024-03-25 02:38:15 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-25 02:40:05 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-25 02:40:22 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 02:41:11 ERROR:    "action" is not allowed, "memberId" is not allowed[22m[39m
+[36m[1m2024-03-25 02:42:38 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-25 02:44:36 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 02:44:50 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 02:46:25 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 02:55:51 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 02:58:45 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 02:58:48 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 02:59:08 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 02:59:15 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:01:30 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:03:11 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:03:11 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:03:39 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:04:22 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:05:59 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:06:17 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:08:16 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:08:23 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:08:38 ERROR:    Not Found[22m[39m
+[36m[1m2024-03-25 03:08:44 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 03:08:50 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:08:54 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:09:29 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:09:49 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:11:59 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:12:47 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:12:51 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:13:13 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:13:22 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:13:27 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:15:50 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:15:51 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:16:19 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:16:20 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:16:32 ERROR:    User is not defined[22m[39m
+[31m[1m2024-03-25 03:16:57 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 03:17:07 ERROR:    User is not defined[22m[39m
+[31m[1m2024-03-25 03:17:56 ERROR:    User is not defined[22m[39m
+[31m[1m2024-03-25 03:18:02 ERROR:    Not Found[22m[39m
+[36m[1m2024-03-25 03:20:10 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 03:20:16 ERROR:    User is not defined[22m[39m
+[31m[1m2024-03-25 04:00:21 ERROR:    User is not defined[22m[39m
+[36m[1m2024-03-25 04:01:58 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 04:02:00 ERROR:    User is not defined[22m[39m
+[36m[1m2024-03-25 04:02:13 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 04:02:15 ERROR:    User is not defined[22m[39m
+[36m[1m2024-03-25 04:02:39 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 04:03:05 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:03:06 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:05:12 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:05:21 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:06:55 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:07:37 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:07:55 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:08:13 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:08:27 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:08:27 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:11:23 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:12:11 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:12:11 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:12:16 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:12:19 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:57:37 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:57:39 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:57:53 ERROR:    Not Found[22m[39m
+[36m[1m2024-03-25 04:58:57 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 04:58:59 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:59:02 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:59:03 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:59:05 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:59:06 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 04:59:42 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:00:00 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:00:02 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:00:11 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:00:14 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:03:36 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:03:45 ERROR:    Not Found[22m[39m
+[36m[1m2024-03-25 05:04:16 INFO:     [Server] - Running on port 9191[22m[39m
+[31m[1m2024-03-25 05:04:18 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:04:19 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:04:24 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:04:25 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:04:26 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:04:26 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:05:33 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:05:36 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:05:36 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:07:09 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:07:37 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:07:48 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:07:52 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:07:53 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:08:00 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:08:27 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:10:26 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:10:49 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:11:03 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:11:05 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:11:10 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:11:23 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:11:28 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:11:29 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:11:31 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:32:31 ERROR:    Not Found[22m[39m
+[31m[1m2024-03-25 05:32:33 ERROR:    Not Found[22m[39m
+[36m[1m2024-03-25 05:33:44 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-25 05:33:57 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-25 05:39:01 INFO:     [Server] - Running on port 9191[22m[39m
