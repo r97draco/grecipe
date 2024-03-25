@@ -41,6 +41,14 @@ const ItemsService = {
       throw new ApiError(500, 'Error retrieving grocery items');
     }
   },
+
+  async getItemsByFamily(familyId) {
+    try {
+      return await ItemModel.find({ familyId });
+    } catch (error) {
+      throw new ApiError(500, 'Error retrieving grocery items');
+    }
+  },
 };
 
 module.exports = ItemsService;
