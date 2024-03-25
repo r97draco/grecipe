@@ -1,20 +1,19 @@
+import { backendUrl } from "../App";
+
 const customFetch = async (pathname, options) => {
   const token = localStorage.getItem("self_care_token");
 
   try {
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/api${pathname}`,
-      {
-        ...options,
-        ...(token
-          ? {
-              headers: {
-                Authorization: token,
-              },
-            }
-          : {}),
-      }
-    );
+    const response = await fetch(`${backendUrl}/api${pathname}`, {
+      ...options,
+      ...(token
+        ? {
+            headers: {
+              Authorization: token,
+            },
+          }
+        : {}),
+    });
 
     const data = await response.json();
 
