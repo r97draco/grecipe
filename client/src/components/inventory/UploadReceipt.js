@@ -17,7 +17,7 @@ const UploadReceipt = ({ updateInventory }) => {
   const uploadReceipt = async (formData) => {
     setIsLoading(true);
 
-    const response = await customFetch("/inventory/upload", {
+    const response = await customFetch("/item/upload", {
       method: "POST",
       body: formData,
     });
