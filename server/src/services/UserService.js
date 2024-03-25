@@ -19,6 +19,11 @@ const updateUserById = async (userId, updateBody) => {
   return user;
 };
 
+const updateUserByIdForFamily = async (userId, familyId) => {
+  const updateData = { family: familyId };
+  return UserModel.findByIdAndUpdate(userId, updateData, { new: true });
+};
+
 const deleteUserById = async (userId) => {
   const user = await getUserById(userId);
   if (!user) {
@@ -41,4 +46,5 @@ module.exports = {
   getUserByEmail,
   updateUserById,
   deleteUserById,
+  updateUserByIdForFamily,
 };
