@@ -6,6 +6,7 @@ const {
   getItemsByUser,
   createItems,
   createItem,
+  getItemsByFamily
 } = require('../controllers/ItemsController');
 const { parseReceipt } = require('../controllers/ReceiptController');
 
@@ -16,7 +17,8 @@ const upload = multer({ dest: 'uploads/' });
 const inventoryRouter = express.Router();
 
 inventoryRouter.get('/', authMiddleware, getItemsByUser);
-// inventoryRouter.post("/add", createItem);
+inventoryRouter.get('/family', authMiddleware, getItemsByFamily)
+inventoryRouter.post("/add", createItem);
 inventoryRouter.post('/add', authMiddleware, createItems);
 inventoryRouter.put('/update/:id', updateItem);
 inventoryRouter.delete('/delete/:id', deleteItem);
