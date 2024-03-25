@@ -420,3 +420,11 @@
 [36m[1m2024-03-25 11:33:57 INFO:     [Server] - Running on port 9191[22m[39m
 [31m[1m2024-03-25 11:34:14 ERROR:    Error creating grocery item[22m[39m
 [36m[1m2024-03-25 11:35:50 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-25 11:56:27 INFO:     Receipt parsing initiated[22m[39m
+[36m[1m2024-03-25 11:56:28 INFO:     Receipt parsed successfully[22m[39m
+[36m[1m2024-03-25 11:57:24 INFO:     Receipt parsing initiated[22m[39m
+[36m[1m2024-03-25 11:57:25 INFO:     Receipt parsed successfully[22m[39m
+[31m[1m2024-03-25 11:57:26 ERROR:    Error creating grocery item[22m[39m
+[36m[1m2024-03-25 11:58:04 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-25 11:58:19 INFO:     Receipt parsing initiated[22m[39m
+[36m[1m2024-03-25 11:58:20 INFO:     Receipt parsed successfully[22m[39m
