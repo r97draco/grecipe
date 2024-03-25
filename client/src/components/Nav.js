@@ -28,50 +28,109 @@ function Nav() {
   useEffect(() => {
     console.log(user);
   }, [user]);
+
   const signIn = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
-      console.log("Result of SignIn", result);
-      const userName = result.user.displayName;
-      const email = result.user.email;
-      const photoURL = result.user.photoURL;
+      const { displayName: userName, email, photoURL } = result.user;
       const token = await result.user.getIdToken();
-      setUser({ userName, email, photoURL });
+      console.log(token);
       localStorage.setItem("self_care_token", token);
-      const response = await axios
+
+      axios
         .get(`${backendUrl}/api/user/getuser`, {
-          headers: {
-            Authorization: token,
-            email: email,
-          },
+          params: { email: email },
+          headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
           if (res.status === 200) {
-            console.log(res.data, "data");
+            console.log("User data fetched successfully", res.data);
             setUser(res.data);
-          } else if (res.status === 409) {
-            console.log("Create an account!");
+            navigate("/inventory");
           }
         })
-        .catch((err) => {
-          console.log("user doesn't exist");
+        .catch(async (error) => {
+          // Assuming error response indicates user doesn't exist
+          console.log("User doesn't exist, creating user...");
+          try {
+            const createUserResponse = await axios.post(
+              `${backendUrl}/api/user/createuser`,
+              {
+                userName,
+                email,
+                photoURL,
+              },
+              {
+                headers: { Authorization: `Bearer ${token}` },
+              }
+            );
+            if (createUserResponse.status === 201) {
+              console.log("User created successfully", createUserResponse.data);
+              setUser({ userName, email, photoURL }); // Adjust according to the actual response structure
+              navigate("/inventory");
+            }
+          } catch (createUserError) {
+            console.error("Error creating user", createUserError);
+          }
         });
-      // const response = await axios.post(`${backendUrl}/api/user/createuser`, { userName, email }, {headers: token});
-      console.log("response", response);
-      console.log(token);
-      navigate("/inventory");
-    } catch (err) {
-      console.log(err);
+    } catch (signInError) {
+      console.error("Error during sign-in", signInError);
     }
   };
 
+  // const signIn = async () => {
+  //   try {
+  //     const result = await signInWithPopup(auth, provider);
+  //     console.log("Result of SignIn", result);
+  //     const userName = result.user.displayName;
+  //     const email = result.user.email;
+  //     const photoURL = result.user.photoURL;
+  //     const token = await result.user.getIdToken();
+  //     setUser({ userName, email, photoURL });
+  //     localStorage.setItem("self_care_token", token);
+  //     const response = await axios
+  //       .get(`${backendUrl}/api/user/getuser`, {
+  //         params: {
+  //           email: email,
+  //         },
+  //         headers: {
+  //           Authorization: token,
+  //         },
+  //       })
+  //       .then((res) => {
+  //         if (res.status === 200) {
+  //           console.log(res.data, "data");
+  //           setUser(res.data);
+  //         } else if (res.status === 409) {
+  //           console.log("Create an account!");
+  //           // createUser();
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.log("user doesn't exist");
+  //       });
+  //     // const response = await axios.post(`${backendUrl}/api/user/createuser`, { userName, email }, {headers: token});
+  //     console.log("response", response);
+  //     console.log(token);
+  //     navigate("/inventory");
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
   const createUser = async () => {
+    console.log("Creating user");
     try {
-      axios.post(`${backendUrl}/api/user/createuser`, {
-        name: user.userName,
-        email: user.email,
-        photoURL: user.photoURL,
-      });
+      axios
+        .post(`${backendUrl}/api/user/createuser`, {
+          email: user.email,
+          userName: user.userName,
+          photoURL: user.photoURL,
+        })
+        .then((res) => {
+          console.log(res);
+          console.log("User created");
+        });
     } catch (err) {
       console.log(err);
     }
@@ -95,9 +154,11 @@ function Nav() {
         try {
           const token = await user.getIdToken();
           const response = await axios.get(`${backendUrl}/api/user/getuser`, {
+            params: {
+              email: user.email,
+            },
             headers: {
               Authorization: token,
-              email: user.email,
             },
           });
 
