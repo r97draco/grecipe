@@ -1,6 +1,10 @@
 const userService = require('../services/UserService');
+const User = require('../models/User'); // Adjust the path as necessary
+const Family = require('../models/Family'); // Adjust the path as necessary
+const { default: mongoose } = require('mongoose');
 
 const createUser = async (req, res, next) => {
+  console.log('Creating User Hit');
   try {
     const user = await userService.createUser({
       email: req.body.email,
@@ -13,9 +17,13 @@ const createUser = async (req, res, next) => {
   }
 };
 
+
+
 const getUser = async (req, res, next) => {
+  console.log('Get User Hit');
   try {
-    const user = await userService.getUserByEmail(req.params.userId);
+    console.log('req', req.query);
+    const user = await userService.getUserByEmail(req.query.email);
     if (user) {
       res.status(200).json(user);
     } else {
@@ -27,22 +35,68 @@ const getUser = async (req, res, next) => {
 };
 
 const updateUser = async (req, res, next) => {
+  const { email, userName, isFamilyHead, familyId } = req.body;
+  const userId = req.params.userId;
+  // const user = await userService.getUserByEmail(req.params.email);
+
+  if (!mongoose.Types.ObjectId.isValid(userId)) {
+    return res.status(400).send({ error: 'Invalid user ID' });
+  }
+
+  if (familyId && !mongoose.Types.ObjectId.isValid(familyId)) {
+    return res.status(400).send({ error: 'Invalid family ID' });
+  }
+
   const updateData = {
-    email: req.body.email,
-    userName: req.body.userName,
-    isFamilyHead: req.body.isFamilyHead,
-    family: req.body.familyId,
+    email,
+    userName,
+    isFamilyHead,
+    ...(familyId && { family: familyId }),
   };
+
   try {
-    const user = await userService.updateUserById(
-      req.params.userId,
-      updateData
-    );
+    // Optionally verify if the family exists before updating
+    if (familyId) {
+      const familyExists = await Family.findById(familyId);
+      if (!familyExists) {
+        return res.status(404).send({ error: 'Family not found' });
+      }
+      // Optionally add the user to the family's members if not already included
+      if (!familyExists.members.includes(userId)) {
+        familyExists.members.push(userId);
+        await familyExists.save();
+      }
+    }
+
+    const user = await User.findByIdAndUpdate(userId, updateData, {
+      new: true,
+    });
+    if (!user) {
+      return res.status(404).send({ error: 'User not found' });
+    }
     res.status(200).json(user);
   } catch (err) {
     next(err);
   }
 };
+
+// const updateUser = async (req, res, next) => {
+//   const updateData = {
+//     email: req.body.email,
+//     userName: req.body.userName,
+//     isFamilyHead: req.body.isFamilyHead,
+//     family: req.body.familyId,
+//   };
+//   try {
+//     const user = await userService.updateUserById(
+//       req.params.userId,
+//       updateData
+//     );
+//     res.status(200).json(user);
+//   } catch (err) {
+//     next(err);
+//   }
+// };
 
 const deleteUser = async (req, res, next) => {
   try {
