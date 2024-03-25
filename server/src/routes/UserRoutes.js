@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get(
   '/getuser',
-  validate(userSchema.getUser),
+  // validate(userSchema.getUser),
   // authMiddleware,
   getUser
 );
