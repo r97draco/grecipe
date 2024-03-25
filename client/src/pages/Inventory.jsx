@@ -10,14 +10,11 @@ import { UserContext } from "../App";
 import "./Inventory.css";
 import {
   Button,
-  Icon,
   IconButton,
-  Input,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
-import { BsGripHorizontal } from "react-icons/bs";
 import { FiDelete } from "react-icons/fi";
 
 const Inventory = () => {
@@ -31,15 +28,19 @@ const Inventory = () => {
 
   useEffect(() => {
     fetchInventory();
-  }, [user.family]);
+  }, []);
 
   const fetchInventory = async () => {
     setIsTableLoading(true);
-
-    const items = await customFetch("/inventory", {
-      method: "GET",
+    const token = localStorage.getItem("self_care_token");
+    const res = await axios.get(`${backendUrl}/api/item/family`, {
+      params: { familyId: user.family },
+      headers: {
+        Authorization: token,
+      },
     });
-
+    const items = res.data;
+    console.log("items", items);
     if (Array.isArray(items)) {
       setInventoryData(items);
     }
@@ -54,14 +55,14 @@ const Inventory = () => {
     const localInventory = inventoryData?.filter((item) => item.isLocal);
 
     const response = await axios.post(
-      `${backendUrl}/api/inventory/add`,
+      `${backendUrl}/api/item/add`,
       {
         items: localInventory,
       },
       {
+        params: { email: user.email },
         headers: {
           Authorization: token,
-          email: user.email,
         },
       }
     );
@@ -349,9 +350,7 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
 };
 
 const Family = ({ setRefresh }) => {
-  // State for creating a family
   const [familyName, setFamilyName] = useState("");
-  // State for joining a family
   const [familyIdToJoin, setFamilyIdToJoin] = useState("");
   const [userId, setUserId] = useState(""); // Assuming you have a way to get the current user's ID
 
@@ -360,8 +359,6 @@ const Family = ({ setRefresh }) => {
     console.log("user", userContext.user);
     setUserId(userContext.user._id);
   }, [userContext.user]);
-
-  // Handler for creating a family
 
   const handleCreateFamily = async () => {
     try {
@@ -383,10 +380,8 @@ const Family = ({ setRefresh }) => {
       setFamilyName("");
       console.log("Created Family");
       setRefresh((prev) => !prev);
-      // Optionally, refresh the list of families or show a success message
     } catch (error) {
       console.error("Error creating family:", error.response.data);
-      // Optionally, show an error message
     }
   };
 
@@ -478,7 +473,8 @@ const Family = ({ setRefresh }) => {
 export default Inventory;
 
 const InventoryTable = ({ inventoryData, setInventoryData }) => {
-  const addItem = (newItem) => {
+  const user = useContext(UserContext);
+  const addItem = async (newItem) => {
     const itemExists = inventoryData?.find(
       (item) => item.name === newItem.name
     );
@@ -486,6 +482,23 @@ const InventoryTable = ({ inventoryData, setInventoryData }) => {
     if (!itemExists) {
       const newData = [...inventoryData, { ...newItem, isLocal: true }];
       setInventoryData(newData);
+      try {
+        const token = localStorage.getItem("self_care_token");
+        await axios.post(
+          `${backendUrl}/api/item/add`,
+          {
+            items: newData,
+          },
+          {
+            params: { email: user.email },
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+      } catch (error) {
+        console.error("Error adding item:", error.response.data);
+      }
     }
   };
 
@@ -493,7 +506,7 @@ const InventoryTable = ({ inventoryData, setInventoryData }) => {
     const item = inventoryData[index];
 
     if (!item.isLocal) {
-      await customFetch(`/inventory/delete/${item._id}`, {
+      await customFetch(`/item/delete/${item._id}`, {
         method: "DELETE",
       });
     }
