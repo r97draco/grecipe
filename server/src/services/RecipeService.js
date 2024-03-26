@@ -8,6 +8,7 @@ const SpoonacularService = {
     const queryParams = {
       apiKey,
       ingredients: ingredients.join(','),
+      number:10,
       ...preferences,
       // includeNutrition: true // Request to include nutrition information
     };

@@ -1,13 +1,19 @@
-import React from "react";
-import Footer from "./components/Footer";
+import React, { createContext, useState } from "react";
+import Routers from "./Routers";
 
-const App = () => {
+export const UserContext = createContext();
+// export const backendUrl = "http://localhost:9191";
+export const backendUrl = process.env.REACT_APP_API_URL;
+
+
+function App() {
+  const [user, setUser] = useState({});
+
   return (
-    <div>
-      <h1 className="text-3xl text-red-400 font-bold underline">Hello world!</h1>;
-      <Footer />
-    </div>
+    <UserContext.Provider value={{ user, setUser }}>
+      <Routers />
+    </UserContext.Provider>
   );
-};
+}
 
 export default App;

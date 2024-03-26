@@ -6,6 +6,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+## env 
+
+```
+REACT_APP_VERSION = v1.0
+REACT_APP_API_URL=http://localhost:9190
+# REACT_APP_SPOON_KEY=df41a01e17034106820fee0845017514
+```
+
 ### `npm start`
 
 Runs the app in the development mode.\

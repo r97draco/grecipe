@@ -1,0 +1,23 @@
+```
+PORT=9191
+
+NODE_ENV = "development"
+
+MONGO_URI = mongodb+srv://sjagroop212:Grecipe2024@cluster0.kaypmkj.mongodb.net/
+
+# Spoonacular API
+SPOONACULAR_API_KEY="df41a01e17034106820fee0845017514"
+
+
+# Firebase Admin SDK
+FIREBASE_TYPE="service_account"
+FIREBASE_PROJECT_ID="selfcare-f4e9b"
+FIREBASE_PRIVATE_KEY_ID="b33f22d935b433b88be6bdc3c883a2a22452faa6"
+FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDocyh8scz3JGTS\nh51QIUkcYMDBCLVxCALaQ3ORUfqWKC4dLVjr29D7/LO3DlJs7LSbPHTtCb9Lpvyi\n+kTq4DTZxhn2cSzGgDC0j7sGOelaXprytGb0mZuqINQ+vKJ3I68tDsJCEsv4upUh\nSHCdSMn75bil7mob7d0/F+iqgs/33z689Lmlsaq7nlKhE8dqxuLvB/TzUTYPa94z\nz7kGl4Y+AVNbqc1/6V/VJ9ntKFHnJZcR95WTZXiRx8JpyOz7IG8gJK7zr6NUWaZA\nKkkD6l38Z1GwqmpQ8f+Ke3gUBLkInRYV4vSDYtQneTpCr3HmtU8cuMAHg93A6fPB\nrNHZv6c5AgMBAAECggEAB0YROoOqzQH9yKu3M7py6fkqFvBBkzmjszZAn8e/rmKv\n/Lg+S9UbT0NLUVtYn3FxvljQNNmk+4ZMagIoVWwyIy1kgxZsBwMcYw4LVWjLAUms\nEhOslBNZcGOqGJN5Bv7eHKwVTpF9gfk+sOWuJnHQZjo8Qq748YpKLc7++BTzUoeB\nzegieJVkfd03q0OJWfoYqyUHmB9ywQ0xOk095tfiz6hJUBz1tCwkqcS4tTmdsXzQ\nfyAsREkvF/0PGDJ1pfR/7wlk6n01Le5DOI0lFq5PHHgI7xniLk496/cu0VJIZdOr\nqp7oj/bm7jZy0yzMWzQ0qB8orRVtx8HnTRHFWiNhQQKBgQD8G9ZDgSbdMWCHRgEj\nsPyZx7I+nMvzqBzbfDWNAqAvbC2NnCLkn8zrcz8hrA89YjRCFhoPuD8hTfxehqTR\nI8JIsB/1Qb/r9xW+fEJWq7aok4gFjc9c9jQPaTZZ2UBUnvFUkQZUySXyxDroJ9+k\nzheA0p6PHbaHyG1c8uOBHTDCoQKBgQDsCaR7+41CSeU4vhIIPs47JHBdiCrVbMbY\nlkaaO1sXli0n+PpvBcRn6QX29UDJe2xbM6TswRjfv1wHgrOHfRhx9OSORJlXqbt5\nz6gzx0jMz+8xx5BGCTRwHqKtAYzYfkJ96scxPElQeWKUcA6Ohg40HJ+5exgIpRte\nWw7LXVA1mQKBgQCYUYlHB8UfZzHXCSivE8PKdajvw3RGJpAo3AbOx4NYo5dyM5+x\nWgtJRjwib/5VK/w+4XOlg8BAswmDYv45jc1YdXEZkTwPqR1uFU1PaDfX6isIkAF1\nPRt/JCY+atA/UDimy2hz2YQgBQdCNLUesZXps1cxSNZ7e1D4E5f47lYDgQKBgAoa\nO40G7jvZF9N+5xytO3xyidCnBFZQKo6Yl/r/8V0oE1SzplxcHdTot1Wjl5tIChI5\nOqTbeuoQsaqsoGx7ITG3bpTcQMfsvtZu2d8ld2s0tyMlTHqC6FioJwRKnbGibcwf\n4VitIOIt39dEmIrnF/KJCxkQOK4eCvbV5OM1Yjp5AoGBAIaPLND2iov5El7eblC1\nkuMkHg00zKFepVQfXllZ6oAZnByPCp2on39HSG2xc7f2aAH2dR+Ns+hEmyw0ua9Z\ndEI5aCpcEyq8pa7SySpUir6dQssdFSEB9C9t//5WX4DAyaVKxyYKUfKnK04bHmAA\n7KiN0XbReYPGFEJuSfekhxP3\n-----END PRIVATE KEY-----\n"
+FIREBASE_CLIENT_EMAIL="firebase-adminsdk-1v3ea@selfcare-f4e9b.iam.gserviceaccount.com"
+FIREBASE_CLIENT_ID="109829152631890242775"
+FIREBASE_AUTH_URI= "https://accounts.google.com/o/oauth2/auth"
+FIREBASE_TOKEN_URI="https://oauth2.googleapis.com/token"
+FIREBASE_AUTH_PROVIDER="https://www.googleapis.com/oauth2/v1/certs"
+FIREBASE_CLIENT_CERT="https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-1v3ea%40selfcare-f4e9b.iam.gserviceaccount.com"
+FIREBASE_UNIVERSE_DOMAIN="googleapis.com"```
