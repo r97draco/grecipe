@@ -26,10 +26,6 @@ const Inventory = () => {
   const [sortOrder, setSortOrder] = useState("asc");
   const { user, setUser } = useContext(UserContext);
 
-  // TODO: need to implement these checks whether the user is part of the family and head of the family
-  const isPartOfFamily = true;
-  const isHeadOfFamily = true;
-
   useEffect(() => {
     fetchInventory();
   }, [user]);
