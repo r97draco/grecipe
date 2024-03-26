@@ -161,8 +161,8 @@ const Inventory = () => {
   }, [refresh]);
 
   return (
-    <section className="relative grid grid-cols-2 ">
-      <div className="col-span-1 max-w-7xl px-4 mx-auto bg-white bg-opacity-50 rounded-lg sm:px-6 backdrop-blur-md">
+    <section className="relative">
+      <div className="col-span-1 px-4 mx-auto bg-white bg-opacity-50 rounded-lg max-w-7xl sm:px-6 backdrop-blur-md">
         <div className="pt-10 pb-12 md:pt-10 md:pb-20">
           <div className="pb-12 text-center md:pb-16">
             {!user.family ? (
@@ -233,14 +233,13 @@ const Inventory = () => {
         </div>
       </div>
 
-      <div className="col-span-1 max-w-sm px-4 mx-auto bg-white bg-opacity-50 rounded-lg sm:px-6 backdrop-blur-md">
+      {/* <div className="max-w-sm col-span-1 px-4 mx-auto bg-white bg-opacity-50 rounded-lg sm:px-6 backdrop-blur-md">
         <h2 className="text-2xl font-semibold text-center">
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400 text-lg">
+          <span className="inline-block text-lg text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
             Family List
           </span>
         </h2>
         <ul className="mt-4">
-          {/* Example family members */}
           <li className="flex items-center justify-between py-2 border-b border-gray-300">
             <span className="text-gray-700">John Smith</span>
             <span className="text-gray-500">Head of Family</span>
@@ -250,9 +249,7 @@ const Inventory = () => {
             <span className="text-gray-500">Family Member</span>
           </li>
         </ul>
-        {/* Add or remove family member button */}
-        <div className="mt-4 flex justify-center space-x-4">
-          {/* Conditionally render based on user role */}
+        <div className="flex justify-center mt-4 space-x-4">
           {isHeadOfFamily && (
             <>
               <button className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
@@ -264,7 +261,7 @@ const Inventory = () => {
             </>
           )}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
@@ -492,7 +489,13 @@ const Family = ({ setRefresh }) => {
         onChange={(e) => setFamilyName(e.target.value)}
         fullWidth
       />
-      <Button variant="contained" onClick={handleCreateFamily} fullWidth>
+
+      <Button
+        variant="contained"
+        onClick={handleCreateFamily}
+        disabled={familyName === ""}
+        fullWidth
+      >
         Create Family
       </Button>
 
