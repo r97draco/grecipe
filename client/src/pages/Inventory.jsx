@@ -15,7 +15,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { FiDelete } from "react-icons/fi";
+import { FiTrash2 } from "react-icons/fi";
 
 const Inventory = () => {
   const [inventoryData, setInventoryData] = useState([]);
@@ -171,7 +171,16 @@ const Inventory = () => {
                   </span>
                 </h1>
                 <div style={{ width: "500px", margin: "0 auto" }}>
-                  Welcome, {user.userName} . Family: {user.family}
+                  <div
+                    style={{
+                      textAlign: "center",
+                      fontSize: "1.5rem",
+                      fontWeight: "bold",
+                      marginBottom: "20px",
+                    }}
+                  >
+                    Welcome, {user.userName}!
+                  </div>
                   {user.isFamilyHead && <p>You are the head of the family</p>}
                   <FamilyInfo
                     setRefresh={setRefresh}
@@ -228,36 +237,6 @@ const Inventory = () => {
           </div>
         </div>
       </div>
-
-      {/* <div className="max-w-sm col-span-1 px-4 mx-auto bg-white bg-opacity-50 rounded-lg sm:px-6 backdrop-blur-md">
-        <h2 className="text-2xl font-semibold text-center">
-          <span className="inline-block text-lg text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
-            Family List
-          </span>
-        </h2>
-        <ul className="mt-4">
-          <li className="flex items-center justify-between py-2 border-b border-gray-300">
-            <span className="text-gray-700">John Smith</span>
-            <span className="text-gray-500">Head of Family</span>
-          </li>
-          <li className="flex items-center justify-between py-2 border-b border-gray-300">
-            <span className="text-gray-700">Nancy Smith</span>
-            <span className="text-gray-500">Family Member</span>
-          </li>
-        </ul>
-        <div className="flex justify-center mt-4 space-x-4">
-          {isHeadOfFamily && (
-            <>
-              <button className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
-                Add Family Member
-              </button>
-              <button className="px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600">
-                Remove Family Member
-              </button>
-            </>
-          )}
-        </div>
-      </div> */}
     </section>
   );
 };
@@ -321,23 +300,38 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
       <div className="mb-10">
         {familyData ? (
           <>
-            <h2 className="text-xl font-bold">Family Info</h2>
-            <p>Family Name: {familyData.name}</p>
-            <p>Members:</p>
-            <ul>
-              {familyData.members.map((member) => (
-                <li key={member._id}>
-                  {member.userName}{" "}
-                  <IconButton
-                    variant="contained"
-                    color="error"
-                    onClick={() => deleteMember(member._id)}
-                  >
-                    <FiDelete />
-                  </IconButton>
-                </li>
-              ))}
-            </ul>
+            <h2 className="text-2xl font-semibold text-center mb-4">
+              <span className="inline-block text-3xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
+                Family Info
+              </span>
+            </h2>
+            <div className="mb-4">
+              <p className="font-semibold">Family Name:</p>
+              <p>{familyData.name}</p>
+            </div>
+            <div className="mb-4 text-center">
+              {" "}
+              {/* Add text-center class here */}
+              <p className="font-semibold">Members:</p>
+              <ul className="inline-block">
+                {" "}
+                {/* Add inline-block class here */}
+                {familyData.members.map((member) => (
+                  <li key={member._id} className="flex items-center">
+                    <span className="mr-2">{member.userName}</span>
+                    {member._id === userContext.user._id && (
+                      <IconButton
+                        variant="contained"
+                        color="error"
+                        onClick={() => deleteMember(member._id)}
+                      >
+                        <FiTrash2 />
+                      </IconButton>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </>
         ) : (
           <p>Loading family data...</p>
@@ -350,25 +344,38 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
     <div className="mb-10">
       {familyData ? (
         <>
-          <h2 className="text-xl font-bold">Family Info</h2>
-          <p>Family Name: {familyData.name}</p>
-          <p>Members:</p>
-          <ul>
-            {familyData.members.map((member) => (
-              <li key={member._id}>
-                {member.userName}
-                {member._id === userContext.user._id && (
-                  <IconButton
-                    variant="contained"
-                    color="error"
-                    onClick={() => deleteMember(member._id)}
-                  >
-                    <FiDelete />
-                  </IconButton>
-                )}
-              </li>
-            ))}
-          </ul>
+          <h2 className="text-2xl font-semibold text-center mb-4">
+            <span className="inline-block text-3xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
+              Family Info
+            </span>
+          </h2>
+          <div className="mb-4">
+            <p className="font-semibold">Family Name:</p>
+            <p>{familyData.name}</p>
+          </div>
+          <div className="mb-4 text-center">
+            {" "}
+            {/* Add text-center class here */}
+            <p className="font-semibold">Members:</p>
+            <ul className="inline-block">
+              {" "}
+              {/* Add inline-block class here */}
+              {familyData.members.map((member) => (
+                <li key={member._id} className="flex items-center">
+                  <span className="mr-2">{member.userName}</span>
+                  {member._id === userContext.user._id && (
+                    <IconButton
+                      variant="contained"
+                      color="error"
+                      onClick={() => deleteMember(member._id)}
+                    >
+                      <FiTrash2 />
+                    </IconButton>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
         </>
       ) : (
         <p>Loading family data...</p>
