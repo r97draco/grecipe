@@ -38,83 +38,79 @@ const createRecipeComponent = (recipesData) => {
                 </span>
               </h1>
             </div>
+          </div>
+        </div>
 
-            {/* Search Box */}
-            <div className="mb-4">
-              <input
-                type="text"
-                className="px-4 py-2 w-full border border-orange-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-                placeholder="Search recipes..."
-                value={searchText}
-                onChange={handleSearchChange}
+        {/* Search Box */}
+        <div className="mb-4">
+          <input
+            type="text"
+            className="px-4 py-2 w-full border border-orange-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            placeholder="Search recipes..."
+            value={searchText}
+            onChange={handleSearchChange}
+          />
+        </div>
+
+        {/* Ingredient List */}
+        <div className="mb-4">
+          <h2 className="mb-2 text-lg font-semibold">Select below:</h2>
+          <div className="flex flex-wrap gap-2">
+            {[
+              "Onions",
+              "Potato",
+              "Bacon",
+              "Garlic cloves",
+              "Olive oil",
+              "Butter",
+              "Fresh basil",
+              "Parmesan cheese",
+              "Broccoli",
+              "Red onion",
+            ].map((ingredient) => (
+              <button
+                key={ingredient}
+                className="px-2 py-1 bg-gray-200 border border-orange-500 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                onClick={() => handleIngredientClick(ingredient)}
+              >
+                {ingredient}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Recipe Display */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {filteredRecipes.map((recipe) => (
+            <div
+              className="recipe-card flex overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-lg md:flex-row hover:shadow-xl border border-orange-500"
+              key={recipe.id}
+            >
+              <img
+                src={recipe.image}
+                alt={recipe.title}
+                className="object-cover w-48 h-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
               />
-            </div>
-
-            {/* Ingredient List */}
-            <div className="mb-4">
-              <h2 className="mb-2 text-lg font-semibold">Ingredients:</h2>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Onions",
-                  "Potato",
-                  "Bacon",
-                  "Garlic cloves",
-                  "Olive oil",
-                  "Butter",
-                  "Fresh basil",
-                  "Parmesan cheese",
-                  "Broccoli",
-                  "Red onion",
-                ].map((ingredient) => (
-                  <button
-                    key={ingredient}
-                    className="px-2 py-1 bg-gray-200 border border-orange-500 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    onClick={() => handleIngredientClick(ingredient)}
-                  >
-                    {ingredient}
-                  </button>
-                ))}
+              <div className="flex-grow p-4">
+                <h3 className="mb-2 text-xl font-semibold">{recipe.title}</h3>
+                <p className="text-gray-700">
+                  Used Ingredients: {recipe.usedIngredientCount}
+                </p>
+                <p className="mb-2 text-gray-700">
+                  Missed Ingredients: {recipe.missedIngredientCount}
+                </p>
+                <ul className="pl-4">
+                  {recipe.ingredientsText
+                    .split("\n")
+                    .map((ingredient, index) => (
+                      <li key={index} className="text-gray-700">
+                        {ingredient}
+                      </li>
+                    ))}
+                </ul>
               </div>
             </div>
-
-            {/* Recipe Display */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {filteredRecipes.map((recipe) => (
-                <div
-                  className="flex flex-col overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-lg md:flex-row hover:shadow-xl border border-orange-500"
-                  key={recipe.id}
-                >
-                  <div className="flex-shrink-0 md:w-48">
-                    <img
-                      src={recipe.image}
-                      alt={recipe.title}
-                      className="object-cover w-full h-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
-                    />
-                  </div>
-                  <div className="flex flex-col justify-between p-4">
-                    <h3 className="mb-2 text-xl font-semibold">
-                      {recipe.title}
-                    </h3>
-                    <p className="text-gray-700">
-                      Used Ingredients: {recipe.usedIngredientCount}
-                    </p>
-                    <p className="mb-4 text-gray-700">
-                      Missed Ingredients: {recipe.missedIngredientCount}
-                    </p>
-                    <ul className="pl-4">
-                      {recipe.ingredientsText
-                        .split("\n")
-                        .map((ingredient, index) => (
-                          <li key={index} className="text-gray-700">
-                            {ingredient}
-                          </li>
-                        ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </section>
     );
