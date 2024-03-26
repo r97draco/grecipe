@@ -438,3 +438,5 @@
 [31m[1m2024-03-25 20:08:33 ERROR:    "name" is not allowed to be empty[22m[39m
 [31m[1m2024-03-25 20:08:34 ERROR:    "name" is not allowed to be empty[22m[39m
 [31m[1m2024-03-25 20:08:34 ERROR:    "name" is not allowed to be empty[22m[39m
+[36m[1m2024-03-25 22:58:13 INFO:     [Server] - Running on port 9191[22m[39m
+[36m[1m2024-03-25 22:58:41 INFO:     [Server] - Running on port 9191[22m[39m
