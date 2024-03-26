@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import RecipeModal from "../components/RecipeModal";
+import { Button } from "@mui/material";
+import axios from "axios";
+import { UserContext } from "../App";
+import { backendUrl } from "../App";
 
 const Recipee = () => {
   const [ingredients, setIngredients] = useState("onions, potato, bacon");
@@ -14,6 +18,45 @@ const Recipee = () => {
   const generateRecipes = async () => {
     try {
       const recipeData = await fetchRecipesByIngredients(ingredients);
+      setRecipes(recipeData);
+    } catch (error) {
+      console.error("Error fetching recipes:", error);
+    }
+  };
+
+  const userModel = useContext(UserContext);
+  const user = userModel.user;
+
+  const getRecipeFromInventory = async () => {
+    try {
+      const recipeData = await axios.get(
+        `$
+      {backendUrl}/api/recipes/${user.email}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("self_care_token")}`,
+          },
+        }
+      );
+      setRecipes(recipeData);
+    } catch (error) {
+      console.error("Error fetching recipes:", error);
+    }
+  };
+
+  const getRecipeFromIngredients = async () => {
+    try {
+      const recipeData = await axios.get(
+        // `${backendUrl}/api/recipes/${user.email}`,
+        {
+          ingredients: ingredients,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("self_care_token")}`,
+          },
+        }
+      );
       setRecipes(recipeData);
     } catch (error) {
       console.error("Error fetching recipes:", error);
@@ -37,6 +80,13 @@ const Recipee = () => {
           </div>
 
           {/* Input and Button */}
+          <div>
+            <Button onClick={() => getRecipeFromInventory()}>
+              Get Recepies from Inventory
+            </Button>
+
+            <Button>Get Recepies from Ingredients</Button>
+          </div>
           <div className="my-2">
             Select the Inventory Items or Enter them:
             <label className="text-gray-700" htmlFor="comment">
