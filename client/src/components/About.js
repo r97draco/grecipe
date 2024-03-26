@@ -13,7 +13,7 @@ const About = () => {
         <img src={AboutBackgroundImage} alt="" />
       </div>
       <div className="about-section-text-container">
-        <p className="primary-subheading">About</p>
+        {/* <p className="primary-subheading">About</p> */}
         <h1 className="primary-heading">
           Simplifying Meal Preparation and Grocery Budgeting
         </h1>
@@ -30,12 +30,6 @@ const About = () => {
           Developed from our own experiences as students, we aim to address
           common challenges in grocery budgeting and meal preparation.
         </p>
-        <div className="about-buttons-container">
-          <button className="secondary-button">Learn More</button>
-          <button className="watch-video-button">
-            <BsFillPlayCircleFill /> Watch Video
-          </button>
-        </div>
       </div>
     </div>
   );
