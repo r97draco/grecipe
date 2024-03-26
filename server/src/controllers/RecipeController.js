@@ -5,14 +5,24 @@ const userService = require('../services/UserService');
 const getRecipes = async (req, res, next) => {
   const { userId } = req.params;
   try {
-    const ingredients = await itemsService.getItemsByUser(userId);
+    // const user = await userService.getUserById(userId);
+    const user = await userService.getUserByEmail(userId);
+    const ingredients = await itemsService.getItemsByFamily(user.family);
     console.log(ingredients);
-    // const preferences = await userService.getUserPreferences(userId);
-    const preferences = {};
-    const recipes = await RecipeService.searchRecipesByItems(
-      ingredients,
-      preferences
-    );
+    const recipes = await RecipeService.searchRecipesByItems(ingredients);
+    res.status(200).json({ recipes });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const getCustomRecipees = async (req, res, next) => {
+  const { userId } = req.params;
+  try {
+    const user = await userService.getUserByEmail(userId);
+    const ingredients = req.body.ingredients;
+    console.log(ingredients);
+    const recipes = await RecipeService.searchRecipesByItems(ingredients);
     res.status(200).json({ recipes });
   } catch (err) {
     next(err);
@@ -33,4 +43,5 @@ const getMealPlans = async (req, res, next) => {
 module.exports = {
   getRecipes,
   getMealPlans,
+  getCustomRecipees,
 };
