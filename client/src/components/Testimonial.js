@@ -9,24 +9,26 @@ const Testimonial = () => {
         <p className="primary-subheading">Testimonial</p>
         <h1 className="primary-heading">What They Are Saying</h1>
         <p className="primary-text">
-          Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
-          elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
+          Our users love the convenience and efficiency our app provides. Here's
+          what one of them had to say:
         </p>
       </div>
       <div className="testimonial-section-bottom">
         <img src={ProfilePic} alt="" />
         <p>
-          Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
-          elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
+          "I absolutely love this app! It has made grocery shopping and meal
+          planning so much easier for me and my family. The inventory management
+          feature is incredibly handy, and the recipe suggestions are always a
+          hit. Highly recommended!"
         </p>
-        <div className="testimonials-stars-container">
+        <div className="testimonials-stars-container flex">
           <AiFillStar />
           <AiFillStar />
           <AiFillStar />
           <AiFillStar />
           <AiFillStar />
         </div>
-        <h2>John Doe</h2>
+        <h2>John Smith</h2>
       </div>
     </div>
   );

@@ -7,28 +7,29 @@ const Work = () => {
   const workInfoData = [
     {
       image: PickMeals,
-      title: "Pick Meals",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et sagittis duis elementum interdum facilisi bibendum.",
+      title: "Upload Grocery Receipt",
+      text: "Family head uploads a grocery receipt, and the app extracts item details, updating the inventory.",
     },
     {
       image: ChooseMeals,
-      title: "Choose How Often",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et ",
+      title: "Manage Inventory",
+      text: "View, add, delete, or modify items in the inventory. Track spending and set budget limits.",
     },
     {
       image: DeliveryMeals,
-      title: "Fast Deliveries",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
+      title: "Manage Family Members",
+      text: "Family head creates/manage member accounts, assigns permissions, and tracks grocery spending.",
     },
   ];
+
   return (
     <div className="work-section-wrapper">
       <div className="work-section-top">
         <p className="primary-subheading">Work</p>
         <h1 className="primary-heading">How It Works</h1>
         <p className="primary-text">
-          Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
-          elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
+          Get familiar with the seamless process of managing groceries and meal
+          planning using our application.
         </p>
       </div>
       <div className="work-section-bottom">
