@@ -27,7 +27,7 @@ const Recipee = () => {
         `${backendUrl}/api/recipe/${user.email}`,
         {
           headers: {
-            Authorization: `${localStorage.getItem("self_care_token")}`,
+            Authorization: localStorage.getItem("self_care_token"),
           },
         }
       );
@@ -57,7 +57,7 @@ const Recipee = () => {
         },
         {
           headers: {
-            Authorization: `${localStorage.getItem("self_care_token")}`,
+            Authorization: localStorage.getItem("self_care_token"),
           },
         }
       );
@@ -73,87 +73,89 @@ const Recipee = () => {
   };
 
   return (
-    <div className="main-bg">
-      <section className="relative ">
-        <div className="col-span-1 px-4 mx-auto bg-white bg-opacity-50 rounded-lg max-w-7xl sm:px-6 backdrop-blur-md">
-          <div className="max-w-6xl px-4 mx-auto sm:px-6">
-            <div className="pt-10 pb-12 md:pt-10 md:pb-20">
-              <div className="pb-12 text-center md:pb-16">
-                <h1 className="mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-400">
-                    Recipe
-                  </span>
-                </h1>
-                <p className="text-xl text-gray-900 md:text-lg">
-                  View all the recipes you can make with the ingredients you
-                  have!!
-                </p>
-              </div>
+    // <section className="relative main-bg">
+    //   <div className="px-4 mx-auto bg-white bg-opacity-50 rounded-lg max-w-7xl sm:px-6 backdrop-blur-md">
+    //     <div className="max-w-6xl px-4 mx-auto sm:px-6">
+    //       <div className="pt-10 pb-12 md:pt-10 md:pb-20">
+    <section className="relative main-bg">
+      <div className="max-w-6xl px-4 mx-auto bg-gray-100 rounded-md sm:px-6 ">
+        <div className="pt-10 pb-12 md:pt-10 md:pb-20">
+          <div className="max-w-3xl mx-auto md:text-center">
+            <div className="pb-12 text-center md:pb-16">
+              <h1 className="mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-400">
+                  Recipe
+                </span>
+              </h1>
+              <p className="text-xl text-gray-900 md:text-lg">
+                View all the recipes you can make with the ingredients you
+                have!!
+              </p>
+            </div>
 
-              <div className="flex justify-between">
-                <button
-                  onClick={() => getRecipeFromInventory()}
-                  className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 "
-                >
-                  Get Recepies from Inventory
-                </button>
-                <button
-                  disabled={!ingredients}
-                  onClick={() => getRecipeFromIngredients()}
-                  className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600"
-                >
-                  Get Recipes from Ingredients
-                </button>
-              </div>
-              <div className="my-2">
-                Enter the Ingredients:
-                <label className="text-gray-700" htmlFor="comment">
-                  <textarea
-                    className="flex-1 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    onChange={handleIngredientChange}
-                    placeholder="Enter your ingredients"
-                    value={ingredients}
-                    rows="2"
-                    // cols="40"
-                  ></textarea>
-                </label>
-              </div>
+            <div className="flex justify-between">
+              <button
+                onClick={() => getRecipeFromInventory()}
+                className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 "
+              >
+                Get Recepies from Inventory
+              </button>
+              <button
+                disabled={!ingredients}
+                onClick={() => getRecipeFromIngredients()}
+                className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600"
+              >
+                Get Recipes from Ingredients
+              </button>
+            </div>
+            <div className="my-2">
+              Enter the Ingredients:
+              <label className="text-gray-700" htmlFor="comment">
+                <textarea
+                  className="flex-1 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  onChange={handleIngredientChange}
+                  placeholder="Enter your ingredients"
+                  value={ingredients}
+                  rows="2"
+                  // cols="40"
+                ></textarea>
+              </label>
+            </div>
 
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {recipes &&
-                  recipes.map((recipe) => (
-                    <div
-                      className="flex flex-col overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-lg md:flex-row hover:shadow-xl"
-                      key={recipe.id}
-                    >
-                      <div className="flex-shrink-0 md:w-48">
-                        <img
-                          src={recipe.image}
-                          alt={recipe.title}
-                          className="object-cover w-full h-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
-                        />
-                      </div>
-                      <div className="flex flex-col justify-between p-4">
-                        <h3 className="mb-2 text-xl font-semibold">
-                          {recipe.title}
-                        </h3>
-                        <p className="text-gray-700">
-                          Used Ingredients: {recipe.usedIngredientCount}
-                        </p>
-                        <p className="mb-4 text-gray-700">
-                          Missed Ingredients: {recipe.missedIngredientCount}
-                        </p>
-                        <RecipeModal recipe={recipe} setRecipe={setRecipes} />
-                      </div>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {recipes &&
+                recipes.map((recipe) => (
+                  <div
+                    className="flex flex-col overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-lg md:flex-row hover:shadow-xl"
+                    key={recipe.id}
+                  >
+                    <div className="flex-shrink-0 md:w-48">
+                      <img
+                        src={recipe.image}
+                        alt={recipe.title}
+                        className="object-cover w-full h-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
+                      />
                     </div>
-                  ))}
-              </div>
+                    <div className="flex flex-col justify-between p-4">
+                      <h3 className="mb-2 text-xl font-semibold">
+                        {recipe.title}
+                      </h3>
+                      <p className="text-gray-700">
+                        Used Ingredients: {recipe.usedIngredientCount}
+                      </p>
+                      <p className="mb-4 text-gray-700">
+                        Missed Ingredients: {recipe.missedIngredientCount}
+                      </p>
+                      <RecipeModal recipe={recipe} setRecipe={setRecipes} />
+                    </div>
+                  </div>
+                ))}
             </div>
           </div>
         </div>
-      </section>
+      </div>
       <Footer />
-    </div>
+    </section>
   );
 };
 
