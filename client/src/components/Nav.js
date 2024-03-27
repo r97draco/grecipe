@@ -219,7 +219,7 @@ function Nav() {
   return (
     <header
       className={`fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out ${
-        !top && "bg-white backdrop-blur-sm shadow-lg"
+        !top && " backdrop-blur-md shadow-lg"
       }`}
     >
       <div className="px-5 mx-auto max-w-8xl sm:px-6">
@@ -239,8 +239,9 @@ function Nav() {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className={`flex items-center px-5 py-3 font-medium transition duration-150 ease-in-out hover:text-gray-600 text-gray-700 ${
-                      isLinkActive(link.to) && "text-gray-900"
+                    className={`flex items-center text-lg font-medium font-inter px-5 py-3 transition duration-150 ease-in-out hover:text-gray-600 text-gray-700 ${
+                      isLinkActive(link.to) &&
+                      "text-gray-900 underline-offset-4 underline"
                     }`}
                   >
                     {link.title}
@@ -258,10 +259,7 @@ function Nav() {
                     />
                   </li>
                   <li onClick={signOut}>
-                    <Link
-                      // to="/signup"
-                      className="ml-3 text-gray-200 bg-gray-900 btn-sm hover:bg-gray-800"
-                    >
+                    <Link className="ml-3 text-gray-200 bg-gray-900 btn-sm hover:bg-gray-800">
                       <span>Logout</span>
                       <FaGoogle className="flex items-center ml-2 text-gray-400" />
                     </Link>
@@ -270,21 +268,9 @@ function Nav() {
               ) : (
                 <>
                   <li onClick={signIn}>
-                    <Link
-                      // to="/signup"
-                      className="ml-3 text-gray-200 bg-gray-900 btn-sm hover:bg-gray-800"
-                    >
+                    <Link className="ml-3 text-gray-200 bg-gray-900 btn-sm hover:bg-gray-800">
                       <span>Join </span>
-                      <svg
-                        className="flex-shrink-0 w-3 h-3 ml-2 -mr-1 text-gray-400 fill-current"
-                        viewBox="0 0 12 12"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z"
-                          fillRule="nonzero"
-                        />
-                      </svg>
+                      <FaGoogle className="flex items-center ml-2 text-gray-400" />
                     </Link>
                   </li>
                 </>
