@@ -184,6 +184,18 @@ const Inventory = () => {
                   >
                     Welcome, {user.userName}!
                   </div>
+                  {user.isFamilyHead && (
+                    <div
+                      style={{
+                        textAlign: "center",
+                        fontSize: "1.5rem",
+                        fontWeight: "bold",
+                        marginBottom: "20px",
+                      }}
+                    >
+                      You are the head of the family
+                    </div>
+                  )}
                   <FamilyInfo
                     setRefresh={setRefresh}
                     familyId={user.family}
@@ -304,7 +316,7 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
     }
   };
 
-  if (head) {
+  if (false) {
     return (
       <div className="mb-10">
         {familyData ? (
@@ -388,7 +400,19 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
                         </th>
                         <td class="px-6 py-4"></td>
                         <td class="px-6 py-4">
-                          {member._id === userContext.user._id && (
+                          {/* if head then can remove button for all memebers else just for him */}
+                          {head && (
+                            <Button
+                              variant="contained"
+                              color="error"
+                              onClick={() => deleteMember(member._id)}
+                            >
+                              Remove
+                              <FiTrash2 size={22} />
+                            </Button>
+                          )}
+                          {/* if not head then can leave the family */}
+                          {!head && member._id === userContext.user._id && (
                             <Button
                               variant="contained"
                               color="error"
@@ -535,6 +559,7 @@ const Family = ({ setRefresh }) => {
       <Typography variant="h6" gutterBottom>
         Join a Family
       </Typography>
+
       {familyList}
     </Stack>
   );
