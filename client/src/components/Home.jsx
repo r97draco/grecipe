@@ -1,5 +1,6 @@
 import React from "react";
 import { ReactTyped } from "react-typed";
+import { Typewriter } from "typewriter-effect";
 import BannerBackground from "../Assets/home-banner-background.png";
 import BannerImage from "../Assets/home-banner-image.png";
 import Navbar from "./Navbar";
@@ -14,13 +15,15 @@ const Home = () => {
           <img src={BannerBackground} alt="" />
         </div>
         <div className="home-text-section">
-          <h1 className="primary-heading">We built a platform where you can
+          <h1 className="bg-transparent primary-heading">We built a platform where you can
+            
             <ReactTyped
-              className="primary-heading"
+              style={{ backgroundColor: "transparent"}}
+              className=""
               strings={[
                 "Scan your receipts",
                 "Track your groceries",
-                "Find new recipes",
+                "Find new recipe",
               ]}
               typeSpeed={40}
               backSpeed={50}
