@@ -92,7 +92,6 @@ import { UserContext, backendUrl } from "../App";
 
 // export default Recipee;
 
-
 const Recipee = () => {
   const [ingredients, setIngredients] = useState("onions, potato, bacon");
   const [recipes, setRecipes] = useState([]);
@@ -169,11 +168,22 @@ const Recipee = () => {
           </div>
 
           <div className="flex justify-between">
-            <Button variant="contained" onClick={() => getRecipeFromInventory()}>
-              Get Recepies from Inventory
+            <Button
+              style={{ backgroundColor: "#FE9D0C", color: "white" }}
+              variant="contained"
+              onClick={() => getRecipeFromInventory()}
+            >
+              Get Recipes from Inventory
             </Button>
 
-            <Button variant="contained" disabled={!ingredients} onClick={()=> getRecipeFromIngredients()}>Get Recepies from Ingredients</Button>
+            <Button
+              style={{ backgroundColor: "#FE9D0C", color: "white" }}
+              variant="contained"
+              disabled={!ingredients}
+              onClick={() => getRecipeFromIngredients()}
+            >
+              Get Recipes from Ingredients
+            </Button>
           </div>
           <div className="my-2">
             Select the Inventory Items or Enter them:
