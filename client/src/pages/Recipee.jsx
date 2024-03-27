@@ -26,7 +26,7 @@ const Recipee = () => {
         `${backendUrl}/api/recipe/${user.email}`,
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("self_care_token")}`,
+            Authorization: `${localStorage.getItem("self_care_token")}`,
           },
         }
       );
@@ -56,7 +56,7 @@ const Recipee = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("self_care_token")}`,
+            Authorization: `${localStorage.getItem("self_care_token")}`,
           },
         }
       );
@@ -82,29 +82,29 @@ const Recipee = () => {
                   Recipe
                 </span>
               </h1>
-              <p className="text-xl text-gray-600 md:text-2xl">
-                A simple recipe app built with React, Express, and MongoDB.
+              <p className="text-xl text-gray-900 md:text-lg">
+                View all the recipes you can make with the ingredients you
+                have!!
               </p>
             </div>
 
             <div className="flex justify-between">
-              <Button
-                variant="contained"
+              <button
                 onClick={() => getRecipeFromInventory()}
+                className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 "
               >
                 Get Recepies from Inventory
-              </Button>
-
-              <Button
-                variant="contained"
+              </button>
+              <button
                 disabled={!ingredients}
                 onClick={() => getRecipeFromIngredients()}
+                className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600"
               >
-                Get Recepies from Ingredients
-              </Button>
+                Get Recipes from Ingredients
+              </button>
             </div>
             <div className="my-2">
-              Select the Inventory Items or Enter them:
+              Enter the Ingredients:
               <label className="text-gray-700" htmlFor="comment">
                 <textarea
                   className="flex-1 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -115,14 +115,6 @@ const Recipee = () => {
                   // cols="40"
                 ></textarea>
               </label>
-              {/* <button
-              type="button"
-              disabled={!ingredients}
-              onClick={generateRecipes}
-              className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in shadow-md bg-gradient-to-r from-green-400 to-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:bg-slate-400"
-            >
-              Generate Recipes
-            </button> */}
             </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
