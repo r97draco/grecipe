@@ -5,6 +5,7 @@ import Landing from "./pages/Landing";
 import Inventory from "./pages/Inventory";
 import Recipee from "./pages/Recipee";
 import Nav from "./components/Nav";
+import { ToastContainer } from "react-toastify";
 
 const Routers = () => {
   return (
@@ -23,6 +24,7 @@ const Routers = () => {
         </div>
         {/* </section> */}
       </main>
+      <ToastContainer />
     </BrowserRouter>
   );
 };

@@ -16,6 +16,7 @@ import {
   Typography,
 } from "@mui/material";
 import { FiTrash2 } from "react-icons/fi";
+import { notify } from "../components/Nav";
 
 const Inventory = () => {
   const [inventoryData, setInventoryData] = useState([]);
@@ -290,8 +291,10 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
       );
       setFamilyData(updatedFamily.data);
       setRefresh((prev) => !prev);
+      notify("Member Left successfully", "success");
     } catch (error) {
       console.error("Error deleting member:", error.response.data);
+      notify("Error deleting member", "error");
     }
   };
 
@@ -300,7 +303,7 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
       <div className="mb-10">
         {familyData ? (
           <>
-            <h2 className="text-2xl font-semibold text-center mb-4">
+            <h2 className="mb-4 text-2xl font-semibold text-center">
               <span className="inline-block text-3xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
                 Family Info
               </span>
@@ -344,7 +347,7 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
     <div className="mb-10">
       {familyData ? (
         <>
-          <h2 className="text-2xl font-semibold text-center mb-4">
+          <h2 className="mb-4 text-2xl font-semibold text-center">
             <span className="inline-block text-3xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
               Family Info
             </span>
@@ -414,8 +417,10 @@ const Family = ({ setRefresh }) => {
       );
       setFamilyName("");
       console.log("Created Family");
+      notify("Family created successfully", "success");
       setRefresh((prev) => !prev);
     } catch (error) {
+      notify("Error creating family", "error");
       console.error("Error creating family:", error.response.data);
     }
   };
@@ -433,10 +438,8 @@ const Family = ({ setRefresh }) => {
       );
       console.log("Families:", response.data);
       setFamilies(response.data);
-      // Optionally, set the list of families in state
     } catch (error) {
       console.error("Error getting families:", error.response.data);
-      // Optionally, show an error message
     }
   };
 
@@ -455,10 +458,10 @@ const Family = ({ setRefresh }) => {
         }
       );
       setRefresh((prev) => !prev);
-      // Optionally, refresh the list of families or show a success message
+      notify("Joined family successfully", "success");
     } catch (error) {
       console.error("Error joining family:", error.response.data);
-      // Optionally, show an error message
+      notify("Error joining family", "error");
     }
   };
 
@@ -523,24 +526,8 @@ const InventoryTable = ({ inventoryData, setInventoryData }) => {
     if (!itemExists) {
       const newData = [...inventoryData, { ...newItem, isLocal: true }];
       setInventoryData(newData);
-      // try {
-      //   const token = localStorage.getItem("self_care_token");
-      //   await axios.post(
-      //     `${backendUrl}/api/item/add`,
-      //     {
-      //       items: newData,
-      //     },
-      //     {
-      //       params: { email: user.email },
-      //       headers: {
-      //         Authorization: token,
-      //       },
-      //     }
-      //   );
-      // } catch (error) {
-      //   console.error("Error adding item:", error.response.data);
-      // }
     }
+    notify("Item added successfully LOCALLY", "success");
   };
 
   const deleteItem = async (index) => {
@@ -554,6 +541,7 @@ const InventoryTable = ({ inventoryData, setInventoryData }) => {
 
     const newData = inventoryData?.filter((item, i) => i !== index);
     setInventoryData(newData);
+    notify("Item deleted successfully", "success");
   };
 
   return (

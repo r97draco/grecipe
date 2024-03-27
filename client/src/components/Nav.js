@@ -291,7 +291,6 @@ function Nav() {
               )}
             </ul>
           </nav>
-          <ToastContainer />
         </div>
       </div>
     </header>
