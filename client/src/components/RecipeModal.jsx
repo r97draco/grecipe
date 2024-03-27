@@ -18,7 +18,7 @@ export default function RecipeModal({ recipe }) {
         <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-gray-900 bg-opacity-50">
           <div className="w-full max-w-5xl mx-auto bg-white rounded-lg shadow-lg max-h-[90vh] overflow-auto">
             <div className="flex flex-col w-full border-0 rounded-lg">
-              <div className="flex items-start justify-between p-5 border-b border-solid rounded-t border-gray-200 bg-gradient-to-r from-pink-500 to-pink-600">
+              <div className="flex items-start justify-between p-5 border-b border-solid rounded-t border-gray-200 custom-gradient">
                 <h3 className="text-2xl font-semibold text-white">
                   {recipe.title}
                 </h3>
