@@ -184,18 +184,6 @@ const Inventory = () => {
                   >
                     Welcome, {user.userName}!
                   </div>
-                  {user.isFamilyHead && (
-                    <div
-                      style={{
-                        textAlign: "center",
-                        fontSize: "1.5rem",
-                        fontWeight: "bold",
-                        marginBottom: "20px",
-                      }}
-                    >
-                      You are the head of the family
-                    </div>
-                  )}
                   <FamilyInfo
                     setRefresh={setRefresh}
                     familyId={user.family}
@@ -226,7 +214,7 @@ const Inventory = () => {
                       placeholder="Filter by item name"
                       value={filterValue}
                       onChange={(e) => setFilterValue(e.target.value)}
-                      className="px-3 py-1 mb-10 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+                      className="px-3 py-5 mb-0 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
                     />
                     <button
                       onClick={() => handleSort("name")}
@@ -371,9 +359,15 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
             </span>
           </h2>
           <div className="mb-4">
-            <div className="flex flex-row justify-between">
-              <p className="font-light">{familyData.name}'s Family</p>
-              {head && <p>You are Head</p>}
+            <div className="flex flex-row justify-between px-10">
+              <Button className="font-bold text-black">
+                {familyData.name}'s Family
+              </Button>
+              {userContext.user.isFamilyHead ? (
+                <Button className="font-bold">You are Head</Button>
+              ) : (
+                <Button className="font-bold">You are Member</Button>
+              )}
             </div>
             <table class="w-full text-sm text-left rtl:text-center text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-center text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
@@ -400,7 +394,6 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
                         </th>
                         <td class="px-6 py-4"></td>
                         <td class="px-6 py-4">
-                          {/* if head then can remove button for all memebers else just for him */}
                           {head && (
                             <Button
                               variant="contained"
@@ -412,13 +405,14 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
                             </Button>
                           )}
                           {/* if not head then can leave the family */}
-                          {!head && member._id === userContext.user._id && (
+                          {!head && (
                             <Button
                               variant="contained"
                               color="error"
                               onClick={() => deleteMember(member._id)}
+                              disabled={member._id !== userContext.user._id}
                             >
-                              Leave
+                              Remove
                               <FiTrash2 size={22} />
                             </Button>
                           )}
@@ -471,6 +465,9 @@ const Family = ({ setRefresh }) => {
       setRefresh((prev) => !prev);
     } catch (error) {
       notify("Error creating family", "error");
+      if (error.response.status === 401) {
+        notify("Please login to create a family", "warning");
+      }
       console.error("Error creating family:", error.response.data);
     }
   };
