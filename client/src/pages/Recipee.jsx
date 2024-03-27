@@ -3,95 +3,8 @@ import RecipeModal from "../components/RecipeModal";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { UserContext, backendUrl } from "../App";
-
-// const Recipee = () => {
-//   const [ingredients, setIngredients] = useState("onions, potato, bacon");
-//   const [recipes, setRecipes] = useState([]);
-//   const userModel = useContext(UserContext);
-//   const user = userModel.user;
-
-//   const handleIngredientChange = (event) => {
-//     setIngredients(event.target.value);
-//   };
-
-//   useEffect(() => {
-//     setRecipes(testData.recipes);
-//   }, []);
-
-//   const getRecipeFromInventory = async () => {
-//     try {
-//       const recipeData = await axios.get(
-//         `${backendUrl}/api/recipe/${user.email}`,
-//         {
-//           headers: {
-//             Authorization: `Bearer ${localStorage.getItem("self_care_token")}`,
-//           },
-//         }
-//       );
-//       setRecipes(recipeData.data.recipes);
-//     } catch (error) {
-//       console.error("Error fetching recipes:", error);
-//     }
-//   };
-
-//   const getRecipeFromIngredients = async () => {
-//     // Assuming this function is correctly implemented as your API's requirement.
-//   };
-
-//   return (
-//     <section className="relative">
-//       <div className="text-center">
-//         <h1 className="text-5xl font-bold">Recipe Finder</h1>
-//         <p>Discover recipes from your ingredients</p>
-//       </div>
-//       <div>
-//         <Button
-//           variant="contained"
-//           color="primary"
-//           onClick={getRecipeFromInventory}
-//         >
-//           Get Recipes from Inventory
-//         </Button>
-//         <Button
-//           variant="contained"
-//           color="secondary"
-//           onClick={getRecipeFromIngredients}
-//         >
-//           Get Recipes from Ingredients
-//         </Button>
-//         <textarea
-//           className="w-full p-2 border rounded"
-//           placeholder="Enter ingredients"
-//           value={ingredients}
-//           onChange={handleIngredientChange}
-//         />
-//       </div>
-//       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-//         {recipes.map((recipe) => (
-//           <div key={recipe.id} className="card">
-//             <img
-//               src={recipe.image}
-//               alt={recipe.title}
-//               className="object-cover w-full h-48"
-//             />
-//             <div className="p-4">
-//               <h3 className="text-xl font-semibold">{recipe.title}</h3>
-//               {/* Displaying used and missed ingredients if needed */}
-//               <div className="text-gray-600">
-//                 <p>Used Ingredients: {recipe.usedIngredientCount}</p>
-//                 <p>Missed Ingredients: {recipe.missedIngredientCount}</p>
-//               </div>
-//               <RecipeModal recipe={recipe} />
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Recipee;
-
+import { notify } from "../components/Nav";
+import Footer from "../components/Footer";
 
 const Recipee = () => {
   const [ingredients, setIngredients] = useState("onions, potato, bacon");
@@ -105,15 +18,6 @@ const Recipee = () => {
     setIngredients(event.target.value);
   };
 
-  const generateRecipes = async () => {
-    try {
-      const recipeData = await fetchRecipesByIngredients(ingredients);
-      setRecipes(recipeData);
-    } catch (error) {
-      console.error("Error fetching recipes:", error);
-    }
-  };
-
   const userModel = useContext(UserContext);
   const user = userModel.user;
 
@@ -123,111 +27,134 @@ const Recipee = () => {
         `${backendUrl}/api/recipe/${user.email}`,
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("self_care_token")}`,
+            Authorization: localStorage.getItem("self_care_token"),
           },
         }
       );
       console.log("recipeData", recipeData);
       setRecipes(recipeData.data.recipes);
+      notify("Recipes fetched from Inventory", "success");
     } catch (error) {
       console.error("Error fetching recipes:", error);
+      notify("Error fetching recipes", "error");
+      if (error.response.status === 401) {
+        notify("Please login to view recipes", "info");
+      }
     }
   };
 
   const getRecipeFromIngredients = async () => {
+    if (!ingredients) {
+      notify("Please enter ingredients", "error");
+      return;
+    }
+
     try {
       const recipeData = await axios.get(
-        `${backendUrl}/api/recipes/${user.email}`,
+        `${backendUrl}/api/recipe/${user.email}`,
         {
           ingredients: ingredients,
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("self_care_token")}`,
+            Authorization: localStorage.getItem("self_care_token"),
           },
         }
       );
       setRecipes(recipeData.data.recipes);
+      notify("Recipes fetched from Ingredients", "success");
     } catch (error) {
+      notify("Error fetching recipes", "error");
       console.error("Error fetching recipes:", error);
+      if (error.response.status === 401) {
+        notify("Please login to view recipes", "info");
+      }
     }
   };
 
   return (
-    <section className="relative">
-      <div className="max-w-6xl px-4 mx-auto sm:px-6">
+    // <section className="relative main-bg">
+    //   <div className="px-4 mx-auto bg-white bg-opacity-50 rounded-lg max-w-7xl sm:px-6 backdrop-blur-md">
+    //     <div className="max-w-6xl px-4 mx-auto sm:px-6">
+    //       <div className="pt-10 pb-12 md:pt-10 md:pb-20">
+    <section className="relative main-bg">
+      <div className="max-w-6xl px-4 mx-auto bg-gray-100 rounded-md sm:px-6 ">
         <div className="pt-10 pb-12 md:pt-10 md:pb-20">
-          <div className="pb-12 text-center md:pb-16">
-            <h1 className="mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-400">
-                Recipe
-              </span>
-            </h1>
-            <p className="text-xl text-gray-600 md:text-2xl">
-              A simple recipe app built with React, Express, and MongoDB.
-            </p>
-          </div>
+          <div className="max-w-3xl mx-auto md:text-center">
+            <div className="pb-12 text-center md:pb-16">
+              <h1 className="mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-400">
+                  Recipe
+                </span>
+              </h1>
+              <p className="text-xl text-gray-900 md:text-lg">
+                View all the recipes you can make with the ingredients you
+                have!!
+              </p>
+            </div>
 
-          <div className="flex justify-between">
-            <Button variant="contained" onClick={() => getRecipeFromInventory()}>
-              Get Recepies from Inventory
-            </Button>
+            <div className="flex justify-between">
+              <button
+                onClick={() => getRecipeFromInventory()}
+                className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 "
+              >
+                Get Recepies from Inventory
+              </button>
+              <button
+                disabled={!ingredients}
+                onClick={() => getRecipeFromIngredients()}
+                className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600"
+              >
+                Get Recipes from Ingredients
+              </button>
+            </div>
+            <div className="my-2">
+              Enter the Ingredients:
+              <label className="text-gray-700" htmlFor="comment">
+                <textarea
+                  className="flex-1 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  onChange={handleIngredientChange}
+                  placeholder="Enter your ingredients"
+                  value={ingredients}
+                  rows="2"
+                  // cols="40"
+                ></textarea>
+              </label>
+            </div>
 
-            <Button variant="contained" disabled={!ingredients} onClick={()=> getRecipeFromIngredients()}>Get Recepies from Ingredients</Button>
-          </div>
-          <div className="my-2">
-            Select the Inventory Items or Enter them:
-            <label className="text-gray-700" htmlFor="comment">
-              <textarea
-                className="flex-1 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                onChange={handleIngredientChange}
-                placeholder="Enter your ingredients"
-                value={ingredients}
-                rows="2"
-                // cols="40"
-              ></textarea>
-            </label>
-            {/* <button
-              type="button"
-              disabled={!ingredients}
-              onClick={generateRecipes}
-              className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in shadow-md bg-gradient-to-r from-green-400 to-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:bg-slate-400"
-            >
-              Generate Recipes
-            </button> */}
-          </div>
-
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {recipes &&
-              recipes.map((recipe) => (
-                <div
-                  className="flex flex-col overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-lg md:flex-row hover:shadow-xl"
-                  key={recipe.id}
-                >
-                  <div className="flex-shrink-0 md:w-48">
-                    <img
-                      src={recipe.image}
-                      alt={recipe.title}
-                      className="object-cover w-full h-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
-                    />
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {recipes &&
+                recipes.map((recipe) => (
+                  <div
+                    className="flex flex-col overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-lg md:flex-row hover:shadow-xl"
+                    key={recipe.id}
+                  >
+                    <div className="flex-shrink-0 md:w-48">
+                      <img
+                        src={recipe.image}
+                        alt={recipe.title}
+                        className="object-cover w-full h-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-between p-4">
+                      <h3 className="mb-2 text-xl font-semibold">
+                        {recipe.title}
+                      </h3>
+                      <p className="text-gray-700">
+                        Used Ingredients: {recipe.usedIngredientCount}
+                      </p>
+                      <p className="mb-4 text-gray-700">
+                        Missed Ingredients: {recipe.missedIngredientCount}
+                      </p>
+                      <RecipeModal recipe={recipe} setRecipe={setRecipes} />
+                    </div>
                   </div>
-                  <div className="flex flex-col justify-between p-4">
-                    <h3 className="mb-2 text-xl font-semibold">
-                      {recipe.title}
-                    </h3>
-                    <p className="text-gray-700">
-                      Used Ingredients: {recipe.usedIngredientCount}
-                    </p>
-                    <p className="mb-4 text-gray-700">
-                      Missed Ingredients: {recipe.missedIngredientCount}
-                    </p>
-                    <RecipeModal recipe={recipe} setRecipe={setRecipes} />
-                  </div>
-                </div>
-              ))}
+                ))}
+            </div>
           </div>
         </div>
       </div>
+      <Footer />
     </section>
   );
 };

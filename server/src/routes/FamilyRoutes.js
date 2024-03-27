@@ -13,8 +13,8 @@ const router = express.Router();
 
 router.post(
   '/createfamily',
-  validate(familySchema.createFamily),
   authMiddleware,
+  validate(familySchema.createFamily),
   createFamily
 );
 
@@ -29,15 +29,15 @@ router.get(
 
 router.put(
   '/updatefamily/:familyId',
-  validate(familySchema.updateFamily),
   authMiddleware,
+  validate(familySchema.updateFamily),
   updateFamilyMembers
 );
 
 router.delete(
   '/:familyId',
-  validate(familySchema.deleteFamily),
   authMiddleware,
+  validate(familySchema.deleteFamily),
   deleteFamily
 );
 

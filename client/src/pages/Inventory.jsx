@@ -16,6 +16,8 @@ import {
   Typography,
 } from "@mui/material";
 import { FiTrash2 } from "react-icons/fi";
+import { notify } from "../components/Nav";
+import Footer from "../components/Footer";
 
 const Inventory = () => {
   const [inventoryData, setInventoryData] = useState([]);
@@ -81,6 +83,7 @@ const Inventory = () => {
       }));
 
       setInventoryData(newData);
+      notify("Inventory saved to Database", "success");
     }
   };
 
@@ -97,6 +100,7 @@ const Inventory = () => {
       ];
 
       setInventoryData(newData);
+      notify("Items added Locally", "info");
     } catch (err) {
       console.log(err);
     }
@@ -157,87 +161,94 @@ const Inventory = () => {
   }, [refresh]);
 
   return (
-    <section className="relative">
-      <div className="col-span-1 px-4 mx-auto bg-white bg-opacity-50 rounded-lg max-w-7xl sm:px-6 backdrop-blur-md">
-        <div className="pt-10 pb-12 md:pt-10 md:pb-20">
-          <div className="pb-12 text-center md:pb-16">
-            {!user.family ? (
-              <Family setRefresh={setRefresh} />
-            ) : (
-              <>
-                <h1 className="mb-10 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
-                    Inventory
-                  </span>
-                </h1>
-                <div style={{ width: "500px", margin: "0 auto" }}>
-                  <div
-                    style={{
-                      textAlign: "center",
-                      fontSize: "1.5rem",
-                      fontWeight: "bold",
-                      marginBottom: "20px",
-                    }}
-                  >
-                    Welcome, {user.userName}!
-                  </div>
-                  {user.isFamilyHead && <p>You are the head of the family</p>}
-                  <FamilyInfo
-                    setRefresh={setRefresh}
-                    familyId={user.family}
-                    head={user.isFamilyHead}
-                  />
-                  <div
-                    className="flex items-center justify-between mb-10"
-                    style={{ width: "100%" }}
-                  >
-                    <UploadReceipt updateInventory={updateLocalInventory} />
-                    <button
-                      className="secondary-button"
-                      style={{ height: "fit-content" }}
-                      onClick={saveItemsToServer}
-                      disabled={inventoryData.length === 0 || isLoading}
+    <div className="main-bg">
+      <section className="relative main-bg">
+        <div className="col-span-1 px-4 mx-auto bg-white bg-opacity-50 rounded-lg max-w-7xl sm:px-6 backdrop-blur-md">
+          <div className="pt-10 pb-12 md:pt-10 md:pb-20">
+            <div className="pb-12 text-center md:pb-16">
+              {!user.family ? (
+                <Family setRefresh={setRefresh} />
+              ) : (
+                <>
+                  <h1 className="mb-10 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
+                      Inventory
+                    </span>
+                  </h1>
+                  <div style={{ width: "500px", margin: "0 auto" }}>
+                    <div
+                      style={{
+                        textAlign: "center",
+                        fontSize: "1.5rem",
+                        fontWeight: "bold",
+                        marginBottom: "20px",
+                      }}
                     >
-                      Save
-                    </button>
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="Filter by item name"
-                    value={filterValue}
-                    onChange={(e) => setFilterValue(e.target.value)}
-                    className="px-3 py-1 mb-10 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
-                  />
-                  <div className="flex justify-center mb-10 space-x-4">
-                    <button
-                      onClick={() => handleSort("name")}
-                      className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-400"
-                    >
-                      Sort by Name
-                    </button>
-                    <button
-                      onClick={() => handleSort("expiresAt")}
-                      className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-400"
-                    >
-                      Sort by Expiry Date
-                    </button>
-                  </div>
-                  <InventoryTable
-                    inventoryData={sortedInventoryData}
-                    setInventoryData={setInventoryData}
-                  />
-                  {isTableLoading ? (
-                    <div className="mt-4">
-                      <Spinner />
+                      Welcome, {user.userName}!
                     </div>
-                  ) : null}
-                </div>
-              </>
-            )}
+                    <FamilyInfo
+                      setRefresh={setRefresh}
+                      familyId={user.family}
+                      head={user.isFamilyHead}
+                    />
+                    <h2 className="mb-4 text-2xl font-semibold text-center">
+                      <span className="inline-block text-3xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
+                        Items Info
+                      </span>
+                    </h2>
+                    <div
+                      className="flex items-center justify-between mb-10"
+                      style={{ width: "100%" }}
+                    >
+                      <UploadReceipt updateInventory={updateLocalInventory} />
+                      <button
+                        className="secondary-button"
+                        style={{ height: "fit-content" }}
+                        onClick={saveItemsToServer}
+                        disabled={inventoryData.length === 0 || isLoading}
+                      >
+                        Save
+                      </button>
+                    </div>
+                    <div className="flex justify-center mb-5 space-x-4">
+                      <input
+                        type="text"
+                        placeholder="Filter by item name"
+                        value={filterValue}
+                        onChange={(e) => setFilterValue(e.target.value)}
+                        className="px-3 py-5 mb-0 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+                      />
+                      <button
+                        onClick={() => handleSort("name")}
+                        className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-400"
+                      >
+                        Sort by Name
+                      </button>
+                      <button
+                        onClick={() => handleSort("expiresAt")}
+                        className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-400"
+                      >
+                        Sort by Expiry Date
+                      </button>
+                    </div>
+                    <InventoryTable
+                      inventoryData={sortedInventoryData}
+                      setInventoryData={setInventoryData}
+                    />
+                    {isTableLoading ? (
+                      <div className="mt-4">
+                        <Spinner />
+                      </div>
+                    ) : null}
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <Footer />
+    </div>
   );
 };
 
@@ -290,17 +301,19 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
       );
       setFamilyData(updatedFamily.data);
       setRefresh((prev) => !prev);
+      notify("Member Left successfully", "success");
     } catch (error) {
       console.error("Error deleting member:", error.response.data);
+      notify("Error deleting member", "error");
     }
   };
 
-  if (head) {
+  if (false) {
     return (
       <div className="mb-10">
         {familyData ? (
           <>
-            <h2 className="text-2xl font-semibold text-center mb-4">
+            <h2 className="mb-4 text-2xl font-semibold text-center">
               <span className="inline-block text-3xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
                 Family Info
               </span>
@@ -311,11 +324,11 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
             </div>
             <div className="mb-4 text-center">
               {" "}
-              {/* Add text-center class here */}
+              {/* Add text-center className here */}
               <p className="font-semibold">Members:</p>
               <ul className="inline-block">
                 {" "}
-                {/* Add inline-block class here */}
+                {/* Add inline-block className here */}
                 {familyData.members.map((member) => (
                   <li key={member._id} className="flex items-center">
                     <span className="mr-2">{member.userName}</span>
@@ -344,37 +357,75 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
     <div className="mb-10">
       {familyData ? (
         <>
-          <h2 className="text-2xl font-semibold text-center mb-4">
+          <h2 className="mb-4 text-2xl font-semibold text-center">
             <span className="inline-block text-3xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
               Family Info
             </span>
           </h2>
           <div className="mb-4">
-            <p className="font-semibold">Family Name:</p>
-            <p>{familyData.name}</p>
-          </div>
-          <div className="mb-4 text-center">
-            {" "}
-            {/* Add text-center class here */}
-            <p className="font-semibold">Members:</p>
-            <ul className="inline-block">
-              {" "}
-              {/* Add inline-block class here */}
-              {familyData.members.map((member) => (
-                <li key={member._id} className="flex items-center">
-                  <span className="mr-2">{member.userName}</span>
-                  {member._id === userContext.user._id && (
-                    <IconButton
-                      variant="contained"
-                      color="error"
-                      onClick={() => deleteMember(member._id)}
-                    >
-                      <FiTrash2 />
-                    </IconButton>
-                  )}
-                </li>
-              ))}
-            </ul>
+            <div className="flex flex-row justify-between px-10">
+              <Button className="font-bold text-black">
+                {familyData.name}'s Family
+              </Button>
+              {userContext.user.isFamilyHead ? (
+                <Button className="font-bold">You are Head</Button>
+              ) : (
+                <Button className="font-bold">You are Member</Button>
+              )}
+            </div>
+            <table className="w-full text-sm text-left text-gray-500 rtl:text-center dark:text-gray-400">
+              <thead className="text-xs text-center text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                  <th scope="col" className="px-6 py-3 rounded-s-lg">
+                    Member name
+                  </th>
+                  <th scope="col" className="px-6 py-3 rounded-s-lg"></th>
+                  <th scope="col" className="px-6 py-3 rounded-e-lg">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="text-center">
+                {familyData.members.map(
+                  (member) =>
+                    (
+                      <tr className="bg-white dark:bg-gray-800">
+                        <th
+                          scope="row"
+                          className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        >
+                          {member.userName}
+                        </th>
+                        <td className="px-6 py-4"></td>
+                        <td className="px-6 py-4">
+                          {head && (
+                            <Button
+                              variant="contained"
+                              color="error"
+                              onClick={() => deleteMember(member._id)}
+                            >
+                              Remove
+                              <FiTrash2 size={22} />
+                            </Button>
+                          )}
+                          {/* if not head then can leave the family */}
+                          {!head && (
+                            <Button
+                              variant="contained"
+                              color="error"
+                              onClick={() => deleteMember(member._id)}
+                              disabled={member._id !== userContext.user._id}
+                            >
+                              Remove
+                              <FiTrash2 size={22} />
+                            </Button>
+                          )}
+                        </td>
+                      </tr>
+                    ) || <p>No members</p>
+                )}
+              </tbody>
+            </table>
           </div>
         </>
       ) : (
@@ -414,8 +465,13 @@ const Family = ({ setRefresh }) => {
       );
       setFamilyName("");
       console.log("Created Family");
+      notify("Family created successfully", "success");
       setRefresh((prev) => !prev);
     } catch (error) {
+      notify("Error creating family", "error");
+      if (error.response.status === 401) {
+        notify("Please login to create a family", "warning");
+      }
       console.error("Error creating family:", error.response.data);
     }
   };
@@ -433,10 +489,8 @@ const Family = ({ setRefresh }) => {
       );
       console.log("Families:", response.data);
       setFamilies(response.data);
-      // Optionally, set the list of families in state
     } catch (error) {
       console.error("Error getting families:", error.response.data);
-      // Optionally, show an error message
     }
   };
 
@@ -455,10 +509,10 @@ const Family = ({ setRefresh }) => {
         }
       );
       setRefresh((prev) => !prev);
-      // Optionally, refresh the list of families or show a success message
+      notify("Joined family successfully", "success");
     } catch (error) {
       console.error("Error joining family:", error.response.data);
-      // Optionally, show an error message
+      notify("Error joining family", "error");
     }
   };
 
@@ -506,7 +560,39 @@ const Family = ({ setRefresh }) => {
       <Typography variant="h6" gutterBottom>
         Join a Family
       </Typography>
-      {familyList}
+      {/* Render table with family and option to join */}
+      <table className="w-full text-sm text-left text-gray-500 rtl:text-center dark:text-gray-400">
+        <thead className="text-xs text-center text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" className="px-6 py-3 rounded-s-lg">
+              Family Name
+            </th>
+            <th scope="col" className="px-6 py-3 rounded-e-lg">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody className="text-center">
+          {families.map((family) => (
+            <tr className="bg-white dark:bg-gray-800">
+              <td className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                {family.name}
+              </td>
+              <td className="px-6 py-4">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleJoinFamily(family._id)}
+                >
+                  Join
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {/* {familyList} */}
     </Stack>
   );
 };
@@ -523,24 +609,8 @@ const InventoryTable = ({ inventoryData, setInventoryData }) => {
     if (!itemExists) {
       const newData = [...inventoryData, { ...newItem, isLocal: true }];
       setInventoryData(newData);
-      // try {
-      //   const token = localStorage.getItem("self_care_token");
-      //   await axios.post(
-      //     `${backendUrl}/api/item/add`,
-      //     {
-      //       items: newData,
-      //     },
-      //     {
-      //       params: { email: user.email },
-      //       headers: {
-      //         Authorization: token,
-      //       },
-      //     }
-      //   );
-      // } catch (error) {
-      //   console.error("Error adding item:", error.response.data);
-      // }
     }
+    notify("Item added successfully LOCALLY", "success");
   };
 
   const deleteItem = async (index) => {
@@ -554,6 +624,7 @@ const InventoryTable = ({ inventoryData, setInventoryData }) => {
 
     const newData = inventoryData?.filter((item, i) => i !== index);
     setInventoryData(newData);
+    notify("Item deleted successfully", "success");
   };
 
   return (
@@ -582,7 +653,8 @@ const InventoryTable = ({ inventoryData, setInventoryData }) => {
               </div>
               <div className="flex items-center">
                 <span className="mx-4 text-sm font-medium">
-                  Expiry Date: {item.expiresAt}
+                  {/* If expiry date exists add or just put todays date */}
+                  {item.expiresAt ? item.expiresAt : new Date().toDateString()}
                 </span>
                 <button
                   className="flex items-center justify-center w-5 h-5 mx-4 text-gray-500 rounded-full hover:text-red-500 hover:bg-gray-100 dark:hover:bg-gray-800"
