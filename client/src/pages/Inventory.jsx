@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import { FiTrash2 } from "react-icons/fi";
 import { notify } from "../components/Nav";
+import Footer from "../components/Footer";
 
 const Inventory = () => {
   const [inventoryData, setInventoryData] = useState([]);
@@ -160,91 +161,94 @@ const Inventory = () => {
   }, [refresh]);
 
   return (
-    <section className="relative">
-      <div className="col-span-1 px-4 mx-auto bg-white bg-opacity-50 rounded-lg max-w-7xl sm:px-6 backdrop-blur-md">
-        <div className="pt-10 pb-12 md:pt-10 md:pb-20">
-          <div className="pb-12 text-center md:pb-16">
-            {!user.family ? (
-              <Family setRefresh={setRefresh} />
-            ) : (
-              <>
-                <h1 className="mb-10 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
-                    Inventory
-                  </span>
-                </h1>
-                <div style={{ width: "500px", margin: "0 auto" }}>
-                  <div
-                    style={{
-                      textAlign: "center",
-                      fontSize: "1.5rem",
-                      fontWeight: "bold",
-                      marginBottom: "20px",
-                    }}
-                  >
-                    Welcome, {user.userName}!
-                  </div>
-                  <FamilyInfo
-                    setRefresh={setRefresh}
-                    familyId={user.family}
-                    head={user.isFamilyHead}
-                  />
-                  <h2 className="mb-4 text-2xl font-semibold text-center">
-                    <span className="inline-block text-3xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
-                      Items Info
+    <div className="main-bg">
+      <section className="relative main-bg">
+        <div className="col-span-1 px-4 mx-auto bg-white bg-opacity-50 rounded-lg max-w-7xl sm:px-6 backdrop-blur-md">
+          <div className="pt-10 pb-12 md:pt-10 md:pb-20">
+            <div className="pb-12 text-center md:pb-16">
+              {!user.family ? (
+                <Family setRefresh={setRefresh} />
+              ) : (
+                <>
+                  <h1 className="mb-10 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
+                      Inventory
                     </span>
-                  </h2>
-                  <div
-                    className="flex items-center justify-between mb-10"
-                    style={{ width: "100%" }}
-                  >
-                    <UploadReceipt updateInventory={updateLocalInventory} />
-                    <button
-                      className="secondary-button"
-                      style={{ height: "fit-content" }}
-                      onClick={saveItemsToServer}
-                      disabled={inventoryData.length === 0 || isLoading}
+                  </h1>
+                  <div style={{ width: "500px", margin: "0 auto" }}>
+                    <div
+                      style={{
+                        textAlign: "center",
+                        fontSize: "1.5rem",
+                        fontWeight: "bold",
+                        marginBottom: "20px",
+                      }}
                     >
-                      Save
-                    </button>
-                  </div>
-                  <div className="flex justify-center mb-5 space-x-4">
-                    <input
-                      type="text"
-                      placeholder="Filter by item name"
-                      value={filterValue}
-                      onChange={(e) => setFilterValue(e.target.value)}
-                      className="px-3 py-5 mb-0 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
-                    />
-                    <button
-                      onClick={() => handleSort("name")}
-                      className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-400"
-                    >
-                      Sort by Name
-                    </button>
-                    <button
-                      onClick={() => handleSort("expiresAt")}
-                      className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-400"
-                    >
-                      Sort by Expiry Date
-                    </button>
-                  </div>
-                  <InventoryTable
-                    inventoryData={sortedInventoryData}
-                    setInventoryData={setInventoryData}
-                  />
-                  {isTableLoading ? (
-                    <div className="mt-4">
-                      <Spinner />
+                      Welcome, {user.userName}!
                     </div>
-                  ) : null}
-                </div>
-              </>
-            )}
+                    <FamilyInfo
+                      setRefresh={setRefresh}
+                      familyId={user.family}
+                      head={user.isFamilyHead}
+                    />
+                    <h2 className="mb-4 text-2xl font-semibold text-center">
+                      <span className="inline-block text-3xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
+                        Items Info
+                      </span>
+                    </h2>
+                    <div
+                      className="flex items-center justify-between mb-10"
+                      style={{ width: "100%" }}
+                    >
+                      <UploadReceipt updateInventory={updateLocalInventory} />
+                      <button
+                        className="secondary-button"
+                        style={{ height: "fit-content" }}
+                        onClick={saveItemsToServer}
+                        disabled={inventoryData.length === 0 || isLoading}
+                      >
+                        Save
+                      </button>
+                    </div>
+                    <div className="flex justify-center mb-5 space-x-4">
+                      <input
+                        type="text"
+                        placeholder="Filter by item name"
+                        value={filterValue}
+                        onChange={(e) => setFilterValue(e.target.value)}
+                        className="px-3 py-5 mb-0 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+                      />
+                      <button
+                        onClick={() => handleSort("name")}
+                        className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-400"
+                      >
+                        Sort by Name
+                      </button>
+                      <button
+                        onClick={() => handleSort("expiresAt")}
+                        className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-400"
+                      >
+                        Sort by Expiry Date
+                      </button>
+                    </div>
+                    <InventoryTable
+                      inventoryData={sortedInventoryData}
+                      setInventoryData={setInventoryData}
+                    />
+                    {isTableLoading ? (
+                      <div className="mt-4">
+                        <Spinner />
+                      </div>
+                    ) : null}
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <Footer />
+    </div>
   );
 };
 

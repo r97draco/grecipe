@@ -218,8 +218,8 @@ function Nav() {
   ];
   return (
     <header
-      className={`fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out ${
-        !top && " backdrop-blur-md shadow-lg"
+      className={`fixed w-full z-30 backdrop-blur-md  md:bg-opacity-90 transition duration-300 ease-in-out shadow-lg ${
+        !top && "  "
       }`}
     >
       <div className="px-5 mx-auto max-w-8xl sm:px-6">
