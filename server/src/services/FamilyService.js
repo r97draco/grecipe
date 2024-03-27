@@ -18,6 +18,13 @@ const findAll = async () => {
 };
 
 const addMember = async (familyId, memberId) => {
+  // if family member are zero then make head true
+  const family = await Family.findById(familyId);
+  let head = false;
+  if (family.members.length === 0 || family.members === undefined) {
+    head = true;
+  }
+
   const updatedFamily = await Family.findByIdAndUpdate(
     familyId,
     {
@@ -27,7 +34,10 @@ const addMember = async (familyId, memberId) => {
   ).populate('members');
   // logger.info("Addmember in FamilyService.js");
 
-  await User.findByIdAndUpdate(memberId, { family: familyId, isFamilyHead: false});
+  await User.findByIdAndUpdate(memberId, {
+    family: familyId,
+    isFamilyHead: head,
+  });
 
   return updatedFamily;
 };
@@ -50,8 +60,6 @@ const deleteFamilyById = async (familyId) => {
   await Family.findByIdAndRemove(familyId);
   await User.updateMany({ family: familyId }, { $unset: { family: '' } });
 };
-
-
 
 module.exports = {
   createFamily,
