@@ -4,6 +4,12 @@
   box-sizing: border-box;
   font-family: "Reem Kufi", sans-serif !important;
 }
+
+.main-bg {
+  background-size: 949px 175.2px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 949 175.2" width="949" height="175.2" style="opacity: 1; filter: grayscale(0);"><text x="0em" y="1em" font-size="73" transform="rotate(15 45.625 43.8)">🥖</text><text x="1.625em" y="2em" font-size="73" transform="rotate(15 164.25 116.8)">🧀</text><text x="3.25em" y="1em" font-size="73" transform="rotate(15 282.875 43.8)">🍕</text><text x="4.875em" y="2em" font-size="73" transform="rotate(15 401.5 116.8)">🌭</text><text x="6.5em" y="1em" font-size="73" transform="rotate(15 520.125 43.8)">🍔</text><text x="8.125em" y="2em" font-size="73" transform="rotate(15 638.75 116.8)">🥗</text><text x="9.75em" y="1em" font-size="73" transform="rotate(15 757.375 43.8)">🍜</text><text x="11.375em" y="2em" font-size="73" transform="rotate(15 876 116.8)">🍝</text></svg>');
+}
+
 img {
   max-width: 100%;
   height: auto;

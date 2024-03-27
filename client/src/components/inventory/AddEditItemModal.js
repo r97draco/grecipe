@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import CreatableSelect from "react-select/creatable";
 import { getFoodOptions } from "../../utils/inventory";
 import AddItem from "./AddItem";
+import { Button } from "@mui/material";
 
 // Custom styles for react-select component
 const selectStyles = {
@@ -53,8 +54,14 @@ const AddEditItemModal = ({
   closeModal,
 }) => {
   const [name, setName] = useState(prevItem?.name || "");
-  const [quantity, setQuantity] = useState(prevItem?.quantity || 1);
-  const [expiresAt, setExpiresAt] = useState(prevItem?.expiresAt || "");
+  const [quantity, setQuantity] = useState(1);
+  // expires at is the current date by default
+  const today = new Date();
+  const todayString = today.toISOString().split("T")[0];
+  const [expiresAt, setExpiresAt] = useState(
+    prevItem?.expiresAt || todayString
+  );
+  // const [expiresAt, setExpiresAt] = useState(prevItem?.expiresAt || "");
 
   // const addItem = async () => {
   //   const response = await customFetch("/api/inventory/add", {
@@ -156,12 +163,13 @@ const AddEditItemModal = ({
           />
         </div>
 
-        <button
+        <Button
           type="submit"
           className="px-4 py-2 font-bold text-white transition-colors duration-200 transform bg-orange-500 rounded hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+          disabled={!name || name.length === 0 || name === ""}
         >
           {isEdit ? "Update item" : "Add item"}
-        </button>
+        </Button>
       </form>
     </Modal>
   );
