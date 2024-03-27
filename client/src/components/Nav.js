@@ -7,6 +7,33 @@ import { UserContext, backendUrl } from "../App";
 import { FaGoogle } from "react-icons/fa";
 import axios from "axios";
 import Logo from "../Assets/Grecipe.svg";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Button } from "@mui/material";
+
+export const notify = (message, type) => {
+  if (type === "success") {
+    toast.success(message, {
+      position: "bottom-right",
+    });
+  } else if (type === "error") {
+    toast.error(message, {
+      position: "bottom-right",
+    });
+  } else if (type === "warning") {
+    toast.warn(message, {
+      position: "bottom-right",
+    });
+  } else if (type === "info") {
+    toast.info(message, {
+      position: "bottom-right",
+    });
+  } else {
+    toast(message, {
+      position: "bottom-right",
+    });
+  }
+};
 
 function Nav() {
   const [top, setTop] = useState(true);
@@ -42,10 +69,11 @@ function Nav() {
           params: { email: email },
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then((res) => {
-          if (res.status === 200) {
+        .then(async (res) => {
+          if (res.status === 200 || res.status === 204) {
             console.log("User data fetched successfully", res.data);
             setUser(res.data);
+            notify("User logged in successfully", "success");
             navigate("/inventory");
           }
         })
@@ -66,15 +94,18 @@ function Nav() {
             );
             if (createUserResponse.status === 201) {
               console.log("User created successfully", createUserResponse.data);
+              notify("User created successfully", "success");
               setUser({ userName, email, photoURL }); // Adjust according to the actual response structure
               navigate("/inventory");
             }
           } catch (createUserError) {
             console.error("Error creating user", createUserError);
+            notify("Error creating user", "error");
           }
         });
     } catch (signInError) {
       console.error("Error during sign-in", signInError);
+      notify("Error during sign-in", "error");
     }
   };
 
@@ -140,6 +171,7 @@ function Nav() {
     try {
       await auth.signOut();
       localStorage.removeItem("self_care_token");
+      notify("User logged out successfully", "success");
       navigate("/");
       setUser({});
     } catch (err) {
@@ -167,17 +199,18 @@ function Nav() {
             setUser(response.data);
           } else if (response.status === 409) {
             console.log("Create an account!");
-            // setUserDoesNotExist(true);
           }
         } catch (err) {
           console.error(err);
           console.log("user doesn't exist");
-          // setUserDoesNotExist(true);
+          notify("Login Again", "error");
+          navigate("/");
         }
       else {
         // Handle the case when the user is not logged in
         console.log("No user logged in");
-        // setUser({});
+        notify("Login Again", "error");
+        navigate("/");
       }
     });
 
@@ -200,12 +233,9 @@ function Nav() {
           {/* Site branding */}
           <div className="flex-shrink-0 mr-4">
             {/* Logo */}
-            <div className=" nav-logo-container">
+            <Link className=" nav-logo-container" to={"/"}>
               <img src={Logo} className="h-3/4" alt="" />
-            </div>
-            {/* <Link to="/" className="block" aria-label="Cruip">
-              Grecipe
-            </Link> */}
+            </Link>
           </div>
 
           {/* Site navigation */}
@@ -267,6 +297,7 @@ function Nav() {
               )}
             </ul>
           </nav>
+          <ToastContainer />
         </div>
       </div>
     </header>
