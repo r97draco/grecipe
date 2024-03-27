@@ -6,7 +6,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Reem Kufi", sans-serif !important;
+  font-family: "Inter", serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: "Coolvetica", sans-serif !important;
 }
 img {
   max-width: 100%;
@@ -108,7 +118,7 @@ nav {
   font-size: 1.1rem;
   cursor: pointer;
   font-weight: 600;
-  color: var(--background);
+  color: white;
   transition: 0.2s;
   display: flex;
   align-items: center;
@@ -182,7 +192,7 @@ nav {
   margin: 6rem 0rem;
 }
 .contact-form-container {
-  background-color: var(--background);
+  background-color: var(--container);
   max-width: 700px;
   width: 100%;
   margin-top: 3rem;
@@ -236,7 +246,7 @@ nav {
 }
 .testimonial-section-bottom {
   margin-top: 2rem;
-  background-color: var(--background);
+  background-color: var(--container);
   padding: 1.5rem 2rem;
   display: flex;
   align-items: center;
@@ -283,7 +293,7 @@ nav {
 .work-section-info {
   width: 290px;
   min-height: 350px;
-  background-color: var(--background);
+  background-color: var(--container);
   padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
