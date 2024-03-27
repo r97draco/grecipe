@@ -13,9 +13,9 @@ const Home = () => {
           <img src={BannerBackground} alt="" />
         </div>
         <div className="home-text-section">
-          <h1 className="primary-heading">Find recipes in a jiffy</h1>
+          <h1 className="primary-heading">Find recipes in a jiffy!</h1>
           <p className="primary-text">
-            Don't have an idea what to cook? Ask us!
+            Track your groceries, discover new recipes, and more!
           </p>
           <button className="secondary-button">
             Try it Now! <FiArrowRight />{" "}

@@ -7,7 +7,7 @@ export default function RecipeModal({ recipe }) {
   return (
     <>
       <button
-        className="w-full px-6 py-3 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear bg-pink-500 rounded shadow outline-none active:bg-pink-600 hover:shadow-lg focus:outline-none"
+        className="w-full px-6 py-3 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear bg-primary-500 rounded shadow outline-none active:bg-primary-900 hover:shadow-lg focus:outline-none"
         type="button"
         onClick={() => setShowModal(true)}
       >
@@ -18,7 +18,7 @@ export default function RecipeModal({ recipe }) {
         <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-gray-900 bg-opacity-50">
           <div className="w-full max-w-5xl mx-auto bg-white rounded-lg shadow-lg max-h-[90vh] overflow-auto">
             <div className="flex flex-col w-full border-0 rounded-lg">
-              <div className="flex items-start justify-between p-5 border-b border-solid rounded-t border-gray-200 bg-gradient-to-r from-pink-500 to-pink-600">
+              <div className="flex items-start justify-between p-5 border-b border-solid rounded-t border-gray-200 bg-gradient-to-r from-primary-500 to-primary-900">
                 <h3 className="text-2xl font-semibold text-white">
                   {recipe.title}
                 </h3>

@@ -41,11 +41,12 @@ function Nav() {
   // detect whether user has scrolled the page down by 10px
   useEffect(() => {
     const scrollHandler = () => {
+      console.log("Scroll position:", window.pageYOffset);
       window.pageYOffset > 10 ? setTop(false) : setTop(true);
     };
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
-  }, [top]);
+  }, [top]);  
 
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
@@ -102,7 +103,7 @@ function Nav() {
           }
         });
     } catch (signInError) {
-      console.error("Error during sign-in", signInError);
+      console.error("Error text-transparent bg-clipduring sign-in", signInError);
       notify("Error during sign-in", "error");
     }
   };
@@ -215,6 +216,8 @@ function Nav() {
     // { to: "/", title: "Home" },
     { to: "/inventory", title: "Inventory" },
     { to: "/recipe", title: "Recipe" },
+    { to: "/share", title: "Share" }
+
   ];
   return (
     <header
@@ -259,18 +262,18 @@ function Nav() {
                     />
                   </li>
                   <li onClick={signOut}>
-                    <Link className="ml-3 text-gray-200 bg-gray-900 btn-sm hover:bg-gray-800">
+                    <Link className="ml-3  text-gray-200 bg-primary-500 btn-sm hover:bg-primary-400">
                       <span>Logout</span>
-                      <FaGoogle className="flex items-center ml-2 text-gray-400" />
+                      <FaGoogle className="flex items-center ml-2 text-gray-200" />
                     </Link>
                   </li>
                 </ul>
               ) : (
                 <>
                   <li onClick={signIn}>
-                    <Link className="ml-3 text-gray-200 bg-gray-900 btn-sm hover:bg-gray-800">
+                    <Link className="ml-3 text-gray-200 bg-primary-500 btn-sm hover:bg-primary-400">
                       <span>Join </span>
-                      <FaGoogle className="flex items-center ml-2 text-gray-400" />
+                      <FaGoogle className="flex items-center ml-2 text-gray-200" />
                     </Link>
                   </li>
                 </>
