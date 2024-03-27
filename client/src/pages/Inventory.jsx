@@ -320,11 +320,11 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
             </div>
             <div className="mb-4 text-center">
               {" "}
-              {/* Add text-center class here */}
+              {/* Add text-center className here */}
               <p className="font-semibold">Members:</p>
               <ul className="inline-block">
                 {" "}
-                {/* Add inline-block class here */}
+                {/* Add inline-block className here */}
                 {familyData.members.map((member) => (
                   <li key={member._id} className="flex items-center">
                     <span className="mr-2">{member.userName}</span>
@@ -369,14 +369,14 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
                 <Button className="font-bold">You are Member</Button>
               )}
             </div>
-            <table class="w-full text-sm text-left rtl:text-center text-gray-500 dark:text-gray-400">
-              <thead class="text-xs text-center text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+            <table className="w-full text-sm text-left text-gray-500 rtl:text-center dark:text-gray-400">
+              <thead className="text-xs text-center text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                  <th scope="col" class="px-6 py-3 rounded-s-lg">
+                  <th scope="col" className="px-6 py-3 rounded-s-lg">
                     Member name
                   </th>
-                  <th scope="col" class="px-6 py-3 rounded-s-lg"></th>
-                  <th scope="col" class="px-6 py-3 rounded-e-lg">
+                  <th scope="col" className="px-6 py-3 rounded-s-lg"></th>
+                  <th scope="col" className="px-6 py-3 rounded-e-lg">
                     Action
                   </th>
                 </tr>
@@ -385,15 +385,15 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
                 {familyData.members.map(
                   (member) =>
                     (
-                      <tr class="bg-white dark:bg-gray-800">
+                      <tr className="bg-white dark:bg-gray-800">
                         <th
                           scope="row"
-                          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                          className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                         >
                           {member.userName}
                         </th>
-                        <td class="px-6 py-4"></td>
-                        <td class="px-6 py-4">
+                        <td className="px-6 py-4"></td>
+                        <td className="px-6 py-4">
                           {head && (
                             <Button
                               variant="contained"
@@ -556,8 +556,39 @@ const Family = ({ setRefresh }) => {
       <Typography variant="h6" gutterBottom>
         Join a Family
       </Typography>
+      {/* Render table with family and option to join */}
+      <table className="w-full text-sm text-left text-gray-500 rtl:text-center dark:text-gray-400">
+        <thead className="text-xs text-center text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" className="px-6 py-3 rounded-s-lg">
+              Family Name
+            </th>
+            <th scope="col" className="px-6 py-3 rounded-e-lg">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody className="text-center">
+          {families.map((family) => (
+            <tr className="bg-white dark:bg-gray-800">
+              <td className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                {family.name}
+              </td>
+              <td className="px-6 py-4">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleJoinFamily(family._id)}
+                >
+                  Join
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-      {familyList}
+      {/* {familyList} */}
     </Stack>
   );
 };
