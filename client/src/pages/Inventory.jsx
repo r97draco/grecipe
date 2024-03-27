@@ -184,12 +184,16 @@ const Inventory = () => {
                   >
                     Welcome, {user.userName}!
                   </div>
-                  {user.isFamilyHead && <p>You are the head of the family</p>}
                   <FamilyInfo
                     setRefresh={setRefresh}
                     familyId={user.family}
                     head={user.isFamilyHead}
                   />
+                  <h2 className="mb-4 text-2xl font-semibold text-center">
+                    <span className="inline-block text-3xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-400">
+                      Items Info
+                    </span>
+                  </h2>
                   <div
                     className="flex items-center justify-between mb-10"
                     style={{ width: "100%" }}
@@ -204,14 +208,14 @@ const Inventory = () => {
                       Save
                     </button>
                   </div>
-                  <input
-                    type="text"
-                    placeholder="Filter by item name"
-                    value={filterValue}
-                    onChange={(e) => setFilterValue(e.target.value)}
-                    className="px-3 py-1 mb-10 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
-                  />
-                  <div className="flex justify-center mb-10 space-x-4">
+                  <div className="flex justify-center mb-5 space-x-4">
+                    <input
+                      type="text"
+                      placeholder="Filter by item name"
+                      value={filterValue}
+                      onChange={(e) => setFilterValue(e.target.value)}
+                      className="px-3 py-1 mb-10 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
+                    />
                     <button
                       onClick={() => handleSort("name")}
                       className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-400"
@@ -355,31 +359,51 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
             </span>
           </h2>
           <div className="mb-4">
-            <p className="font-semibold">Family Name:</p>
-            <p>{familyData.name}</p>
-          </div>
-          <div className="mb-4 text-center">
-            {" "}
-            {/* Add text-center class here */}
-            <p className="font-semibold">Members:</p>
-            <ul className="inline-block">
-              {" "}
-              {/* Add inline-block class here */}
-              {familyData.members.map((member) => (
-                <li key={member._id} className="flex items-center">
-                  <span className="mr-2">{member.userName}</span>
-                  {member._id === userContext.user._id && (
-                    <IconButton
-                      variant="contained"
-                      color="error"
-                      onClick={() => deleteMember(member._id)}
-                    >
-                      <FiTrash2 />
-                    </IconButton>
-                  )}
-                </li>
-              ))}
-            </ul>
+            <div className="flex flex-row justify-between">
+              <p className="font-light">{familyData.name}'s Family</p>
+              {head && <p>You are Head</p>}
+            </div>
+            <table class="w-full text-sm text-left rtl:text-center text-gray-500 dark:text-gray-400">
+              <thead class="text-xs text-center text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                  <th scope="col" class="px-6 py-3 rounded-s-lg">
+                    Member name
+                  </th>
+                  <th scope="col" class="px-6 py-3 rounded-s-lg"></th>
+                  <th scope="col" class="px-6 py-3 rounded-e-lg">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="text-center">
+                {familyData.members.map(
+                  (member) =>
+                    (
+                      <tr class="bg-white dark:bg-gray-800">
+                        <th
+                          scope="row"
+                          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        >
+                          {member.userName}
+                        </th>
+                        <td class="px-6 py-4"></td>
+                        <td class="px-6 py-4">
+                          {member._id === userContext.user._id && (
+                            <Button
+                              variant="contained"
+                              color="error"
+                              onClick={() => deleteMember(member._id)}
+                            >
+                              Leave
+                              <FiTrash2 size={22} />
+                            </Button>
+                          )}
+                        </td>
+                      </tr>
+                    ) || <p>No members</p>
+                )}
+              </tbody>
+            </table>
           </div>
         </>
       ) : (
@@ -572,7 +596,8 @@ const InventoryTable = ({ inventoryData, setInventoryData }) => {
               </div>
               <div className="flex items-center">
                 <span className="mx-4 text-sm font-medium">
-                  Expiry Date: {item.expiresAt}
+                  {/* If expiry date exists add or just put todays date */}
+                  {item.expiresAt ? item.expiresAt : new Date().toDateString()}
                 </span>
                 <button
                   className="flex items-center justify-center w-5 h-5 mx-4 text-gray-500 rounded-full hover:text-red-500 hover:bg-gray-100 dark:hover:bg-gray-800"
