@@ -35,6 +35,10 @@ const Recipee = () => {
       notify("Recipes fetched from Inventory", "success");
     } catch (error) {
       console.error("Error fetching recipes:", error);
+      notify("Error fetching recipes", "error");
+      if (error.response.status === 401) {
+        notify("Please login to view recipes", "info");
+      }
     }
   };
 
@@ -46,7 +50,7 @@ const Recipee = () => {
 
     try {
       const recipeData = await axios.get(
-        `${backendUrl}/api/recipes/${user.email}`,
+        `${backendUrl}/api/recipe/${user.email}`,
         {
           ingredients: ingredients,
         },
@@ -59,7 +63,11 @@ const Recipee = () => {
       setRecipes(recipeData.data.recipes);
       notify("Recipes fetched from Ingredients", "success");
     } catch (error) {
+      notify("Error fetching recipes", "error");
       console.error("Error fetching recipes:", error);
+      if (error.response.status === 401) {
+        notify("Please login to view recipes", "info");
+      }
     }
   };
 
