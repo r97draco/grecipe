@@ -6,7 +6,7 @@ export default function RecipeModal({ recipe }) {
   return (
     <>
       <button
-        className="w-full px-6 py-3 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear bg-pink-500 rounded shadow outline-none active:bg-pink-600 hover:shadow-lg focus:outline-none"
+        className="px-4 py-2 font-bold text-white bg-yellow-500 rounded-full hover:bg-orange-600"
         type="button"
         onClick={() => setShowModal(true)}
       >
