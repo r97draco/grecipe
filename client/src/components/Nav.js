@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext, backendUrl } from "../App";
 import { FaGoogle } from "react-icons/fa";
 import axios from "axios";
-import Logo from "../Assets/Grecipe.svg";
+import Logo from "../Assets/Grecipe-Logo.svg";
 import { toast, ToastContainer } from "react-toastify";
 
 export const notify = (message, type) => {
