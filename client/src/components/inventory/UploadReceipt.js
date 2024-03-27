@@ -1,5 +1,6 @@
 import { useState } from "react";
 import customFetch from "../../utils/fetchWrapper";
+import { notify } from "../Nav";
 
 const UploadReceipt = ({ updateInventory }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -23,6 +24,7 @@ const UploadReceipt = ({ updateInventory }) => {
     });
 
     setIsLoading(false);
+    notify(response.message, response.success ? "error" : "success");
 
     updateInventory(response.items);
   };

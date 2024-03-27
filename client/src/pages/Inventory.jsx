@@ -82,6 +82,7 @@ const Inventory = () => {
       }));
 
       setInventoryData(newData);
+      notify("Inventory saved to Database", "success");
     }
   };
 
@@ -98,6 +99,7 @@ const Inventory = () => {
       ];
 
       setInventoryData(newData);
+      notify("Items added Locally", "info");
     } catch (err) {
       console.log(err);
     }
