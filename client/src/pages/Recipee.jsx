@@ -3,95 +3,7 @@ import RecipeModal from "../components/RecipeModal";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { UserContext, backendUrl } from "../App";
-
-// const Recipee = () => {
-//   const [ingredients, setIngredients] = useState("onions, potato, bacon");
-//   const [recipes, setRecipes] = useState([]);
-//   const userModel = useContext(UserContext);
-//   const user = userModel.user;
-
-//   const handleIngredientChange = (event) => {
-//     setIngredients(event.target.value);
-//   };
-
-//   useEffect(() => {
-//     setRecipes(testData.recipes);
-//   }, []);
-
-//   const getRecipeFromInventory = async () => {
-//     try {
-//       const recipeData = await axios.get(
-//         `${backendUrl}/api/recipe/${user.email}`,
-//         {
-//           headers: {
-//             Authorization: `Bearer ${localStorage.getItem("self_care_token")}`,
-//           },
-//         }
-//       );
-//       setRecipes(recipeData.data.recipes);
-//     } catch (error) {
-//       console.error("Error fetching recipes:", error);
-//     }
-//   };
-
-//   const getRecipeFromIngredients = async () => {
-//     // Assuming this function is correctly implemented as your API's requirement.
-//   };
-
-//   return (
-//     <section className="relative">
-//       <div className="text-center">
-//         <h1 className="text-5xl font-bold">Recipe Finder</h1>
-//         <p>Discover recipes from your ingredients</p>
-//       </div>
-//       <div>
-//         <Button
-//           variant="contained"
-//           color="primary"
-//           onClick={getRecipeFromInventory}
-//         >
-//           Get Recipes from Inventory
-//         </Button>
-//         <Button
-//           variant="contained"
-//           color="secondary"
-//           onClick={getRecipeFromIngredients}
-//         >
-//           Get Recipes from Ingredients
-//         </Button>
-//         <textarea
-//           className="w-full p-2 border rounded"
-//           placeholder="Enter ingredients"
-//           value={ingredients}
-//           onChange={handleIngredientChange}
-//         />
-//       </div>
-//       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-//         {recipes.map((recipe) => (
-//           <div key={recipe.id} className="card">
-//             <img
-//               src={recipe.image}
-//               alt={recipe.title}
-//               className="object-cover w-full h-48"
-//             />
-//             <div className="p-4">
-//               <h3 className="text-xl font-semibold">{recipe.title}</h3>
-//               {/* Displaying used and missed ingredients if needed */}
-//               <div className="text-gray-600">
-//                 <p>Used Ingredients: {recipe.usedIngredientCount}</p>
-//                 <p>Missed Ingredients: {recipe.missedIngredientCount}</p>
-//               </div>
-//               <RecipeModal recipe={recipe} />
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Recipee;
-
+import { notify } from "../components/Nav";
 
 const Recipee = () => {
   const [ingredients, setIngredients] = useState("onions, potato, bacon");
@@ -103,15 +15,6 @@ const Recipee = () => {
 
   const handleIngredientChange = (event) => {
     setIngredients(event.target.value);
-  };
-
-  const generateRecipes = async () => {
-    try {
-      const recipeData = await fetchRecipesByIngredients(ingredients);
-      setRecipes(recipeData);
-    } catch (error) {
-      console.error("Error fetching recipes:", error);
-    }
   };
 
   const userModel = useContext(UserContext);
@@ -129,12 +32,18 @@ const Recipee = () => {
       );
       console.log("recipeData", recipeData);
       setRecipes(recipeData.data.recipes);
+      notify("Recipes fetched from Inventory", "success");
     } catch (error) {
       console.error("Error fetching recipes:", error);
     }
   };
 
   const getRecipeFromIngredients = async () => {
+    if (!ingredients) {
+      notify("Please enter ingredients", "error");
+      return;
+    }
+
     try {
       const recipeData = await axios.get(
         `${backendUrl}/api/recipes/${user.email}`,
@@ -148,6 +57,7 @@ const Recipee = () => {
         }
       );
       setRecipes(recipeData.data.recipes);
+      notify("Recipes fetched from Ingredients", "success");
     } catch (error) {
       console.error("Error fetching recipes:", error);
     }
@@ -155,39 +65,49 @@ const Recipee = () => {
 
   return (
     <section className="relative">
-      <div className="max-w-6xl px-4 mx-auto sm:px-6">
-        <div className="pt-10 pb-12 md:pt-10 md:pb-20">
-          <div className="pb-12 text-center md:pb-16">
-            <h1 className="mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-400">
-                Recipe
-              </span>
-            </h1>
-            <p className="text-xl text-gray-600 md:text-2xl">
-              A simple recipe app built with React, Express, and MongoDB.
-            </p>
-          </div>
+      <div className="col-span-1 px-4 mx-auto bg-white bg-opacity-50 rounded-lg max-w-7xl sm:px-6 backdrop-blur-md">
+        <div className="max-w-6xl px-4 mx-auto sm:px-6">
+          <div className="pt-10 pb-12 md:pt-10 md:pb-20">
+            <div className="pb-12 text-center md:pb-16">
+              <h1 className="mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-green-400">
+                  Recipe
+                </span>
+              </h1>
+              <p className="text-xl text-gray-600 md:text-2xl">
+                A simple recipe app built with React, Express, and MongoDB.
+              </p>
+            </div>
 
-          <div className="flex justify-between">
-            <Button variant="contained" onClick={() => getRecipeFromInventory()}>
-              Get Recepies from Inventory
-            </Button>
+            <div className="flex justify-between">
+              <Button
+                variant="contained"
+                onClick={() => getRecipeFromInventory()}
+              >
+                Get Recepies from Inventory
+              </Button>
 
-            <Button variant="contained" disabled={!ingredients} onClick={()=> getRecipeFromIngredients()}>Get Recepies from Ingredients</Button>
-          </div>
-          <div className="my-2">
-            Select the Inventory Items or Enter them:
-            <label className="text-gray-700" htmlFor="comment">
-              <textarea
-                className="flex-1 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                onChange={handleIngredientChange}
-                placeholder="Enter your ingredients"
-                value={ingredients}
-                rows="2"
-                // cols="40"
-              ></textarea>
-            </label>
-            {/* <button
+              <Button
+                variant="contained"
+                disabled={!ingredients}
+                onClick={() => getRecipeFromIngredients()}
+              >
+                Get Recepies from Ingredients
+              </Button>
+            </div>
+            <div className="my-2">
+              Select the Inventory Items or Enter them:
+              <label className="text-gray-700" htmlFor="comment">
+                <textarea
+                  className="flex-1 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  onChange={handleIngredientChange}
+                  placeholder="Enter your ingredients"
+                  value={ingredients}
+                  rows="2"
+                  // cols="40"
+                ></textarea>
+              </label>
+              {/* <button
               type="button"
               disabled={!ingredients}
               onClick={generateRecipes}
@@ -195,36 +115,37 @@ const Recipee = () => {
             >
               Generate Recipes
             </button> */}
-          </div>
+            </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {recipes &&
-              recipes.map((recipe) => (
-                <div
-                  className="flex flex-col overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-lg md:flex-row hover:shadow-xl"
-                  key={recipe.id}
-                >
-                  <div className="flex-shrink-0 md:w-48">
-                    <img
-                      src={recipe.image}
-                      alt={recipe.title}
-                      className="object-cover w-full h-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
-                    />
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {recipes &&
+                recipes.map((recipe) => (
+                  <div
+                    className="flex flex-col overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-lg md:flex-row hover:shadow-xl"
+                    key={recipe.id}
+                  >
+                    <div className="flex-shrink-0 md:w-48">
+                      <img
+                        src={recipe.image}
+                        alt={recipe.title}
+                        className="object-cover w-full h-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-between p-4">
+                      <h3 className="mb-2 text-xl font-semibold">
+                        {recipe.title}
+                      </h3>
+                      <p className="text-gray-700">
+                        Used Ingredients: {recipe.usedIngredientCount}
+                      </p>
+                      <p className="mb-4 text-gray-700">
+                        Missed Ingredients: {recipe.missedIngredientCount}
+                      </p>
+                      <RecipeModal recipe={recipe} setRecipe={setRecipes} />
+                    </div>
                   </div>
-                  <div className="flex flex-col justify-between p-4">
-                    <h3 className="mb-2 text-xl font-semibold">
-                      {recipe.title}
-                    </h3>
-                    <p className="text-gray-700">
-                      Used Ingredients: {recipe.usedIngredientCount}
-                    </p>
-                    <p className="mb-4 text-gray-700">
-                      Missed Ingredients: {recipe.missedIngredientCount}
-                    </p>
-                    <RecipeModal recipe={recipe} setRecipe={setRecipes} />
-                  </div>
-                </div>
-              ))}
+                ))}
+            </div>
           </div>
         </div>
       </div>
