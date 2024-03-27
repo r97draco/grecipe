@@ -1,6 +1,12 @@
 @tailwind base;
 @tailwind components;
-
+:root {
+    --text: #1c1208;
+    --background: #fefcfb;
+    --primary: #ef851a;
+    --secondary: #93c7e1;
+    --accent: #1a85ef;
+  }
 /* Additional styles */
 @import "css/additional-styles/utility-patterns.css";
 @import "css/additional-styles/range-slider.css";
