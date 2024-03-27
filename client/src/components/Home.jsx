@@ -1,4 +1,5 @@
 import React from "react";
+import { ReactTyped } from "react-typed";
 import BannerBackground from "../Assets/home-banner-background.png";
 import BannerImage from "../Assets/home-banner-image.png";
 import Navbar from "./Navbar";
@@ -13,10 +14,24 @@ const Home = () => {
           <img src={BannerBackground} alt="" />
         </div>
         <div className="home-text-section">
-          <h1 className="primary-heading">Find recipes in a jiffy!</h1>
-          <p className="primary-text">
-            Track your groceries, discover new recipes, and more!
-          </p>
+          <h1 className="primary-heading">We built a platform where you can
+            <ReactTyped
+              className="primary-heading"
+              strings={[
+                "Scan your receipts",
+                "Track your groceries",
+                "Find new recipes",
+              ]}
+              typeSpeed={40}
+              backSpeed={50}
+              attr="placeholder"
+
+              loop
+            >
+              <input type="text" />
+            </ReactTyped>
+          </h1>
+
           <button className="secondary-button">
             Try it Now! <FiArrowRight />{" "}
           </button>

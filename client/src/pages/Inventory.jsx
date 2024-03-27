@@ -161,7 +161,7 @@ const Inventory = () => {
   }, [refresh]);
 
   return (
-    <div className="main-bg">
+    <div >
       <section className="relative main-bg">
         <div className="col-span-1 px-4 mx-auto bg-white bg-opacity-50 rounded-lg max-w-7xl sm:px-6 backdrop-blur-md">
           <div className="pt-10 pb-12 md:pt-10 md:pb-20">
