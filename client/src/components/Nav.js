@@ -8,8 +8,6 @@ import { FaGoogle } from "react-icons/fa";
 import axios from "axios";
 import Logo from "../Assets/Grecipe.svg";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { Button } from "@mui/material";
 
 export const notify = (message, type) => {
   if (type === "success") {
@@ -203,14 +201,10 @@ function Nav() {
         } catch (err) {
           console.error(err);
           console.log("user doesn't exist");
-          notify("Login Again", "error");
-          navigate("/");
         }
       else {
         // Handle the case when the user is not logged in
         console.log("No user logged in");
-        notify("Login Again", "error");
-        navigate("/");
       }
     });
 
