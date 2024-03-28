@@ -44,7 +44,7 @@ const Recipee = () => {
   };
 
   const getRecipeFromIngredients = async () => {
-    if (!ingredients) {
+    if (!ingredients || ingredients.length === 0 || ingredients.trim() === "") {
       notify("Please enter ingredients", "error");
       return;
     }
@@ -84,9 +84,7 @@ const Recipee = () => {
             <div className="max-w-3xl mx-auto md:text-center">
               <div className="pb-12 text-center md:pb-16">
                 <h1 className="mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
-                  <span className="text-primary-500">
-                    Recipe
-                  </span>
+                  <span className="text-primary-500">Recipe</span>
                 </h1>
                 <p className="text-xl text-gray-900 md:text-lg">
                   View all the recipes you can make with the ingredients you
@@ -104,7 +102,11 @@ const Recipee = () => {
                 <button
                   disabled={!ingredients}
                   onClick={() => getRecipeFromIngredients()}
-                  className="px-4 py-2 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600"
+                  className={`px-4 py-2 font-bold text-white rounded-full ${
+                    !ingredients
+                      ? "bg-gray-300 cursor-not-allowed"
+                      : "bg-orange-500 hover:bg-orange-600"
+                  }`}
                 >
                   Get Recipes from Ingredients
                 </button>
@@ -118,7 +120,7 @@ const Recipee = () => {
                     placeholder="Enter your ingredients"
                     value={ingredients}
                     rows="2"
-                  // cols="40"
+                    // cols="40"
                   ></textarea>
                 </label>
               </div>
@@ -155,7 +157,6 @@ const Recipee = () => {
             </div>
           </div>
         </div>
-
       </section>
       <Footer />
     </div>
