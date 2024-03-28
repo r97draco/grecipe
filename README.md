@@ -1,4 +1,3 @@
-
 # Grecipe CS 476 Project
 
 ## Overview
