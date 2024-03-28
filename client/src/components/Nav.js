@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext, backendUrl } from "../App";
 import { FaGoogle } from "react-icons/fa";
 import axios from "axios";
-import Logo from "../Assets/Grecipe.svg";
+import Logo from "../Assets/Grecipe-Logo.svg";
 import { toast, ToastContainer } from "react-toastify";
 
 export const notify = (message, type) => {
@@ -102,7 +102,10 @@ function Nav() {
           }
         });
     } catch (signInError) {
-      console.error("Error during sign-in", signInError);
+      console.error(
+        "Error text-transparent bg-clipduring sign-in",
+        signInError
+      );
       notify("Error during sign-in", "error");
     }
   };
@@ -212,7 +215,6 @@ function Nav() {
   }, [setUser]);
 
   const links = [
-    // { to: "/", title: "Home" },
     { to: "/inventory", title: "Inventory" },
     { to: "/recipe", title: "Recipe" },
   ];
@@ -259,18 +261,18 @@ function Nav() {
                     />
                   </li>
                   <li onClick={signOut}>
-                    <Link className="ml-3 text-gray-200 bg-gray-900 btn-sm hover:bg-gray-800">
+                    <Link className="ml-3 text-gray-200 bg-primary-500 btn-sm hover:bg-primary-400">
                       <span>Logout</span>
-                      <FaGoogle className="flex items-center ml-2 text-gray-400" />
+                      <FaGoogle className="flex items-center ml-2 text-gray-200" />
                     </Link>
                   </li>
                 </ul>
               ) : (
                 <>
                   <li onClick={signIn}>
-                    <Link className="ml-3 text-gray-200 bg-gray-900 btn-sm hover:bg-gray-800">
+                    <Link className="ml-3 text-gray-200 bg-primary-500 btn-sm hover:bg-primary-400">
                       <span>Join </span>
-                      <FaGoogle className="flex items-center ml-2 text-gray-400" />
+                      <FaGoogle className="flex items-center ml-2 text-gray-200" />
                     </Link>
                   </li>
                 </>

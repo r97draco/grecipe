@@ -1,8 +1,22 @@
+
+
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Reem Kufi", sans-serif !important;
+  font-family: "Inter", serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: "Coolvetica", sans-serif !important;
 }
 
 .main-bg {
@@ -26,7 +40,7 @@ body {
 }
 
 body {
-  background-color: #f6f6f6;
+  background-color: var(--background);
 }
 
 nav {
@@ -47,7 +61,7 @@ nav {
 }
 .primary-button {
   padding: 0.9rem 1.75rem;
-  background-color: white;
+  background-color: var(--background);
   outline: none;
   border: none;
   border-radius: 5rem;
@@ -60,7 +74,7 @@ nav {
   font-size: 1.15rem;
 }
 .primary-button:hover {
-  background-color: rgb(234, 234, 234);
+  background-color: var(--background);
 }
 .navbar-menu-container svg {
   font-size: 1.5rem;
@@ -103,7 +117,7 @@ nav {
 }
 .secondary-button {
   padding: 1rem 2.5rem;
-  background-color: #fe9e0d;
+  background-color: var(--primary);
   outline: none;
   border: none;
   border-radius: 5rem;
@@ -147,7 +161,7 @@ nav {
 }
 .primary-subheading {
   font-weight: 700;
-  color: #fe9e0d;
+  color: var(--primary);
   font-size: 1.15rem;
 }
 .about-buttons-container {
@@ -184,7 +198,7 @@ nav {
   margin: 6rem 0rem;
 }
 .contact-form-container {
-  background-color: white;
+  background-color: var(--container);
   max-width: 700px;
   width: 100%;
   margin-top: 3rem;
@@ -238,7 +252,7 @@ nav {
 }
 .testimonial-section-bottom {
   margin-top: 2rem;
-  background-color: white;
+  background-color: var(--container);
   padding: 1.5rem 2rem;
   display: flex;
   align-items: center;
@@ -261,7 +275,7 @@ nav {
 .testimonials-stars-container svg {
   margin: 0rem 0.25rem;
   font-size: 1.5rem;
-  color: #fe9e0d;
+  color: var(--primary);
 }
 .testimonial-section-bottom h2 {
   margin-top: 1.5rem;
@@ -285,7 +299,7 @@ nav {
 .work-section-info {
   width: 290px;
   min-height: 350px;
-  background-color: white;
+  background-color: var(--container);
   padding: 1rem 2rem;
   display: flex;
   flex-direction: column;

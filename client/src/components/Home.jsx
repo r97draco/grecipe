@@ -1,4 +1,6 @@
 import React from "react";
+import { ReactTyped } from "react-typed";
+import { Typewriter } from "typewriter-effect";
 import BannerBackground from "../Assets/home-banner-background.png";
 import BannerImage from "../Assets/home-banner-image.png";
 import Navbar from "./Navbar";
@@ -13,10 +15,26 @@ const Home = () => {
           <img src={BannerBackground} alt="" />
         </div>
         <div className="home-text-section">
-          <h1 className="primary-heading">Find recipes in a jiffy</h1>
-          <p className="primary-text">
-            Don't have an idea what to cook? Ask us!
-          </p>
+          <h1 className="bg-transparent primary-heading">We built a platform where you can
+            
+            <ReactTyped
+              style={{ backgroundColor: "transparent"}}
+              className=""
+              strings={[
+                "Scan your receipts",
+                "Track your groceries",
+                "Find new recipe",
+              ]}
+              typeSpeed={40}
+              backSpeed={50}
+              attr="placeholder"
+
+              loop
+            >
+              <input type="text" />
+            </ReactTyped>
+          </h1>
+
           <button className="secondary-button">
             Try it Now! <FiArrowRight />{" "}
           </button>

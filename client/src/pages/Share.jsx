@@ -6,7 +6,7 @@ import { UserContext, backendUrl } from "../App";
 import { notify } from "../components/Nav";
 import Footer from "../components/Footer";
 
-const Recipee = () => {
+const Share = () => {
   const [ingredients, setIngredients] = useState("onions, potato, bacon");
   const [recipes, setRecipes] = useState([]);
 
@@ -85,12 +85,11 @@ const Recipee = () => {
               <div className="pb-12 text-center md:pb-16">
                 <h1 className="mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl leading-tighter">
                   <span className="text-primary-500">
-                    Recipe
+                    Share
                   </span>
                 </h1>
                 <p className="text-xl text-gray-900 md:text-lg">
-                  View all the recipes you can make with the ingredients you
-                  have!!
+                  Share your recipes with the rest of the world
                 </p>
               </div>
 
@@ -162,7 +161,7 @@ const Recipee = () => {
   );
 };
 
-export default Recipee;
+export default Share;
 
 const fetchRecipesByIngredients = async (ingredients) => {
   const apiKey = process.env.REACT_APP_SPOON_KEY; // Replace with your Spoonacular API key
