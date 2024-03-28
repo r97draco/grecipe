@@ -7,7 +7,7 @@ import { UserContext, backendUrl } from "../App";
 import { FaGoogle } from "react-icons/fa";
 import axios from "axios";
 import Logo from "../Assets/Grecipe-Logo.svg";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 export const notify = (message, type) => {
   if (type === "success") {
@@ -41,7 +41,7 @@ function Nav() {
   // detect whether user has scrolled the page down by 10px
   useEffect(() => {
     const scrollHandler = () => {
-      window.pageYOffset > 10 ? setTop(false) : setTop(true);
+      window.screenY > 10 ? setTop(false) : setTop(true);
     };
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
@@ -76,7 +76,6 @@ function Nav() {
           }
         })
         .catch(async (error) => {
-          // Assuming error response indicates user doesn't exist
           console.log("User doesn't exist, creating user...");
           try {
             const createUserResponse = await axios.post(
@@ -107,64 +106,6 @@ function Nav() {
         signInError
       );
       notify("Error during sign-in", "error");
-    }
-  };
-
-  // const signIn = async () => {
-  //   try {
-  //     const result = await signInWithPopup(auth, provider);
-  //     console.log("Result of SignIn", result);
-  //     const userName = result.user.displayName;
-  //     const email = result.user.email;
-  //     const photoURL = result.user.photoURL;
-  //     const token = await result.user.getIdToken();
-  //     setUser({ userName, email, photoURL });
-  //     localStorage.setItem("self_care_token", token);
-  //     const response = await axios
-  //       .get(`${backendUrl}/api/user/getuser`, {
-  //         params: {
-  //           email: email,
-  //         },
-  //         headers: {
-  //           Authorization: token,
-  //         },
-  //       })
-  //       .then((res) => {
-  //         if (res.status === 200) {
-  //           console.log(res.data, "data");
-  //           setUser(res.data);
-  //         } else if (res.status === 409) {
-  //           console.log("Create an account!");
-  //           // createUser();
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log("user doesn't exist");
-  //       });
-  //     // const response = await axios.post(`${backendUrl}/api/user/createuser`, { userName, email }, {headers: token});
-  //     console.log("response", response);
-  //     console.log(token);
-  //     navigate("/inventory");
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  const createUser = async () => {
-    console.log("Creating user");
-    try {
-      axios
-        .post(`${backendUrl}/api/user/createuser`, {
-          email: user.email,
-          userName: user.userName,
-          photoURL: user.photoURL,
-        })
-        .then((res) => {
-          console.log(res);
-          console.log("User created");
-        });
-    } catch (err) {
-      console.log(err);
     }
   };
 
@@ -206,7 +147,6 @@ function Nav() {
           console.log("user doesn't exist");
         }
       else {
-        // Handle the case when the user is not logged in
         console.log("No user logged in");
       }
     });
@@ -226,15 +166,12 @@ function Nav() {
     >
       <div className="px-5 mx-auto max-w-8xl sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Site branding */}
           <div className="flex-shrink-0 mr-4">
-            {/* Logo */}
             <Link className=" nav-logo-container" to={"/"}>
               <img src={Logo} className="h-3/4" alt="" />
             </Link>
           </div>
 
-          {/* Site navigation */}
           <nav className="flex flex-grow">
             <ul className="flex flex-wrap items-center justify-end flex-grow">
               {links.map((link) => (

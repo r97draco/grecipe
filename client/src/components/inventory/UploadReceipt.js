@@ -1,7 +1,6 @@
 import { useState } from "react";
 import customFetch from "../../utils/fetchWrapper";
 import { notify } from "../Nav";
-import { Button } from "@mui/material";
 
 const UploadReceipt = ({ updateInventory }) => {
   const [isLoading, setIsLoading] = useState(false);

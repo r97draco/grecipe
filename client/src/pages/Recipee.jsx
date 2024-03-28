@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import RecipeModal from "../components/RecipeModal";
-import { Button } from "@mui/material";
 import axios from "axios";
 import { UserContext, backendUrl } from "../App";
 import { notify } from "../components/Nav";
@@ -73,10 +72,6 @@ const Recipee = () => {
   };
 
   return (
-    // <section className="relative main-bg">
-    //   <div className="px-4 mx-auto bg-white bg-opacity-50 rounded-lg max-w-7xl sm:px-6 backdrop-blur-md">
-    //     <div className="max-w-6xl px-4 mx-auto sm:px-6">
-    //       <div className="pt-10 pb-12 md:pt-10 md:pb-20">
     <div>
       <section className="relative main-bg">
         <div className="max-w-6xl px-4 mx-auto bg-gray-100 rounded-md sm:px-6 ">
@@ -164,24 +159,6 @@ const Recipee = () => {
 };
 
 export default Recipee;
-
-const fetchRecipesByIngredients = async (ingredients) => {
-  const apiKey = process.env.REACT_APP_SPOON_KEY; // Replace with your Spoonacular API key
-  const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodeURIComponent(
-    ingredients
-  )}&apiKey=${apiKey}`;
-
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error in fetchRecipesByIngredients:", error);
-    return [];
-  }
-};
 
 const testData = {
   recipes: [

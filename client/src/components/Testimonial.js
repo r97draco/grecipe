@@ -6,7 +6,6 @@ const Testimonial = () => {
   return (
     <div className="work-section-wrapper">
       <div className="work-section-top">
-        {/* <p className="primary-subheading">Testimonial</p> */}
         <h1 className="primary-heading">What They Are Saying</h1>
         <p className="primary-text">
           Our users love the convenience and efficiency our app provides. Here's
@@ -21,7 +20,7 @@ const Testimonial = () => {
           feature is incredibly handy, and the recipe suggestions are always a
           hit. Highly recommended!"
         </p>
-        <div className="testimonials-stars-container flex">
+        <div className="flex testimonials-stars-container">
           <AiFillStar />
           <AiFillStar />
           <AiFillStar />

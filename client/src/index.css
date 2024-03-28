@@ -1,25 +1,24 @@
 @tailwind base;
 @tailwind components;
 :root {
-    --text: #1c1208;
-    --background: #f5f5dc;
-    --container: #fefcfb;
-    --primary: #ef851a;
-    --secondary: #93c7e1;
-    --accent: #1a85ef;
-  }
+  --text: #1c1208;
+  --background: #f5f5dc;
+  --container: #fefcfb;
+  --primary: #ef851a;
+  --secondary: #93c7e1;
+  --accent: #1a85ef;
+}
 /* Additional styles */
 @import "css/additional-styles/utility-patterns.css";
 @import "css/additional-styles/range-slider.css";
 @import "css/additional-styles/toggle-switch.css";
-/* @import "css/additional-styles/theme.css"; */
 
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=fallback");
 @font-face {
-    font-family:Coolvetica;
-    src:url(Assets/fonts/coolvetica\ rg.otf) format("opentype");
-    font-weight:400;
-    font-display:swap
-  }
+  font-family: Coolvetica;
+  src: url(Assets/fonts/coolvetica\ rg.otf) format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}

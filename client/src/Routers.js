@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 import Landing from "./pages/Landing";
 import Inventory from "./pages/Inventory";
-import Share from "./pages/Share";
 import Recipee from "./pages/Recipee";
 
 import Nav from "./components/Nav";
