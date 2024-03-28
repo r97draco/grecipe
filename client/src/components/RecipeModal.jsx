@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./RecipeModal.css";
+import "../css/RecipeModal.css";
 
 export default function RecipeModal({ recipe }) {
   const [showModal, setShowModal] = useState(false);
@@ -7,7 +7,7 @@ export default function RecipeModal({ recipe }) {
   return (
     <>
       <button
-        className="w-full px-6 py-3 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear bg-primary-500 rounded shadow outline-none active:bg-primary-900 hover:shadow-lg focus:outline-none"
+        className="w-full px-6 py-3 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-primary-500 active:bg-primary-900 hover:shadow-lg focus:outline-none"
         type="button"
         onClick={() => setShowModal(true)}
       >
@@ -18,7 +18,7 @@ export default function RecipeModal({ recipe }) {
         <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-gray-900 bg-opacity-50">
           <div className="w-full max-w-5xl mx-auto bg-white rounded-lg shadow-lg max-h-[90vh] overflow-auto">
             <div className="flex flex-col w-full border-0 rounded-lg">
-              <div className="flex items-start justify-between p-5 border-b border-solid rounded-t border-gray-200 bg-gradient-to-r from-primary-500 to-primary-900">
+              <div className="flex items-start justify-between p-5 border-b border-gray-200 border-solid rounded-t bg-gradient-to-r from-primary-500 to-primary-900">
                 <h3 className="text-2xl font-semibold text-white">
                   {recipe.title}
                 </h3>
@@ -56,12 +56,12 @@ export default function RecipeModal({ recipe }) {
                     {recipe.usedIngredients.map((ingredient, index) => (
                       <li
                         key={index}
-                        className="my-2 flex items-center bg-gray-100 rounded-lg p-4"
+                        className="flex items-center p-4 my-2 bg-gray-100 rounded-lg"
                       >
                         <img
                           src={ingredient.image}
                           alt={ingredient.name}
-                          className="w-8 h-8 rounded-full mr-2"
+                          className="w-8 h-8 mr-2 rounded-full"
                         />
                         <span>{ingredient.original}</span>
                       </li>
@@ -75,12 +75,12 @@ export default function RecipeModal({ recipe }) {
                     {recipe.missedIngredients.map((ingredient, index) => (
                       <li
                         key={index}
-                        className="my-2 flex items-center bg-gray-100 rounded-lg p-4"
+                        className="flex items-center p-4 my-2 bg-gray-100 rounded-lg"
                       >
                         <img
                           src={ingredient.image}
                           alt={ingredient.name}
-                          className="w-8 h-8 rounded-full mr-2"
+                          className="w-8 h-8 mr-2 rounded-full"
                         />
                         <span>{ingredient.original}</span>
                       </li>
@@ -95,12 +95,12 @@ export default function RecipeModal({ recipe }) {
                       {recipe.unusedIngredients.map((ingredient, index) => (
                         <li
                           key={index}
-                          className="my-2 flex items-center bg-gray-100 rounded-lg p-4"
+                          className="flex items-center p-4 my-2 bg-gray-100 rounded-lg"
                         >
                           <img
                             src={ingredient.image}
                             alt={ingredient.name}
-                            className="w-8 h-8 rounded-full mr-2"
+                            className="w-8 h-8 mr-2 rounded-full"
                           />
                           <span>{ingredient.original}</span>
                         </li>

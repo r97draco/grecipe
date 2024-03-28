@@ -6,7 +6,6 @@ const getRecipes = async (req, res, next) => {
   const { userId } = req.params;
   console.log('Get recipes hit');
   try {
-    // const user = await userService.getUserById(userId);
     const user = await userService.getUserByEmail(userId);
     const ingredients = await itemsService.getItemsByFamily(user.family);
     console.log(ingredients);

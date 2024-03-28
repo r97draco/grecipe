@@ -12,7 +12,6 @@ const getItemsByFamily = async (req, res, next) => {
   }
 };
 
-//Need to fix this function
 const createItem = async (req, res, next) => {
   try {
     const item = await GroceryItemService.createItem(req.body);

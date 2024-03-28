@@ -7,7 +7,7 @@ import axios from "axios";
 import Spinner from "../components/Spinner";
 import { useContext } from "react";
 import { UserContext } from "../App";
-import "./Inventory.css";
+import "../css/Inventory.css";
 import {
   Button,
   IconButton,
@@ -163,7 +163,7 @@ const Inventory = () => {
   return (
     <div>
       <section className="relative main-bg">
-        <div className="col-span-1 px-4 mx-auto bg-white bg-opacity-50 rounded-lg max-w-7xl sm:px-6 backdrop-blur-md">
+        <div className="max-w-6xl col-span-1 px-4 mx-auto bg-white rounded-lg s sm:px-6 ">
           <div className="pt-10 pb-12 md:pt-10 md:pb-20">
             <div className="pb-12 text-center md:pb-16">
               {!user.family ? (
@@ -202,7 +202,7 @@ const Inventory = () => {
                     >
                       <UploadReceipt updateInventory={updateLocalInventory} />
                       <button
-                        className="secondary-button"
+                        className="px-5 py-5 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 s"
                         style={{ height: "fit-content" }}
                         onClick={saveItemsToServer}
                         disabled={inventoryData.length === 0 || isLoading}
@@ -519,16 +519,6 @@ const Family = ({ setRefresh }) => {
     }
   };
 
-  // create a list of families name with a button to join
-  const familyList = families.map((family) => (
-    <div key={family._id} className="flex items-center justify-between mb-4">
-      <p>{family.name}</p>
-      <Button variant="contained" onClick={() => handleJoinFamily(family._id)}>
-        Join
-      </Button>
-    </div>
-  ));
-
   useEffect(() => {
     getAllFamilies();
   }, []);
@@ -603,7 +593,6 @@ const Family = ({ setRefresh }) => {
 export default Inventory;
 
 const InventoryTable = ({ inventoryData, setInventoryData }) => {
-  const user = useContext(UserContext);
   const addItem = async (newItem) => {
     const itemExists = inventoryData?.find(
       (item) => item.name === newItem.name

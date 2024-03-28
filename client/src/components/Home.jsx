@@ -1,15 +1,12 @@
 import React from "react";
 import { ReactTyped } from "react-typed";
-import { Typewriter } from "typewriter-effect";
 import BannerBackground from "../Assets/home-banner-background.png";
 import BannerImage from "../Assets/home-banner-image.png";
-import Navbar from "./Navbar";
 import { FiArrowRight } from "react-icons/fi";
 
 const Home = () => {
   return (
     <div className="home-container">
-      {/* <Navbar /> */}
       <div className="home-banner-container">
         <div className="home-bannerImage-container">
           <img src={BannerBackground} alt="" />
@@ -17,7 +14,6 @@ const Home = () => {
         <div className="home-text-section">
           <h1 className="bg-transparent primary-heading">
             We built a platform where you can{" "}
-            {/* <span className="font-bold text-primary-500">find Recipes</span> */}
             <ReactTyped
               style={{ backgroundColor: "transparent" }}
               className="font-bold font-coolvetica text-primary-500 "
@@ -28,11 +24,8 @@ const Home = () => {
               ]}
               typeSpeed={40}
               backSpeed={50}
-              // attr="placeholder"
               loop
             />
-            {/* <input type="text" /> */}
-            {/* </ReactTyped> */}
           </h1>
 
           <button className="secondary-button">
