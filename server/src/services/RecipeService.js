@@ -10,14 +10,12 @@ const SpoonacularService = {
       ingredients: ingredients.join(','),
       number:10,
       ...preferences,
-      // includeNutrition: true // Request to include nutrition information
     };
 
     try {
       const response = await axios.get(apiUrl, { params: queryParams });
       const recipes = response.data.map((recipe) => ({
         ...recipe,
-        // calories: recipe.nutrition.caloricBreakdown.percentProtein
       }));
       return recipes;
     } catch (error) {

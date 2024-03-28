@@ -10,37 +10,15 @@ const validate = require('../middlewares/validate');
 const userSchema = require('../validation/ValUser');
 const router = express.Router();
 
-router.get(
-  '/getuser',
-  // validate(userSchema.getUser),
-  // authMiddleware,
-  getUser
-);
+router.get('/getuser', getUser);
 
-router.delete(
-  '/:userId',
-  validate(userSchema.deleteUser),
-  // authMiddleware,
-  deleteUser
-);
+router.delete('/:userId', validate(userSchema.deleteUser), deleteUser);
 
-router.post(
-  '/createuser',
-  validate(userSchema.createUser),
-  // authMiddleware,
-  createUser
-);
+router.post('/createuser', validate(userSchema.createUser), createUser);
 
-router.put(
-  '/updateuser/:userId',
-  validate(userSchema.updateUser),
-  // authMiddleware,
-  updateUser
-);
+router.put('/updateuser/:userId', validate(userSchema.updateUser), updateUser);
 
-router.get('/testinguser', 
-// authMiddleware, 
-(req, res) => {
+router.get('/testinguser', (req, res) => {
   res.send('Hello World!');
 });
 
