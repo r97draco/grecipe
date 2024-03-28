@@ -15,11 +15,12 @@ const Home = () => {
           <img src={BannerBackground} alt="" />
         </div>
         <div className="home-text-section">
-          <h1 className="bg-transparent primary-heading">We built a platform where you can
-            
+          <h1 className="bg-transparent primary-heading">
+            We built a platform where you can{" "}
+            {/* <span className="font-bold text-primary-500">find Recipes</span> */}
             <ReactTyped
-              style={{ backgroundColor: "transparent"}}
-              className=""
+              style={{ backgroundColor: "transparent" }}
+              className="font-bold font-coolvetica text-primary-500 "
               strings={[
                 "Scan your receipts",
                 "Track your groceries",
@@ -27,12 +28,11 @@ const Home = () => {
               ]}
               typeSpeed={40}
               backSpeed={50}
-              attr="placeholder"
-
+              // attr="placeholder"
               loop
-            >
-              <input type="text" />
-            </ReactTyped>
+            />
+            {/* <input type="text" /> */}
+            {/* </ReactTyped> */}
           </h1>
 
           <button className="secondary-button">
