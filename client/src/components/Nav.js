@@ -41,7 +41,6 @@ function Nav() {
   // detect whether user has scrolled the page down by 10px
   useEffect(() => {
     const scrollHandler = () => {
-      console.log("Scroll position:", window.pageYOffset);
       window.pageYOffset > 10 ? setTop(false) : setTop(true);
     };
     window.addEventListener("scroll", scrollHandler);
