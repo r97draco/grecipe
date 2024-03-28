@@ -8,7 +8,7 @@ const createFamily = async (req, res, next) => {
     isFamilyHead: req.body.isFamilyHead,
     userId: req.body.userId,
   };
-  console.log('familyData', familyData)
+  console.log('familyData', familyData);
   try {
     const family = await familyService.createFamily(familyData);
     const user = await userService.updateUserByIdForFamily(
@@ -23,7 +23,6 @@ const createFamily = async (req, res, next) => {
 
 const getAllFamilies = async (req, res, next) => {
   try {
-    // Assuming the method to get all families in the service is named findAll
     const families = await familyService.findAll();
     res.status(200).json(families);
   } catch (err) {
@@ -43,40 +42,6 @@ const getFamily = async (req, res, next) => {
     next(err);
   }
 };
-
-// const updateFamilyMembers = async (req, res, next) => {
-//   const { action, memberId } = req.body;
-
-//   try {
-//     let updatedFamily;
-//     if (action === 'add') {
-//       updatedFamily = await familyService.addMember(
-//         req.params.familyId,
-//         memberId
-//       );
-//     } else if (action === 'remove') {
-//       updatedFamily = await familyService.removeMember(
-//         req.params.familyId,
-//         memberId
-//       );
-//     } else {
-//       return res.status(400).json({ message: 'Invalid action' });
-//     }
-
-//     if (updatedFamily) {
-//       res.status(200).json({
-//         message: `Member ${action === 'add' ? 'added to' : 'removed from'} family successfully`,
-//         family: updatedFamily,
-//       });
-//     } else {
-//       res.status(404).json({ message: 'Family not found' });
-//     }
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
-
 
 const updateFamilyMembers = async (req, res, next) => {
   const { action, memberId } = req.body;

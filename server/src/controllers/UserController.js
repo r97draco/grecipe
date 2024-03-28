@@ -17,8 +17,6 @@ const createUser = async (req, res, next) => {
   }
 };
 
-
-
 const getUser = async (req, res, next) => {
   console.log('Get User Hit');
   try {
@@ -79,24 +77,6 @@ const updateUser = async (req, res, next) => {
     next(err);
   }
 };
-
-// const updateUser = async (req, res, next) => {
-//   const updateData = {
-//     email: req.body.email,
-//     userName: req.body.userName,
-//     isFamilyHead: req.body.isFamilyHead,
-//     family: req.body.familyId,
-//   };
-//   try {
-//     const user = await userService.updateUserById(
-//       req.params.userId,
-//       updateData
-//     );
-//     res.status(200).json(user);
-//   } catch (err) {
-//     next(err);
-//   }
-// };
 
 const deleteUser = async (req, res, next) => {
   try {

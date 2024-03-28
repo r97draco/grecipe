@@ -29,8 +29,6 @@ const deleteUserById = async (userId) => {
   if (!user) {
     throw new ApiError(404, 'User not found');
   }
-  // await user.remove();
-  // await UserModel.findByIdAndDelete(userId);
   const result = await UserModel.deleteOne({
     _id: userId,
   });
