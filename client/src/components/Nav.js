@@ -46,7 +46,7 @@ function Nav() {
     };
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
-  }, [top]);  
+  }, [top]);
 
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
@@ -103,7 +103,10 @@ function Nav() {
           }
         });
     } catch (signInError) {
-      console.error("Error text-transparent bg-clipduring sign-in", signInError);
+      console.error(
+        "Error text-transparent bg-clipduring sign-in",
+        signInError
+      );
       notify("Error during sign-in", "error");
     }
   };
@@ -216,8 +219,6 @@ function Nav() {
     // { to: "/", title: "Home" },
     { to: "/inventory", title: "Inventory" },
     { to: "/recipe", title: "Recipe" },
-    { to: "/share", title: "Share" }
-
   ];
   return (
     <header
@@ -262,7 +263,7 @@ function Nav() {
                     />
                   </li>
                   <li onClick={signOut}>
-                    <Link className="ml-3  text-gray-200 bg-primary-500 btn-sm hover:bg-primary-400">
+                    <Link className="ml-3 text-gray-200 bg-primary-500 btn-sm hover:bg-primary-400">
                       <span>Logout</span>
                       <FaGoogle className="flex items-center ml-2 text-gray-200" />
                     </Link>

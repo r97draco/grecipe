@@ -16,13 +16,11 @@ const Routers = () => {
       <main className="flex-grow">
         <Nav />
         {/*  Page sections */}
-        {/* <section className="relative"> */}
         <div className="px-4 mx-auto sm:px-6">
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/inventory" element={<Inventory />} />
             <Route path="/recipe" element={<Recipee />} />
-            <Route path="/share" element={<Share />} />
           </Routes>
         </div>
         {/* </section> */}
