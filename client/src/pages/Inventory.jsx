@@ -202,7 +202,7 @@ const Inventory = () => {
                     >
                       <UploadReceipt updateInventory={updateLocalInventory} />
                       <button
-                        className="secondary-button"
+                        className="px-5 py-5 font-bold text-white bg-orange-500 rounded-full hover:bg-orange-600 s"
                         style={{ height: "fit-content" }}
                         onClick={saveItemsToServer}
                         disabled={inventoryData.length === 0 || isLoading}

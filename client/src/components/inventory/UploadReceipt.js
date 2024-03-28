@@ -33,7 +33,7 @@ const UploadReceipt = ({ updateInventory }) => {
     <div className="flex flex-col space-y-1 font-mono text-left">
       <label
         for="inputField"
-        className="px-10 py-5 mr-4 text-sm font-semibold text-black transition-colors duration-200 bg-orange-500 border-0 rounded-full cursor-pointer hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:bg-gray-300"
+        className="px-10 py-5 mr-4 font-semibold text-white transition-colors duration-200 bg-orange-500 border-0 rounded-full cursor-pointer hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:bg-gray-300"
       >
         Upload Receipt
       </label>
