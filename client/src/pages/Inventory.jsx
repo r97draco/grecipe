@@ -161,7 +161,7 @@ const Inventory = () => {
   }, [refresh]);
 
   return (
-    <div >
+    <div>
       <section className="relative main-bg">
         <div className="col-span-1 px-4 mx-auto bg-white bg-opacity-50 rounded-lg max-w-7xl sm:px-6 backdrop-blur-md">
           <div className="pt-10 pb-12 md:pt-10 md:pb-20">
@@ -389,7 +389,10 @@ const FamilyInfo = ({ setRefresh, familyId, head }) => {
                 {familyData.members.map(
                   (member) =>
                     (
-                      <tr className="bg-white dark:bg-gray-800">
+                      <tr
+                        className="bg-white dark:bg-gray-800"
+                        key={member._id}
+                      >
                         <th
                           scope="row"
                           className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -574,7 +577,7 @@ const Family = ({ setRefresh }) => {
         </thead>
         <tbody className="text-center">
           {families.map((family) => (
-            <tr className="bg-white dark:bg-gray-800">
+            <tr className="bg-white dark:bg-gray-800" key={family._id}>
               <td className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                 {family.name}
               </td>

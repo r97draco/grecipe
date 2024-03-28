@@ -216,7 +216,6 @@ function Nav() {
   }, [setUser]);
 
   const links = [
-    // { to: "/", title: "Home" },
     { to: "/inventory", title: "Inventory" },
     { to: "/recipe", title: "Recipe" },
   ];
